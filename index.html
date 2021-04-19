@@ -6,7 +6,6 @@
   <body>
     <button onclick="addpoint()">Get a point</button><br>
     <span id="points"></span><br>
-    <button onclick="save()">this saves</button>
     <script>
       var points=0;
       if (localStorage.getItem("save")){
@@ -20,6 +19,7 @@
       function save(){
         localStorage.setItem("save",points.toString());
       }
+      setInterval(save,15000)
     </script>
   </body>
 </html>
