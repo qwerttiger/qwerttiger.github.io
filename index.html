@@ -1,25 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Low quality game</title>
+    <title>Medium quality game</title>
   </head>
   <body>
-    <button onclick="addpoint()">Get a point</button><br>
     <span id="points"></span><br>
+    <span id="metapoints"></span><br>
+    <button onclick="addpoint()">Get point</button><br>
+    <button id="reset" onclick="reset()">Reset for a metapoint</button><br>
     <script>
       var points=0;
-      if (localStorage.getItem("save")){
-        points=Number(localStorage.getItem("save"));
+      var metapoints=0;
+      if (localStorage.getItem("points")){
+        points=Number(localStorage.getItem("points"));
+      }
+      if (localStorage.getItem("metapoints")){
+        metapoints=Number(localStorage.getItem("metapoints"));
+      }
+      function check(){
+        if (points<10){
+          document.getElementById("reset").innerHTML="Get 10 points to reset";
+        } else{
+          document.getElementById("reset").innerHTML="Reset for a metapoint";
+        }
       }
       document.getElementById("points").innerHTML="Points: "+points;
+      document.getElementById("metapoints").innerHTML="Metapoints: "+metapoints;
       function addpoint(){
-        points+=1;
+        points+=1+metapoints/2;
         document.getElementById("points").innerHTML="Points: "+points;
       }
-      function save(){
-        localStorage.setItem("save",points.toString());
+      function reset(){
+        if (points>=10){
+          metapoints+=1;
+          points=0;
+          document.getElementById("points").innerHTML="Points: "+points;
+          document.getElementById("metapoints").innerHTML="Metapoints: "+metapoints;
+        }
       }
-      setInterval(save,15000)
+      function save(){
+        localStorage.setItem("points",points.toString());
+        localStorage.setItem("metapoints",metapoints.toString());
+      }
+      setInterval(save,1000);
+      setInterval(check,30);
     </script>
   </body>
 </html>
