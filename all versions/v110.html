@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Low quality game</title>
+  </head>
+  <body>
+    <button onclick="addpoint()">Get a point</button><br>
+    <span id="points">Points: 0</span><br>
+    <button onclick="save()">this saves</button><button onclick="load()">this loads</button>
+    <script>
+      var points=0;
+      function addpoint(){
+        points+=1;
+        document.getElementById("points").innerHTML="Points: "+points;
+      }
+      function save(){
+        localStorage.setItem("save",points.toString());
+      }
+      function load(){
+        points=localStorage.getItem("save");
+      }
+    </script>
+  </body>
+</html>

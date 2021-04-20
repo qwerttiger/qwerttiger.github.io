@@ -1,0 +1,9 @@
+20210419 - "very low quality"                                                               v1.0.0
+20210419 - "hmmmm"                                                                          v1.1.0
+20210419 - "this *should* work now"                                                         v1.1.1
+20210419 - "why is this here"                                                               v1.1.2
+20210419 - "autosave is very good for your health"                                          v1.2.0
+20210419 - "add *some* prestiging but you can easily beat the game so not that good"        v2.0.0
+20210419 - "*some* css"                                                                     v2.0.1
+20210419 - "some screens (not finished)"                                                    v2.0.2
+20210419 - "bug fixing"                                                                     v2.1.0
