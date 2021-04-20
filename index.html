@@ -3,18 +3,24 @@
   <head>
     <title>Medium quality game</title>
     <style>
-      html,button {
+      html, button {
         font-size: 50px;
         text-align: center;
+        font-family: sans-serif;
+      }
+      .top-bar{
+        width: 25%;
       }
     </style>
   </head>
   <body>
-    <span id="points"></span><br>
-    <span id="metapoints"></span><br><br>
+    <button class="top-bar" onclick="screennum=0">Points</button><button class="top-bar" onclick="screennum=1">Upgrades</button><button class="top-bar" onclick="screennum=2">Stats</button><button class="top-bar" onclick="screennum=3">Achievements</button><br><br>
+    <span id="points"></span>
+    <span id="metapoints"></span>
     <button onclick="addpoint()">Get point</button><br>
-    <button id="reset" onclick="reset()">Reset for a metapoint</button><br>
+    <button id="reset" onclick="reset()">Reset for a metapoint</button>
     <script>
+      var screennum=0;
       var points=0;
       var metapoints=0;
       if (localStorage.getItem("points")){
@@ -29,9 +35,14 @@
         } else{
           document.getElementById("reset").innerHTML="Reset for a metapoint";
         }
+        if (screennum==0){
+          document.getElementById("points").innerHTML="Points: "+points+"<br>";
+          document.getElementById("metapoints").innerHTML="Metapoints: "+metapoints+"<br><br>";
+        } else {
+          document.getElementById("points").innerHTML="";
+          document.getElementById("metapoints").innerHTML="";
+        }
       }
-      document.getElementById("points").innerHTML="Points: "+points;
-      document.getElementById("metapoints").innerHTML="Metapoints: "+metapoints;
       function addpoint(){
         points+=1+metapoints/2;
         document.getElementById("points").innerHTML="Points: "+points;
