@@ -25,11 +25,11 @@
       var points=0;
       var lastpoints=10;
       var metapoints=0;
-      if (localStorage.getItem("points")){
-        points=Number(localStorage.getItem("points"));
+      if (localStorage.getItem("points202")){
+        points=Number(localStorage.getItem("points202"));
       }
-      if (localStorage.getItem("metapoints")){
-        metapoints=Number(localStorage.getItem("metapoints"));
+      if (localStorage.getItem("metapoints202")){
+        metapoints=Number(localStorage.getItem("metapoints202"));
       }
       function check(){
         if ((points<10 && lastpoints>=10)||(points<10 && screennum==0 && lastscreennum!=0)){
@@ -66,8 +66,8 @@
         metapoints=0;
       }
       function save(){
-        localStorage.setItem("points",points.toString());
-        localStorage.setItem("metapoints",metapoints.toString());
+        localStorage.setItem("points202",points.toString());
+        localStorage.setItem("metapoints202",metapoints.toString());
       }
       setInterval(save,1000);
       setInterval(check,50);

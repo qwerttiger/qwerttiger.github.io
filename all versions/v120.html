@@ -8,8 +8,8 @@
     <span id="points"></span><br>
     <script>
       var points=0;
-      if (localStorage.getItem("save")){
-        points=Number(localStorage.getItem("save"));
+      if (localStorage.getItem("save120")){
+        points=Number(localStorage.getItem("save120"));
       }
       document.getElementById("points").innerHTML="Points: "+points;
       function addpoint(){
@@ -17,7 +17,7 @@
         document.getElementById("points").innerHTML="Points: "+points;
       }
       function save(){
-        localStorage.setItem("save",points.toString());
+        localStorage.setItem("save120",points.toString());
       }
       setInterval(save,15000)
     </script>

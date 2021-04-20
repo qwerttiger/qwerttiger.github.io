@@ -11,11 +11,11 @@
     <script>
       var points=0;
       var metapoints=0;
-      if (localStorage.getItem("points")){
-        points=Number(localStorage.getItem("points"));
+      if (localStorage.getItem("points200")){
+        points=Number(localStorage.getItem("points200"));
       }
-      if (localStorage.getItem("metapoints")){
-        metapoints=Number(localStorage.getItem("metapoints"));
+      if (localStorage.getItem("metapoints200")){
+        metapoints=Number(localStorage.getItem("metapoints200"));
       }
       function check(){
         if (points<10){
@@ -39,8 +39,8 @@
         }
       }
       function save(){
-        localStorage.setItem("points",points.toString());
-        localStorage.setItem("metapoints",metapoints.toString());
+        localStorage.setItem("points200",points.toString());
+        localStorage.setItem("metapoints200",metapoints.toString());
       }
       setInterval(save,1000);
       setInterval(check,30);

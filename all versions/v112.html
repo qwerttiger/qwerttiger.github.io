@@ -9,8 +9,8 @@
     <button onclick="save()">this saves</button>
     <script>
       var points=0;
-      if (localStorage.getItem("save")){
-        points=Number(localStorage.getItem("save"));
+      if (localStorage.getItem("save112")){
+        points=Number(localStorage.getItem("save112"));
       }
       document.getElementById("points").innerHTML="Points: "+points;
       function addpoint(){
@@ -18,7 +18,7 @@
         document.getElementById("points").innerHTML="Points: "+points;
       }
       function save(){
-        localStorage.setItem("save",points.toString());
+        localStorage.setItem("save112",points.toString());
       }
     </script>
   </body>
