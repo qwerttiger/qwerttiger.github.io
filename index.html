@@ -21,7 +21,11 @@
     <span id="metametapoints"></span>
     <span id="getpoint"><button onclick="addpoint()">Get point</button></span><br>
     <span id="getmeta"><button onclick="addmeta()">Get 10 points to get metapoints</button></span><br>
-    <span id="getmetameta"><button onclick="addmetameta()">Get 10 metapoints to get metametapoints</button></span>
+    <span id="getmetameta"><button onclick="addmetameta()">Get 10 metapoints to get metametapoints</button></span><br>
+    <span id="infinity"></span>
+
+    <span id="IP"></span>
+    <span id="upgrades"></span>
     <script>
       var screennum=0;
       var lastscreennum=1;
@@ -30,6 +34,10 @@
       var metapoints=0;
       var lastmetapoints=10;
       var metametapoints=0;
+      var lastmetametapoints=Infinity;
+      var infinitypoints=0;
+      var isInf=false;
+      var lastisInf=true;
       if (localStorage.getItem("points")){
         points=Number(localStorage.getItem("points"));
       }
@@ -37,18 +45,22 @@
         metapoints=Number(localStorage.getItem("metapoints"));
       }
       if (localStorage.getItem("metametapoints")){
-        metapoints=Number(localStorage.getItem("metametapoints"));
+        metametapoints=Number(localStorage.getItem("metametapoints"));
       }
       function check(){
         if ((points<10 && lastpoints>=10)||(points<10 && screennum==0 && lastscreennum!=0)){
           document.getElementById("getmeta").innerHTML="<button onclick='getmeta()'>Get 10 points to reset</button>";
         } else if ((points>=10 && lastpoints<10)||(points>=10 && screennum==0 && lastscreennum!=0)){
           document.getElementById("getmeta").innerHTML="<button onclick='getmeta()'>Reset for metapoints</button>";
+        } else if (screennum!=0 && lastscreennum!=screennum){
+          document.getElementById("getmeta").innerHTML="";
         }
         if ((metapoints<10 && lastmetapoints>=10)||(metapoints<10 && screennum==0 && lastscreennum!=0)){
           document.getElementById("getmetameta").innerHTML="<button onclick='getmetameta()'>Get 10 metapoints to reset</button>";
         } else if ((metapoints>=10 && lastmetapoints<10)||(metapoints>=10 && screennum==0 && lastscreennum!=0)){
           document.getElementById("getmetameta").innerHTML="<button onclick='getmetameta()'>Reset for metametapoints</button>";
+        } else if (screennum!=0 && lastscreennum!=screennum){
+          document.getElementById("getmetameta").innerHTML="";
         }
         if (screennum==0){
           document.getElementById("points").innerHTML="Points: "+points+"<br>";
@@ -57,14 +69,35 @@
         }
         if (screennum==0 && lastscreennum!=0){
           document.getElementById("getpoint").innerHTML="<button onclick='addpoint()'>Get point</button>";
-        } else if (screennum!=0 && lastscreennum!=screennum) {
+        } else if (screennum!=0 && lastscreennum!=screennum){
           document.getElementById("points").innerHTML="";
           document.getElementById("metapoints").innerHTML="";
           document.getElementById("getpoint").innerHTML="";
         }
+        if (screennum==1){
+          document.getElementById("IP").innerHTML="Infinity Points: "+infinitypoints+"<br>";
+          document.getElementById("upgrades").innerHTML="Upgrades: not implemented :P";
+        } else if (screennum!=1 && lastscreennum!=screennum){
+          document.getElementById("IP").innerHTML="";
+          document.getElementById("upgrades").innerHTML="";
+        }
+        if (points==Infinity && metapoints==Infinity && metametapoints==Infinity){
+          isInf=true;
+        } else if (lastpoints==Infinity && lastmetapoints==Infinity && lastmetametapoints==Infinity && points!=Infinity && metapoints!=Infinity && metametapoints!=Infinity) {
+          isInf=false;
+        }
+        if ((isInf && !lastisInf && screennum==0)||(screennum==0 && lastscreennum!=0 && isInf)){
+          document.getElementById("infinity").innerHTML="<button onclick='getIP()'>Infinity for 1 Infinity Point</button>";
+        } else if ((!isInf && lastisInf && screennum==0)||(screennum==0 && lastscreennum!=0 && !isInf)){
+          document.getElementById("infinity").innerHTML="<button onclick='getIP()'>Get infinity everything to Infinity</button>";
+        } else if (screennum!=0 && lastscreennum==0){
+          document.getElementById("infinity").innerHTML="";
+        }
         lastpoints=points;
         lastmetapoints=metapoints;
+        lastmetametapoints=metametapoints;
         lastscreennum=screennum;
+        lastisInf=isInf;
       }
       function addpoint(){
         points+=Math.ceil(1+metapoints/2);
@@ -86,10 +119,20 @@
         points=0;
         metapoints=0;
         metametapoints=0;
+        infinitypoints=0;
       }
       function save(){
         localStorage.setItem("points",points.toString());
         localStorage.setItem("metapoints",metapoints.toString());
+        localStorage.setItem("metametapoints",metametapoints.toString());
+      }
+      function getIP(){
+        if (isInf){
+          infinitypoints+=1;
+          points=0;
+          metapoints=0;
+          metametapoints=0;
+        }
       }
       setInterval(save,1000);
       setInterval(check,50);
