@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<!--why are you looking at the source code-->
 <html>
   <head>
-    <title>Best game ever (v2.3.0)</title>
+    <title>Best game ever (v3.0.0)</title>
     <style>
       html, button {
         font-size: 50px;
@@ -39,17 +38,17 @@
       var isInf=false;
       var lastisInf=true;
       var u1=0;
-      if (localStorage.getItem("points")){
-        points=Number(localStorage.getItem("points"));
+      if (localStorage.getItem("points300")){
+        points=Number(localStorage.getItem("points300"));
       }
-      if (localStorage.getItem("metapoints")){
-        metapoints=Number(localStorage.getItem("metapoints"));
+      if (localStorage.getItem("metapoints300")){
+        metapoints=Number(localStorage.getItem("metapoints300"));
       }
-      if (localStorage.getItem("metametapoints")){
-        metametapoints=Number(localStorage.getItem("metametapoints"));
+      if (localStorage.getItem("metametapoints300")){
+        metametapoints=Number(localStorage.getItem("metametapoints300"));
       }
-      if (localStorage.getItem("u1")){
-        u1=Number(localStorage.getItem("u1"));
+      if (localStorage.getItem("u1300")){
+        u1=Number(localStorage.getItem("u1300"));
       }
       function check(){
         if ((points<10 && lastpoints>=10)||(points<10 && screennum==0 && lastscreennum!=0)){
@@ -134,10 +133,10 @@
         u1=0;
       }
       function save(){
-        localStorage.setItem("points",points.toString());
-        localStorage.setItem("metapoints",metapoints.toString());
-        localStorage.setItem("metametapoints",metametapoints.toString());
-        localStorage.setItem("u1",u1.toString());
+        localStorage.setItem("points300",points.toString());
+        localStorage.setItem("metapoints300",metapoints.toString());
+        localStorage.setItem("metametapoints300",metametapoints.toString());
+        localStorage.setItem("u1300",u1.toString());
       }
       function getIP(){
         if (isInf){

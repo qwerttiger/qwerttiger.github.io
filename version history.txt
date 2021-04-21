@@ -8,3 +8,5 @@
 20210420 - "some screens (not finished)"                                                    v2.0.2
 20210420 - "bug fixing"                                                                     v2.1.0
 20210421 - "two prestige layers"                                                            v2.2.0
+20210421 - "um infinity points"                                                             v2.3.0
+20210421 - "added a crappy upgrade"                                                         v3.0.0
