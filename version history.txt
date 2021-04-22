@@ -10,3 +10,4 @@
 20210421 - "two prestige layers"                                                            v2.2.0
 20210421 - "um infinity points"                                                             v2.3.0
 20210421 - "added a crappy upgrade"                                                         v3.0.0
+20210422 - "added more upgrades"                                                            v3.1.0
