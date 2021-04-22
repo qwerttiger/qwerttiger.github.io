@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--why are you looking at the source code-->
 <html>
   <head>
     <title>Best game ever (v3.1.1)</title>
@@ -47,32 +46,32 @@
       var u3=0;
       var u4=0;
       var u5=0;
-      if (localStorage.getItem("points")){
-        points=Number(localStorage.getItem("points"));
+      if (localStorage.getItem("points311")){
+        points=Number(localStorage.getItem("points311"));
       }
-      if (localStorage.getItem("metapoints")){
-        metapoints=Number(localStorage.getItem("metapoints"));
+      if (localStorage.getItem("metapoints311")){
+        metapoints=Number(localStorage.getItem("metapoints311"));
       }
-      if (localStorage.getItem("metametapoints")){
-        metametapoints=Number(localStorage.getItem("metametapoints"));
+      if (localStorage.getItem("metametapoints311")){
+        metametapoints=Number(localStorage.getItem("metametapoints311"));
       }
-      if (localStorage.getItem("infinitypoints")){
-        infinitypoints=Number(localStorage.getItem("infinitypoints"));
+      if (localStorage.getItem("infinitypoints311")){
+        infinitypoints=Number(localStorage.getItem("infinitypoints311"));
       }
-      if (localStorage.getItem("u1")){
-        u1=Number(localStorage.getItem("u1"));
+      if (localStorage.getItem("u1311")){
+        u1=Number(localStorage.getItem("u1311"));
       }
-      if (localStorage.getItem("u2")){
-        u2=Number(localStorage.getItem("u2"));
+      if (localStorage.getItem("u2311")){
+        u2=Number(localStorage.getItem("u2311"));
       }
-      if (localStorage.getItem("u3")){
-        u3=Number(localStorage.getItem("u3"));
+      if (localStorage.getItem("u3311")){
+        u3=Number(localStorage.getItem("u3311"));
       }
-      if (localStorage.getItem("u4")){
-        u4=Number(localStorage.getItem("u4"));
+      if (localStorage.getItem("u4311")){
+        u4=Number(localStorage.getItem("u4311"));
       }
-      if (localStorage.getItem("u5")){
-        u4=Number(localStorage.getItem("u5"));
+      if (localStorage.getItem("u5311")){
+        u4=Number(localStorage.getItem("u5311"));
       }
       function check(){
         if ((points<10 && lastpoints>=10)||(points<10 && screennum==0 && lastscreennum!=0)){
@@ -182,15 +181,15 @@
         u4=0;
       }
       function save(){
-        localStorage.setItem("points",points.toString());
-        localStorage.setItem("metapoints",metapoints.toString());
-        localStorage.setItem("metametapoints",metametapoints.toString());
-        localStorage.setItem("infinitypoints",infinitypoints.toString());
-        localStorage.setItem("u1",u1.toString());
-        localStorage.setItem("u2",u2.toString());
-        localStorage.setItem("u3",u3.toString());
-        localStorage.setItem("u4",u4.toString());
-        localStorage.setItem("u5",u5.toString());
+        localStorage.setItem("points331",points.toString());
+        localStorage.setItem("metapoints331",metapoints.toString());
+        localStorage.setItem("metametapoints331",metametapoints.toString());
+        localStorage.setItem("infinitypoints331",infinitypoints.toString());
+        localStorage.setItem("u1331",u1.toString());
+        localStorage.setItem("u2331",u2.toString());
+        localStorage.setItem("u3331",u3.toString());
+        localStorage.setItem("u4331",u4.toString());
+        localStorage.setItem("u5331",u5.toString());
       }
       function getIP(){
         if (isInf){

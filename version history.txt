@@ -11,3 +11,4 @@
 20210421 - "um infinity points"                                                             v2.3.0
 20210421 - "added a crappy upgrade"                                                         v3.0.0
 20210422 - "added more upgrades"                                                            v3.1.0
+20210422 - "double IP upgrade and few bug fixes"                                            v3.1.1
