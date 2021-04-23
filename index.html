@@ -168,8 +168,11 @@
         if ((!u1 && infinitypoints>=1) || (!u2 && infinitypoints>=5) || (!u3 && infinitypoints>=10) || (!u4 && infinitypoints>=25) || (infinitypoints>=3**u5)){
           document.getElementById("screen2").style.background="black";
           document.getElementById("screen2").style.color="white";
-        } else {
+        } else if (!screen2.matches(':hover')) {
           document.getElementById("screen2").style.background="#f0f0f0";
+          document.getElementById("screen2").style.color="black";
+        } else {
+          document.getElementById("screen2").style.background="#d0d0d0";
           document.getElementById("screen2").style.color="black";
         }
         lastpoints=points;
@@ -187,13 +190,13 @@
         points+=Math.ceil(1+metapoints/2);
       }
       function getmeta(){
-        if (points>=10){
+        if (points>=10 && !isInf){
           metapoints+=Math.floor(points/10)*Math.floor(metametapoints/2+1);
           points=0;
         }
       }
       function getmetameta(){
-        if (metapoints>=10){
+        if (metapoints>=10 && !isInf){
           metametapoints+=Math.floor(metapoints/10);
           points=0;
           metapoints=0;
