@@ -16,3 +16,4 @@
 20210423 - "bug fixes"                                                                      v3.1.3
 20210423 - "visual fixes"                                                                   v3.1.4
 20210423 - "bad break infinity code"                                                        v4.0.0
+20210423 - "break infinity bug fixes"                                                       v4.1.0
