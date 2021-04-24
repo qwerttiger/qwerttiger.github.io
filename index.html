@@ -2,7 +2,7 @@
 <!--why are you looking at the source code-->
 <html>
   <head>
-    <title>Best game ever (v3.1.4)</title>
+    <title>Best game ever (v4.0.0)</title>
     <style>
       html, button {
         font-size: 50px;
@@ -37,15 +37,172 @@
     <span id="u3"></span>
     <span id="u4"></span>
     <span id="u5"></span>
+    <span id="breakinf"></span>
     <script>
+      class bigNum{
+        constructor(m,e){
+          this.m=Math.round(m*100)/100;
+          this.e=Number(e);
+        }
+        add(other){
+          var edif=this.e-other.e;
+          if (edif>=3){
+            return this;
+          } else if (edif==2){
+            var r=new bigNum(this.m+Math.round(other.m)/100,this.e);
+            if (r.m>=10){
+              return new bigNum(Math.round(r.m*10)/100,this.e+1);
+            } else {
+              return r;
+            }
+          } else if (edif==1){
+            var r=new bigNum(this.m+Math.round(other.m*10)/100,this.e);
+            if (r.m>=10){
+              return new bigNum(Math.round(r.m*10)/100,this.e+1);
+            } else {
+              return r;
+            }
+          } else if (edif==0){
+            var r=new bigNum(this.m+other.m,this.e);
+            if (r.m>=10){
+              return new bigNum(Math.round(r.m*10)/100,this.e+1);
+            } else {
+              return r;
+            }
+          } else if (edif==-1){
+            var r=new bigNum(other.m+Math.round(this.m*10)/100,other.e);
+            if (r.m>=10){
+              return new bigNum(Math.round(r.m*10)/100,other.e+1);
+            } else {
+              return r;
+            }
+          } else if (edif==-2){
+            var r=new bigNum(other.m+Math.round(this.m)/100,other.e);
+            if (r.m>=10){
+              return new bigNum(Math.round(r.m*10)/100,other.e+1);
+            } else {
+              return r;
+            }
+          } else {
+            return other;
+          }
+        }
+        sub(other){
+          var edif=this.e-other.e;
+          if (edif>=3){
+            return this;
+          } else if (edif==2){
+            var r=new bigNum(this.m-Math.round(other.m)/100,this.e);
+            if (r.m<=1){
+              return new bigNum(r.m*10,this.e-1);
+            } else {
+              return r;
+            }
+          } else if (edif==1){
+            var r=new bigNum(this.m-Math.round(other.m*10)/100,this.e);
+            if (r.m<=1){
+              return new bigNum(r.m*10,this.e-1);
+            } else {
+              return r;
+            }
+          } else if (edif==0){
+            var r=new bigNum(this.m-other.m,this.e);
+            if (r.m<=1 && r.m>=-1 && !(r.m<=0.1 && r.m>=-0.1)){
+              return new bigNum(r.m*10,this.e-1);
+            } else if (r.m<=0.1 && r.m>=-0.1) {
+              return new bigNum(r.m*100,this.e-2)
+            } else {
+              return r;
+            }
+          } else if (edif==-1){
+            var r=new bigNum(other.m-Math.round(this.m*10)/100,other.e);
+            if (r.m>=-1){
+              return new bigNum(r.m*10,other.e-1);
+            } else {
+              return r;
+            }
+          } else if (edif==-2){
+            var r=new bigNum(other.m-Math.round(this.m)/100,other.e);
+            if (r.m>=-1){
+              return new bigNum(r.m*10,other.e-1);
+            } else {
+              return r;
+            }
+          } else {
+            return other;
+          }
+        }
+        mult(other){
+          var r=new bigNum(this.m*other.m,this.e+other.e);
+          if (r.m>=10){
+            return new bigNum(r.m/10,r.e+1);
+          } else {
+            return r;
+          }
+        }
+        div(other){
+          if (this.eq(bigInf)){
+            return bigInf;
+          } else {
+            var r=new bigNum(this.m/other.m,this.e-other.e);
+            if (r.m<=0.1){
+              return new bigNum(r.m*10,r.e-1);
+            } else {
+              return r;
+            }
+          }
+        }
+        round(){
+          if (this.e<6){
+            this.m=parse(Math.round(Number(this.toString())).toString()).m;
+          }
+        }
+        gte(other){
+          return (this.e==other.e && this.m>=other.m) || (this.e>other.e);
+        }
+        lte(other){
+          return (this.e==other.e && this.m<=other.m) || (this.e<other.e);
+        }
+        eq(other){
+          return this.e==other.e && this.m==other.m;
+        }
+        finite(){
+          return this.lte(bigInf);
+        }
+        finiter(){
+          if (!this.finite() && !breakinf){
+            this.m=1.8;
+            this.e=308;
+          }
+        }
+        toString(){
+          if (!breakinf && this.eq(bigInf)){
+            return "Infinity";
+          } else if (this.e>=6) {
+            return this.m.toString()+"e"+this.e.toString();
+          } else {
+            return Number(this.m.toString()+"e"+this.e.toString()).toString();
+          }
+        }
+      }
+      function parse(string){
+        if (string=="Infinity"){
+          return bigInf;
+        } else if (string.split("e").length==1){
+          return new bigNum(Number(string)/(10**(string.length-1)),string.length-1);
+        } else {
+          return new bigNum(string.split("e")[0],string.split("e")[1])
+        }
+      }
+      var bigInf=new bigNum(1.8,308);
       var screennum=0;
       var lastscreennum=1;
-      var points=0;
-      var lastpoints=10;
-      var metapoints=0;
-      var lastmetapoints=10;
-      var metametapoints=0;
-      var lastmetametapoints=Infinity;
+      var points=new bigNum(0,0);
+      var lastpoints=new bigNum(1,1);
+      var metapoints=new bigNum(0,0);
+      var lastmetapoints=new bigNum(1,1);
+      var metametapoints=new bigNum(0,0);
+      var lastmetametapoints=bigInf;
       var infinitypoints=0;
       var isInf=false;
       var lastisInf=true;
@@ -54,6 +211,8 @@
       var u3=0;
       var u4=0;
       var u5=0;
+      var breakinf=0;
+      var lastbreakinf=1;
       var lastu1=0;
       var lastu2=0;
       var lastu3=0;
@@ -63,14 +222,16 @@
       var u2l=0;
       var u3l=0;
       var u4l=0;
+      var ten=new bigNum(1,1);
+      var zero=new bigNum(0,0);
       if (localStorage.getItem("points")){
-        points=Number(localStorage.getItem("points"));
+        points=parse(localStorage.getItem("points"));
       }
       if (localStorage.getItem("metapoints")){
-        metapoints=Number(localStorage.getItem("metapoints"));
+        metapoints=parse(localStorage.getItem("metapoints"));
       }
       if (localStorage.getItem("metametapoints")){
-        metametapoints=Number(localStorage.getItem("metametapoints"));
+        metametapoints=parse(localStorage.getItem("metametapoints"));
       }
       if (localStorage.getItem("infinitypoints")){
         infinitypoints=Number(localStorage.getItem("infinitypoints"));
@@ -91,17 +252,17 @@
         u5=Number(localStorage.getItem("u5"));
       }
       function check(){
-        if ((points<10 && lastpoints>=10)||(points<10 && screennum==0 && lastscreennum!=0)){
+        if ((!points.gte(ten) && lastpoints.gte(ten))||(!points.gte(ten) && screennum==0 && lastscreennum!=0)){
           document.getElementById("getmeta").innerHTML="<button onclick='getmeta()'>Get 10 points to reset</button><br>";
-        } else if ((points>=10 && lastpoints<10)||(points>=10 && screennum==0 && lastscreennum!=0)){
+        } else if ((points.gte(ten) && !lastpoints.gte(ten))||(points.gte(ten) && screennum==0 && lastscreennum!=0)){
           document.getElementById("getmeta").innerHTML="<button onclick='getmeta()'>Reset for metapoints</button><br>";
         }
         if (screennum!=0){
           document.getElementById("getmeta").innerHTML="";
         }
-        if ((metapoints<10 && lastmetapoints>=10)||(metapoints<10 && screennum==0 && lastscreennum!=0)){
+        if ((!metapoints.gte(ten) && lastmetapoints.gte(ten))||(metapoints.lte(ten) && screennum==0 && lastscreennum!=0)){
           document.getElementById("getmetameta").innerHTML="<button onclick='getmetameta()'>Get 10 metapoints to reset</button><br>";
-        } else if ((metapoints>=10 && lastmetapoints<10)||(metapoints>=10 && screennum==0 && lastscreennum!=0)){
+        } else if ((metapoints.gte(ten) && !lastmetapoints.gte(ten))||(metapoints.gte(ten) && screennum==0 && lastscreennum!=0)){
           document.getElementById("getmetameta").innerHTML="<button onclick='getmetameta()'>Reset for metametapoints</button><br>";
         }
         if (screennum!=0){
@@ -145,6 +306,11 @@
           if (lastscreennum!=1 || lastu5!=u5){
             document.getElementById("u5").innerHTML="<button onclick='if (infinitypoints>=3**u5){infinitypoints-=3**u5;u5+=1;}'>Get x2 IP mult, "+3**u5+" IP</button>";
           }
+          if ((lastscreennum!=1 || lastbreakinf) && !breakinf){
+            document.getElementById("breakinf").innerHTML="<button onclick='if (infinitypoints>=100){breakinf=1;infinitypoints-=100;}'>Break Infinity, 100 IP</button><br>";
+          } else if ((lastscreennum!=1 || !lastbreakinf) && breakinf){
+            document.getElementById("breakinf").innerHTML="<button>Infinity broken</button><br>";
+          }
         } else if (screennum!=1 && lastscreennum!=screennum){
           document.getElementById("IP").innerHTML="";
           document.getElementById("u1").innerHTML="";
@@ -153,13 +319,13 @@
           document.getElementById("u4").innerHTML="";
           document.getElementById("u5").innerHTML="";
         }
-        if (points==Infinity && metapoints==Infinity && metametapoints==Infinity){
+        if (points.gte(bigInf) && metapoints.gte(bigInf) && metametapoints.gte(bigInf)){
           isInf=true;
-        } else if (lastisInf && (points!=Infinity || metapoints!=Infinity || metametapoints!=Infinity)) {
+        } else if (lastisInf && (!points.gte(bigInf) || !metapoints.gte(bigInf) || !metametapoints.gte(bigInf))) {
           isInf=false;
         }
         if ((isInf && !lastisInf && screennum==0)||(screennum==0 && lastscreennum!=0 && isInf)){
-          document.getElementById("infinity").innerHTML="<button onclick='getIP()'>Infinity for "+2**u5+" Infinity Point</button>";
+          document.getElementById("infinity").innerHTML="<button onclick='getIP()'>Infinity for "+IPcalc()+" Infinity Point</button>";
         } else if ((!isInf && lastisInf && screennum==0)||(screennum==0 && lastscreennum!=0 && !isInf)){
           document.getElementById("infinity").innerHTML="<button onclick='getIP()'>Get infinity everything to Infinity</button>";
         } else if (screennum!=0 && lastscreennum==0){
@@ -175,6 +341,12 @@
           document.getElementById("screen2").style.background="#d0d0d0";
           document.getElementById("screen2").style.color="black";
         }
+        points.finiter();
+        metapoints.finiter();
+        metametapoints.finiter();
+        points.round();
+        metapoints.round();
+        metametapoints.round();
         lastpoints=points;
         lastmetapoints=metapoints;
         lastmetametapoints=metametapoints;
@@ -185,27 +357,30 @@
         lastu3=u3;
         lastu4=u4;
         lastu5=u5;
+        lastbreakinf=breakinf;
       }
       function addpoint(){
-        points+=Math.ceil(1+metapoints/2);
+        if (!isInf || breakinf){
+          points=points.add(new bigNum(1,0).add(metapoints.div(new bigNum(2,0))));
+        }
       }
       function getmeta(){
-        if (points>=10 && !isInf){
-          metapoints+=Math.floor(points/10)*Math.floor(metametapoints/2+1);
-          points=0;
+        if (points.gte(ten) && (!isInf || breakinf)){
+          metapoints=metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0))));
+          points=zero;
         }
       }
       function getmetameta(){
-        if (metapoints>=10 && !isInf){
-          metametapoints+=Math.floor(metapoints/10);
-          points=0;
-          metapoints=0;
+        if (metapoints.gte(ten) && (!isInf || breakinf)){
+          metametapoints=metametapoints.add(metapoints.div(ten));
+          points=zero;
+          metapoints=zero;
         }
       }
       function reset(){
-        points=0;
-        metapoints=0;
-        metametapoints=0;
+        points=zero;
+        metapoints=zero;
+        metametapoints=zero;
         infinitypoints=0;
         u1=0;
         u2=0;
@@ -237,11 +412,25 @@
         localStorage.setItem("u5",u5.toString());
       }
       function getIP(){
-        if (isInf){
+        if (isInf && !breakinf){
           infinitypoints+=2**u5;
-          points=0;
-          metapoints=0;
-          metametapoints=0;
+          points=zero;
+          metapoints=zero;
+          metametapoints=zero;
+        } else if (isInf){
+          infinitypoints+=Math.round((2**u5)*points.e/308);
+          points=zero;
+          metapoints=zero;
+          metametapoints=zero;
+        }
+      }
+      function IPcalc(){
+        if (isInf && !breakinf){
+          return 2**u5;
+        } else if (isInf){
+          return Math.round((2**u5)*points.e/308);
+        } else {
+          return 0;
         }
       }
       setInterval(save,1000);

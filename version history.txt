@@ -13,5 +13,6 @@
 20210422 - "added more upgrades"                                                            v3.1.0
 20210422 - "double IP upgrade and few bug fixes"                                            v3.1.1
 20210422 - "yes better css"                                                                 v3.1.2
-20210433 - "bug fixes"                                                                      v3.1.3
-20210433 - "visual fixes"                                                                   v3.1.4
+20210423 - "bug fixes"                                                                      v3.1.3
+20210423 - "visual fixes"                                                                   v3.1.4
+20210423 - "bad break infinity code"                                                        v4.0.0
