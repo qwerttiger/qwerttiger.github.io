@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Best game ever (v4.1.0)</title>
+    <title>Best game ever (v4.1.1)</title>
     <style>
       html, button {
-        font-size: 50px;
+        font-size: 30px;
         text-align: center;
         font-family: sans-serif;
       }
@@ -16,6 +16,9 @@
         background: #d0d0d0;
       }
       .top-bar{
+        width: 25%;
+      }
+      #getpoint button, #getmeta button, #getmetameta button, #infinity button{
         width: 25%;
       }
     </style>
@@ -345,7 +348,7 @@
         } else if (lastisInf && !metametapoints.gte(bigInf)) {
           isInf=false;
         }
-        if ((screennum==0 && lastscreennum!=0) || (metametapoints!=lastmetametapoints)){
+        if ((screennum==0 && lastscreennum!=0) || (metametapoints!=lastmetametapoints && screennum==0)){
           if (IPcalc()!=0){
             document.getElementById("infinity").innerHTML="<button onclick='getIP()'>Infinity for "+IPcalc()+" Infinity Point</button>";
           } else {
@@ -463,8 +466,10 @@
     </script>
   </body>
 </html>
-<!--ok, press F12 and input one of:
+<!--
+ok, press F12 and input one of:
 metametapoints=bigInf
 breakinf=true
 infinitypoints=Infinity
-u5=Infinity-->
+u5=Infinity
+-->
