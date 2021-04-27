@@ -17,9 +17,10 @@
       }
       .top-bar{
         width: 25%;
+        font-size: 20px;
       }
       #getpoint button, #getmeta button, #getmetameta button, #infinity button{
-        width: 25%;
+        width: 600px;
       }
     </style>
   </head>
@@ -38,6 +39,7 @@
     <span id="u2"></span>
     <span id="u3"></span>
     <span id="u4"></span>
+    <span id="u6"></span>
     <span id="u5"></span>
     <span id="breakinf"></span>
     <script>
@@ -158,6 +160,7 @@
           if (this.e<6){
             this.m=parse(Math.round(Number(this.toString())).toString()).m;
           }
+          return this;
         }
         fix(){
           if (this.m<0.1 && this.m!=0){
@@ -190,7 +193,9 @@
           if (!breakinf && this.eq(bigInf)){
             return "Infinity";
           } else if (this.e>=6) {
-            return this.m.toString()+"e"+this.e.toString();
+            return this.m.toString()+"e"+stround(this.e)
+
+            ;
           } else {
             return Number(this.m.toString()+"e"+this.e.toString()).toString();
           }
@@ -222,6 +227,7 @@
       var u3=0;
       var u4=0;
       var u5=0;
+      var u6=0;
       var breakinf=0;
       var lastbreakinf=1;
       var lastu1=0;
@@ -229,6 +235,7 @@
       var lastu3=0;
       var lastu4=0;
       var lastu5=0;
+      var lastu6=0;
       var u1l=0;
       var u2l=0;
       var u3l=0;
@@ -264,6 +271,9 @@
       }
       if (localStorage.getItem("u5")){
         u5=Number(localStorage.getItem("u5"));
+      }
+      if (localStorage.getItem("u6")){
+        u6=Number(localStorage.getItem("u6"));
       }
       function check(){
         points.finiter();
@@ -305,7 +315,7 @@
           document.getElementById("getpoint").innerHTML="";
         }
         if (screennum==1){
-          document.getElementById("IP").innerHTML="Infinity Points: "+infinitypoints+"<br>";
+          document.getElementById("IP").innerHTML="Infinity Points: "+stround(infinitypoints)+"<br>";
           if ((lastscreennum!=1 || lastu1) && !u1){
             document.getElementById("u1").innerHTML="<button onclick='if (infinitypoints>=1){u1=1;infinitypoints-=1;setInterval(addpoint,100);}'>Get point autoclicker, 1 IP</button><br>";
           } else if ((lastscreennum!=1 || !lastu1) && u1){
@@ -327,7 +337,12 @@
             document.getElementById("u4").innerHTML="<button>Already bought</button><br>";
           }
           if (lastscreennum!=1 || lastu5!=u5){
-            document.getElementById("u5").innerHTML="<button onclick='if (infinitypoints>=3**u5){infinitypoints-=3**u5;u5+=1;}'>Get x2 IP mult, "+3**u5+" IP</button><br>";
+            document.getElementById("u5").innerHTML="<button onclick='if (infinitypoints>=3**u5){infinitypoints-=3**u5;u5+=1;}'>Get x2 IP mult, "+stround(3**u5)+" IP</button><br>";
+          }
+          if ((lastscreennum!=1 || lastu6) && !u6){
+            document.getElementById("u6").innerHTML="<button onclick='if (infinitypoints>=15){u6=1;infinitypoints-=15;}'>IP boost all point gain, 15 IP</button><br>";
+          } else if ((lastscreennum!=1 || !lastu6) && u6){
+            document.getElementById("u6").innerHTML="<button>Already bought</button><br>";
           }
           if ((lastscreennum!=1 || lastbreakinf) && !breakinf){
             document.getElementById("breakinf").innerHTML="<button onclick='if (infinitypoints>=100){breakinf=1;infinitypoints-=100;}'>Break Infinity, 100 IP</button>";
@@ -341,6 +356,7 @@
           document.getElementById("u3").innerHTML="";
           document.getElementById("u4").innerHTML="";
           document.getElementById("u5").innerHTML="";
+          document.getElementById("u6").innerHTML="";
           document.getElementById("breakinf").innerHTML="";
         }
         if (metametapoints.gte(bigInf)){
@@ -350,9 +366,9 @@
         }
         if ((screennum==0 && lastscreennum!=0) || (metametapoints!=lastmetametapoints && screennum==0)){
           if (IPcalc()!=0){
-            document.getElementById("infinity").innerHTML="<button onclick='getIP()'>Infinity for "+IPcalc()+" Infinity Point</button>";
+            document.getElementById("infinity").innerHTML="<button onclick='getIP()'>Infinity for "+stround(IPcalc())+" Infinity Point</button>";
           } else {
-            document.getElementById("infinity").innerHTML="<button>Get Infinity everything to Infinity</button>";
+            document.getElementById("infinity").innerHTML="<button>Get Infinity metapoints to Infinity</button>";
           }
         } else if (screennum!=0 && lastscreennum==0){
           document.getElementById("infinity").innerHTML="";
@@ -377,22 +393,23 @@
         lastu3=u3;
         lastu4=u4;
         lastu5=u5;
+        lastu6=u6;
         lastbreakinf=breakinf;
       }
       function addpoint(){
         if (!points.gte(bigInf) || breakinf){
-          points=points.add(new bigNum(1,0).add(metapoints.div(new bigNum(2,0))));
+          points=new bigNum(points.add(new bigNum(1,0).add(metapoints.div(new bigNum(2,0)))).round().m,points.add(new bigNum(1,0).add(metapoints.div(new bigNum(2,0)))).round().e+Math.round(Math.sqrt(infinitypoints))*u6);
         }
       }
       function getmeta(){
         if (points.gte(ten) && (!metapoints.gte(bigInf) || breakinf)){
-          metapoints=metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0))));
+          metapoints=new bigNum(metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.sqrt(infinitypoints)*u6));
           points=zero;
         }
       }
       function getmetameta(){
         if (metapoints.gte(ten) && (!metametapoints.gte(bigInf) || breakinf)){
-          metametapoints=metametapoints.add(metapoints.div(ten));
+          metametapoints=new bigNum(metametapoints.add(metapoints.div(ten)).round().m,metametapoints.add(metapoints.div(ten)).round().e+Math.round(Math.sqrt(infinitypoints))*u6);
           points=zero;
           metapoints=zero;
         }
@@ -431,6 +448,7 @@
         localStorage.setItem("u3",u3.toString());
         localStorage.setItem("u4",u4.toString());
         localStorage.setItem("u5",u5.toString());
+        localStorage.setItem("u6",u6.toString());
       }
       function getIP(){
         if (isInf){
@@ -447,6 +465,13 @@
           return Math.round((2**u5)*metametapoints.e/308);
         } else {
           return 0;
+        }
+      }
+      function stround(num){
+        if (num>=1000000){
+          return num.toExponential(2).replace("+","");
+        } else {
+          return num;
         }
       }
       setInterval(save,1000);
@@ -466,10 +491,3 @@
     </script>
   </body>
 </html>
-<!--
-ok, press F12 and input one of:
-metametapoints=bigInf
-breakinf=true
-infinitypoints=Infinity
-u5=Infinity
--->
