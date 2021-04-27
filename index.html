@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Best game ever (v4.1.1)</title>
+    <title>Best game ever (v4.2.1)</title>
     <style>
       html, button {
         font-size: 30px;
@@ -157,8 +157,10 @@
           }
         }
         round(){
-          if (this.e<6){
-            this.m=parse(Math.round(Number(this.toString())).toString()).m;
+          if (this.e<=2){
+            var m=parse(Math.round(Number(this.toString())).toString()).m;
+            this.e=parse(Math.round(Number(this.toString())).toString()).e;
+            this.m=m;
           }
           return this;
         }
@@ -193,9 +195,7 @@
           if (!breakinf && this.eq(bigInf)){
             return "Infinity";
           } else if (this.e>=6) {
-            return this.m.toString()+"e"+stround(this.e)
-
-            ;
+            return this.m.toString()+"e"+stround(this.e);
           } else {
             return Number(this.m.toString()+"e"+this.e.toString()).toString();
           }

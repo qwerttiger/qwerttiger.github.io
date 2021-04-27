@@ -19,3 +19,4 @@
 20210424 - "break infinity bug fixes"                                                       v4.1.0
 20210424 - "better CSS for smaller devices like my laptop"                                  v4.1.1
 20210427 - "extend the soft cap"                                                            v4.2.0
+20210427 - "fixing this bug i was annoyed at for a long time"                               v4.2.1
