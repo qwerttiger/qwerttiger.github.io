@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Best game ever (v4.3.0)</title>
+    <link rel="shortcut icon" href="favicon.ico">
     <style>
       html, button {
         font-size: 30px;
@@ -19,8 +20,11 @@
         width: 25%;
         font-size: 20px;
       }
-      #getpoint button, #getmeta button, #getmetameta button, #infinity button{
+      #getpoint button, #getmeta button, #getmetameta button, #infinity button, #upgrades button {
         width: 600px;
+      }
+      #options button {
+        width: 100px;
       }
     </style>
   </head>
@@ -35,17 +39,17 @@
     <span id="infinity"></span>
 
     <span id="IP"></span>
-    <span id="u1"></span>
+    <span id="upgrades"><span id="u1"></span>
     <span id="u2"></span>
     <span id="u3"></span>
     <span id="u4"></span>
     <span id="u6"></span>
     <span id="u5"></span>
-    <span id="breakinf"></span>
+    <span id="breakinf"></span></span>
     
-    <span id="import"></span>
+    <span id="options"><span id="import"></span>
     <span id="export"></span>
-    <span id="reset"></span>
+    <span id="reset"></span></span>
     <script>
       class bigNum{
         constructor(m,e){

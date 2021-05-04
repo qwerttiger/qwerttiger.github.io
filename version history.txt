@@ -21,3 +21,4 @@
 20210427 - "extend the soft cap"                                                            v4.2.0
 20210427 - "fixing this bug i was annoyed at for a long time"                               v4.2.1
 20210503 - "nerf IP boost by a lot and make options"                                        v4.3.0
+20210504 - "make a favicon"                                                                 v4.3.1
