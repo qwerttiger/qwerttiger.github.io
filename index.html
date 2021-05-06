@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Best game ever (v4.3.0)</title>
+    <title>Best game ever (v4.3.2)</title>
     <link rel="shortcut icon" href="favicon.ico">
     <style>
       html, button {
@@ -15,6 +15,7 @@
       }
       button:hover {
         background: #d0d0d0;
+        cursor: pointer;
       }
       .top-bar{
         width: 25%;
@@ -26,6 +27,15 @@
       #options button {
         width: 100px;
       }
+      #achievements button {
+        width: 200px;
+        height: 200px;
+        font-size: 20px;
+      }
+      #achievements button:hover {
+        background: #f0f0f0;
+        cursor: default;
+      }
     </style>
   </head>
   <body>
@@ -33,9 +43,9 @@
     <span id="points"></span>
     <span id="metapoints"></span>
     <span id="metametapoints"></span>
-    <span id="getpoint"><button onclick="addpoint()">Get point<br></button></span>
-    <span id="getmeta"><button onclick="addmeta()">Get 10 points to get metapoints<br></button></span>
-    <span id="getmetameta"><button onclick="addmetameta()">Get 10 metapoints to get metametapoints<br></button></span>
+    <span id="getpoint"><button onclick="addpoint()">Get point</button><br></span>
+    <span id="getmeta"><button onclick="addmeta()">Get 10 points to get metapoints</button><br></span>
+    <span id="getmetameta"><button onclick="addmetameta()">Get 10 metapoints to get metametapoints</button><br></span>
     <span id="infinity"></span>
 
     <span id="IP"></span>
@@ -50,6 +60,14 @@
     <span id="options"><span id="import"></span>
     <span id="export"></span>
     <span id="reset"></span></span>
+    <!--
+    <span id="achievements">
+      <button>1 point</button>
+      <button>1 metapoint</button>
+      <button>1 metametapoint</button>
+      <button>1 Infinity point</button>
+      <button>1e10 Infinity points</button>-->
+    </span>
     <script>
       class bigNum{
         constructor(m,e){
@@ -370,7 +388,7 @@
         if (screennum==2 && lastscreennum!=2){
           document.getElementById("import").innerHTML="<button onclick='importt()'>Import</button><br>";
           document.getElementById("export").innerHTML="<button onclick='exportt()'>Export</button><br>";
-          document.getElementById("reset").innerHTML="<button onclick='resett()'>Reset</button><br>";
+          document.getElementById("reset").innerHTML="<button onclick='reset()'>Reset</button><br>";
         } else if (screennum!=2 && lastscreennum!=screennum){
           document.getElementById("import").innerHTML="";
           document.getElementById("export").innerHTML="";
@@ -385,7 +403,7 @@
           if (IPcalc()!=0){
             document.getElementById("infinity").innerHTML="<button onclick='getIP()'>Infinity for "+stround(IPcalc())+" Infinity Point</button>";
           } else {
-            document.getElementById("infinity").innerHTML="<button>Get Infinity metapoints to Infinity</button>";
+            document.getElementById("infinity").innerHTML="<button>Get Infinity metametapoints to Infinity</button>";
           }
         } else if (screennum!=0 && lastscreennum==0){
           document.getElementById("infinity").innerHTML="";
