@@ -12,6 +12,7 @@
       button {
         background: #f0f0f0;
         border-radius: 15px;
+        border: 2px solid gray;
       }
       button:hover {
         background: #d0d0d0;
@@ -36,6 +37,17 @@
         background: #f0f0f0;
         cursor: default;
       }
+      #achievements .gottenach {
+        background: black;
+        color: white;
+      }
+      #achievements .gottenach:hover {
+        background: black;
+        color: white;
+      }
+      #achievements {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -44,8 +56,8 @@
     <span id="metapoints"></span>
     <span id="metametapoints"></span>
     <span id="getpoint"><button onclick="addpoint()">Get point</button><br></span>
-    <span id="getmeta"><button onclick="addmeta()">Get 10 points to get metapoints</button><br></span>
-    <span id="getmetameta"><button onclick="addmetameta()">Get 10 metapoints to get metametapoints</button><br></span>
+    <span id="getmeta"><button onclick="getmeta()">Get 10 points to get metapoints</button><br></span>
+    <span id="getmetameta"><button onclick="getmetameta()">Get 10 metapoints to get metametapoints</button><br></span>
     <span id="infinity"></span>
 
     <span id="IP"></span>
@@ -60,13 +72,12 @@
     <span id="options"><span id="import"></span>
     <span id="export"></span>
     <span id="reset"></span></span>
-    <!--
     <span id="achievements">
-      <button>1 point</button>
-      <button>1 metapoint</button>
-      <button>1 metametapoint</button>
-      <button>1 Infinity point</button>
-      <button>1e10 Infinity points</button>-->
+      <button id="ach1">1 point</button>
+      <button id="ach2">1 metapoint</button>
+      <button id="ach3">1 metametapoint</button>
+      <button id="ach4">1 Infinity point</button>
+      <button id="ach5">1e10 Infinity points</button>
     </span>
     <script>
       class bigNum{
@@ -268,6 +279,11 @@
       var u4l=0;
       var ten=new bigNum(1,1);
       var zero=new bigNum(0,0);
+      var ach1=0;
+      var ach2=0;
+      var ach3=0;
+      var ach4=0;
+      var ach5=0;
       if (localStorage.getItem("points")){
         points=parse(localStorage.getItem("points"));
       }
@@ -300,6 +316,21 @@
       }
       if (localStorage.getItem("u6")){
         u6=Number(localStorage.getItem("u6"));
+      }
+      if (localStorage.getItem("ach1")){
+        ach1=Number(localStorage.getItem("ach1"));
+      }
+      if (localStorage.getItem("ach2")){
+        ach2=Number(localStorage.getItem("ach2"));
+      }
+      if (localStorage.getItem("ach3")){
+        ach3=Number(localStorage.getItem("ach3"));
+      }
+      if (localStorage.getItem("ach4")){
+        ach4=Number(localStorage.getItem("ach4"));
+      }
+      if (localStorage.getItem("ach5")){
+        ach5=Number(localStorage.getItem("ach5"));
       }
       function check(){
         points.finiter();
@@ -394,6 +425,11 @@
           document.getElementById("export").innerHTML="";
           document.getElementById("reset").innerHTML="";
         }
+        if (screennum==3){
+          document.getElementById('achievements').style.display='block';
+        } else {
+          document.getElementById('achievements').style.display='none';
+        }
         if (metametapoints.gte(bigInf)){
           isInf=true;
         } else if (lastisInf && !metametapoints.gte(bigInf)) {
@@ -417,6 +453,26 @@
         } else {
           document.getElementById("screen2").style.background="#d0d0d0";
           document.getElementById("screen2").style.color="black";
+        }
+        if (points>=1 || ach1){
+          ach1=1;
+          document.getElementById("ach1").classList.add("gottenach");
+        }
+        if (metapoints>=1 || ach2){
+          ach2=1;
+          document.getElementById("ach2").classList.add("gottenach");
+        }
+        if (metametapoints>=1 || ach3){
+          ach3=1;
+          document.getElementById("ach3").classList.add("gottenach");
+        }
+        if (infinitypoints>=1 || ach4){
+          ach4=1;
+          document.getElementById("ach4").classList.add("gottenach");
+        }
+        if (infinitypoints>=1e10 || ach5){
+          ach5=1;
+          document.getElementById("ach5").classList.add("gottenach");
         }
         lastpoints=points;
         lastmetapoints=metapoints;
@@ -486,6 +542,11 @@
         localStorage.setItem("u4",u4.toString());
         localStorage.setItem("u5",u5.toString());
         localStorage.setItem("u6",u6.toString());
+        localStorage.setItem("ach1",ach1.toString());
+        localStorage.setItem("ach2",ach2.toString());
+        localStorage.setItem("ach3",ach3.toString());
+        localStorage.setItem("ach4",ach4.toString());
+        localStorage.setItem("ach5",ach5.toString());
       }
       function getIP(){
         if (isInf){
