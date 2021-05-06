@@ -1,0 +1,51 @@
+html, button {
+  font-size: 30px;
+  text-align: center;
+  font-family: sans-serif;
+}
+button {
+  background: #f0f0f0;
+  border-radius: 15px;
+  border: 2px solid gray;
+}
+button:hover {
+  background: #d0d0d0;
+  cursor: pointer;
+}
+.top-bar{
+  width: 25%;
+  font-size: 20px;
+}
+#getpoint button, #getmeta button, #getmetameta button, #infinity button, #upgrades button {
+  width: 600px;
+}
+#options button {
+  width: 100px;
+}
+#achievements button {
+  width: 200px;
+  height: 200px;
+  font-size: 20px;
+}
+#achievements button:hover {
+  background: #f0f0f0;
+  cursor: default;
+}
+#achievements .gottenach {
+  background: black;
+  color: white;
+}
+#achievements .gottenach:hover {
+  background: black;
+  color: white;
+}
+#achievements {
+  display: none;
+}
+#footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}

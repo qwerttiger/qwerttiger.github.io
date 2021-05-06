@@ -24,3 +24,4 @@
 20210504 - "make a favicon"                                                                 v4.3.1
 20210505 - "fix bug (and make some small ach code)"                                         v4.3.2
 20210506 - "ACHIEVEMENTS!!!"                                                                v5.0.0
+20210506 - "little cleaning up and make footer links"                                       v5.0.1
