@@ -8,6 +8,8 @@ var lastmetapoints=new bigNum(1,1);
 var metametapoints=new bigNum(0,0);
 var lastmetametapoints=bigInf;
 var infinitypoints=0;
+var lastinfinitypoints=Infinity;
+var eternitypoints=0;
 var isInf=false;
 var lastisInf=true;
 var u1=0;
@@ -88,6 +90,19 @@ if (localStorage.getItem("ach4")){
 if (localStorage.getItem("ach5")){
   ach5=Number(localStorage.getItem("ach5"));
 }
+if (localStorage.getItem("ach5")){
+  ach6=Number(localStorage.getItem("ach6"));
+}
+if (localStorage.getItem("ach5")){
+  eternitypoints=Number(localStorage.getItem("eternitypoints"));
+}
+function IPmult(){
+  if (infinitypoints>=3**u5 && u5<647){
+    infinitypoints-=3**u5;
+    u5+=1;
+    IPmult()
+  }
+}
 function check(){
   points.finiter();
   metapoints.finiter();
@@ -129,6 +144,7 @@ function check(){
   }
   if (screennum==1){
     document.getElementById("IP").innerHTML="Infinity Points: "+stround(infinitypoints)+"<br>";
+    document.getElementById("EP").innerHTML="Eternity Points: "+stround(eternitypoints)+"<br>";
     if ((lastscreennum!=1 || lastu1) && !u1){
       document.getElementById("u1").innerHTML="<button onclick='if (infinitypoints>=1){u1=1;infinitypoints-=1;setInterval(addpoint,100);}'>Get point autoclicker, 1 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu1) && u1){
@@ -150,7 +166,7 @@ function check(){
       document.getElementById("u4").innerHTML="<button>Already bought</button><br>";
     }
     if (lastscreennum!=1 || lastu5!=u5){
-      document.getElementById("u5").innerHTML="<button onclick='if (infinitypoints>=3**u5 && u5<647){infinitypoints-=3**u5;u5+=1;}'>Get x2 IP mult, "+stround(3**u5)+" IP</button><br>";
+      document.getElementById("u5").innerHTML="<button onclick='IPmult()'>Get x2 IP mult, "+stround(3**u5)+" IP</button><br>";
     }
     if ((lastscreennum!=1 || lastu6) && !u6){
       document.getElementById("u6").innerHTML="<button onclick='if (infinitypoints>=15){u6=1;infinitypoints-=15;}'>IP boost all point gain, 15 IP</button><br>";
@@ -163,12 +179,20 @@ function check(){
       document.getElementById("u7").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastbreakinf) && !breakinf){
-      document.getElementById("breakinf").innerHTML="<button onclick='if (infinitypoints>=100){breakinf=1;infinitypoints-=100;}'>Break Infinity, 100 IP</button>";
+      document.getElementById("breakinf").innerHTML="<button onclick='if (infinitypoints>=100){breakinf=1;infinitypoints-=100;}'>Break Infinity, 100 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastbreakinf) && breakinf){
-      document.getElementById("breakinf").innerHTML="<button>Infinity broken</button>";
+      document.getElementById("breakinf").innerHTML="<button>Infinity broken</button><br>";
+    }
+    if (lastscreennum!=1 || infinitypoints!=lastinfinitypoints){
+      if (infinitypoints==Infinity){
+        document.getElementById("eternity").innerHTML="<button onclick='eternitypoints+=1;infinitypoints=0;metametapoints=zero;metapoints=zero;points=zero;u1=0;u2=0;u3=0;u4=0;u5=0;u6=0;u7=0;breakinf=0;'>Infinity for 1 Eternity Point</button>";
+      } else {
+        document.getElementById("eternity").innerHTML="<button>Get Infinity IP to Eternity</button>";
+      }
     }
   } else if (screennum!=1 && lastscreennum!=screennum){
     document.getElementById("IP").innerHTML="";
+    document.getElementById("EP").innerHTML="";
     document.getElementById("u1").innerHTML="";
     document.getElementById("u2").innerHTML="";
     document.getElementById("u3").innerHTML="";
@@ -177,6 +201,7 @@ function check(){
     document.getElementById("u6").innerHTML="";
     document.getElementById("u7").innerHTML="";
     document.getElementById("breakinf").innerHTML="";
+    document.getElementById("eternity").innerHTML="";
   }
   if (screennum==2 && lastscreennum!=2){
     document.getElementById("import").innerHTML="<button onclick='importt()'>Import</button><br>";
@@ -206,7 +231,7 @@ function check(){
   } else if (screennum!=0 && lastscreennum==0){
     document.getElementById("infinity").innerHTML="";
   }
-  if ((!u1 && infinitypoints>=1) || (!u2 && infinitypoints>=5) || (!u3 && infinitypoints>=10) || (!u4 && infinitypoints>=25) || (infinitypoints>=3**u5) || (!u6 && infinitypoints>=15) || (!u7 && infinitypoints>=1e10) || (!breakinf && infinitypoints>=100)){
+  if ((!u1 && infinitypoints>=1) || (!u2 && infinitypoints>=5) || (!u3 && infinitypoints>=10) || (!u4 && infinitypoints>=25) || (infinitypoints>=3**u5 && u5<647) || (!u6 && infinitypoints>=15) || (!u7 && infinitypoints>=1e10) || (!breakinf && infinitypoints>=100)){
     document.getElementById("screen2").style.background="black";
     document.getElementById("screen2").style.color="white";
   } else if (!screen2.matches(':hover')) {
@@ -236,9 +261,14 @@ function check(){
     ach5=1;
     document.getElementById("ach5").classList.add("gottenach");
   }
+  if (eternitypoints>=1 || ach6){
+    ach6=1;
+    document.getElementById("ach6").classList.add("gottenach");
+  }
   lastpoints=points;
   lastmetapoints=metapoints;
   lastmetametapoints=metametapoints;
+  lastinfinitypoints=infinitypoints;
   lastscreennum=screennum;
   lastisInf=isInf;
   lastu1=u1;
@@ -252,18 +282,18 @@ function check(){
 }
 function addpoint(){
   if (!points.gte(bigInf) || breakinf){
-    points=new bigNum(points.add(new bigNum(1,0).add(metapoints.div(new bigNum(2,0)))).round().m,points.add(new bigNum(1,0).add(metapoints.div(new bigNum(2,0)))).round().e+Math.round(Math.log10(infinitypoints+1))*u6);
+    points=new bigNum(points.add(new bigNum(1,0).add(metapoints.div(new bigNum(2,0)))).round().m,points.add(new bigNum(1,0).add(metapoints.div(new bigNum(2,0)))).round().e+Math.round(Math.log10(infinitypoints+1))*u6+eternitypoints);
   }
 }
 function getmeta(){
   if (points.gte(ten) && (!metapoints.gte(bigInf) || breakinf)){
-    metapoints=new bigNum(metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.log10(infinitypoints+1)*u6));
+    metapoints=new bigNum(metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints);
     points=zero;
   }
 }
 function getmetameta(){
   if (metapoints.gte(ten) && (!metametapoints.gte(bigInf) || breakinf)){
-    metametapoints=new bigNum(metametapoints.add(metapoints.div(ten)).round().m,metametapoints.add(metapoints.div(ten)).round().e+Math.round(Math.log10(infinitypoints+1))*u6);
+    metametapoints=new bigNum(metametapoints.add(metapoints.div(ten)).round().m,metametapoints.add(metapoints.div(ten)).round().e+Math.round(Math.log10(infinitypoints+1))*u6+eternitypoints);
     points=zero;
     metapoints=zero;
   }
@@ -321,6 +351,8 @@ function save(){
   localStorage.setItem("ach3",ach3.toString());
   localStorage.setItem("ach4",ach4.toString());
   localStorage.setItem("ach5",ach5.toString());
+  localStorage.setItem("ach6",ach6.toString());
+  localStorage.setItem("eternitypoints",eternitypoints.toString());
 }
 function getIP(){
   if (isInf){
@@ -363,7 +395,7 @@ if (u4){
 function importt(){
   var savestr=prompt("Input your save:");
   if (savestr!=null){
-    if (savestr.split("|").length==16){
+    if (savestr.split("|").length==18){
       var savelist=savestr.split("|");
       points=parse(savelist[0]);
       metapoints=parse(savelist[1]);
@@ -381,6 +413,8 @@ function importt(){
       ach3=Number(savelist[13]);
       ach4=Number(savelist[14]);
       ach5=Number(savelist[15]);
+      ach6=Number(savelist[16]);
+      eternitypoints=Number(savelist[17]);
     }
   }
 }
