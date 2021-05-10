@@ -32,69 +32,69 @@ var u1l=0;
 var u2l=0;
 var u3l=0;
 var u4l=0;
-var ten=new bigNum(1,1);
+var ten=new bigNum(1,2);
 var zero=new bigNum(0,0);
 var ach1=0;
 var ach2=0;
 var ach3=0;
 var ach4=0;
 var ach5=0;
-if (localStorage.getItem("points")){
-  points=parse(localStorage.getItem("points"));
+if (localStorage.getItem("points-")){
+  points=parse(localStorage.getItem("points-"));
 }
-if (localStorage.getItem("metapoints")){
-  metapoints=parse(localStorage.getItem("metapoints"));
+if (localStorage.getItem("metapoints-")){
+  metapoints=parse(localStorage.getItem("metapoints-"));
 }
-if (localStorage.getItem("metametapoints")){
-  metametapoints=parse(localStorage.getItem("metametapoints"));
+if (localStorage.getItem("metametapoints-")){
+  metametapoints=parse(localStorage.getItem("metametapoints-"));
 }
-if (localStorage.getItem("infinitypoints")){
-  infinitypoints=Number(localStorage.getItem("infinitypoints"));
+if (localStorage.getItem("infinitypoints-")){
+  infinitypoints=Number(localStorage.getItem("infinitypoints-"));
 }
-if (localStorage.getItem("breakinf")){
-  breakinf=Number(localStorage.getItem("breakinf"));
+if (localStorage.getItem("breakinf-")){
+  breakinf=Number(localStorage.getItem("breakinf-"));
 }
-if (localStorage.getItem("u1")){
-  u1=Number(localStorage.getItem("u1"));
+if (localStorage.getItem("u1-")){
+  u1=Number(localStorage.getItem("u1-"));
 }
-if (localStorage.getItem("u2")){
-  u2=Number(localStorage.getItem("u2"));
+if (localStorage.getItem("u2-")){
+  u2=Number(localStorage.getItem("u2-"));
 }
-if (localStorage.getItem("u3")){
-  u3=Number(localStorage.getItem("u3"));
+if (localStorage.getItem("u3-")){
+  u3=Number(localStorage.getItem("u3-"));
 }
-if (localStorage.getItem("u4")){
-  u4=Number(localStorage.getItem("u4"));
+if (localStorage.getItem("u4-")){
+  u4=Number(localStorage.getItem("u4-"));
 }
-if (localStorage.getItem("u5")){
-  u5=Number(localStorage.getItem("u5"));
+if (localStorage.getItem("u5-")){
+  u5=Number(localStorage.getItem("u5-"));
 }
-if (localStorage.getItem("u6")){
-  u6=Number(localStorage.getItem("u6"));
+if (localStorage.getItem("u6-")){
+  u6=Number(localStorage.getItem("u6-"));
 }
-if (localStorage.getItem("u7")){
-  u7=Number(localStorage.getItem("u7"));
+if (localStorage.getItem("u7-")){
+  u7=Number(localStorage.getItem("u7-"));
 }
-if (localStorage.getItem("ach1")){
-  ach1=Number(localStorage.getItem("ach1"));
+if (localStorage.getItem("ach1-")){
+  ach1=Number(localStorage.getItem("ach1-"));
 }
-if (localStorage.getItem("ach2")){
-  ach2=Number(localStorage.getItem("ach2"));
+if (localStorage.getItem("ach2-")){
+  ach2=Number(localStorage.getItem("ach2-"));
 }
-if (localStorage.getItem("ach3")){
-  ach3=Number(localStorage.getItem("ach3"));
+if (localStorage.getItem("ach3-")){
+  ach3=Number(localStorage.getItem("ach3-"));
 }
-if (localStorage.getItem("ach4")){
-  ach4=Number(localStorage.getItem("ach4"));
+if (localStorage.getItem("ach4-")){
+  ach4=Number(localStorage.getItem("ach4-"));
 }
-if (localStorage.getItem("ach5")){
-  ach5=Number(localStorage.getItem("ach5"));
+if (localStorage.getItem("ach5-")){
+  ach5=Number(localStorage.getItem("ach5-"));
 }
-if (localStorage.getItem("ach6")){
-  ach6=Number(localStorage.getItem("ach6"));
+if (localStorage.getItem("ach6-")){
+  ach6=Number(localStorage.getItem("ach6-"));
 }
-if (localStorage.getItem("eternitypoints")){
-  eternitypoints=Number(localStorage.getItem("eternitypoints"));
+if (localStorage.getItem("eternitypoints-")){
+  eternitypoints=Number(localStorage.getItem("eternitypoints-"));
 }
 function IPmult(){
   if (infinitypoints>=3**u5 && u5<647){
@@ -114,7 +114,7 @@ function check(){
   metapoints.fix();
   metametapoints.fix();
   if ((!points.gte(ten) && lastpoints.gte(ten))||(!points.gte(ten) && screennum==0 && lastscreennum!=0)){
-    document.getElementById("getmeta").innerHTML="<button onclick='getmeta()'>Get 10 points to reset</button><br>";
+    document.getElementById("getmeta").innerHTML="<button onclick='getmeta()'>Get 100 points to reset</button><br>";
   } else if ((points.gte(ten) && !lastpoints.gte(ten))||(points.gte(ten) && screennum==0 && lastscreennum!=0)){
     document.getElementById("getmeta").innerHTML="<button onclick='getmeta()'>Reset for metapoints</button><br>";
   }
@@ -122,7 +122,7 @@ function check(){
     document.getElementById("getmeta").innerHTML="";
   }
   if ((!metapoints.gte(ten) && lastmetapoints.gte(ten))||(metapoints.lte(ten) && screennum==0 && lastscreennum!=0)){
-    document.getElementById("getmetameta").innerHTML="<button onclick='getmetameta()'>Get 10 metapoints to reset</button><br>";
+    document.getElementById("getmetameta").innerHTML="<button onclick='getmetameta()'>Get 100 metapoints to reset</button><br>";
   } else if ((metapoints.gte(ten) && !lastmetapoints.gte(ten))||(metapoints.gte(ten) && screennum==0 && lastscreennum!=0)){
     document.getElementById("getmetameta").innerHTML="<button onclick='getmetameta()'>Reset for metametapoints</button><br>";
   }
@@ -146,22 +146,22 @@ function check(){
     document.getElementById("IP").innerHTML="Infinity Points: "+stround(infinitypoints)+"<br>";
     document.getElementById("EP").innerHTML="Eternity Points: "+stround(eternitypoints)+"<br>";
     if ((lastscreennum!=1 || lastu1) && !u1){
-      document.getElementById("u1").innerHTML="<button onclick='if (infinitypoints>=1){u1=1;infinitypoints-=1;setInterval(addpoint,100);}'>Get point autoclicker, 1 IP</button><br>";
+      document.getElementById("u1").innerHTML="<button onclick='if (infinitypoints>=10){u1=1;infinitypoints-=10;setInterval(addpoint,100);}'>Get point autoclicker, 10 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu1) && u1){
       document.getElementById("u1").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastu2) && !u2){
-      document.getElementById("u2").innerHTML="<button onclick='if (infinitypoints>=5){u2=1;infinitypoints-=5;setInterval(getmeta,1000);}'>Get metapoint autoclicker, 5 IP</button><br>";
+      document.getElementById("u2").innerHTML="<button onclick='if (infinitypoints>=50){u2=1;infinitypoints-=50;setInterval(getmeta,1000);}'>Get metapoint autoclicker, 50 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu2) && u2){
       document.getElementById("u2").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastu3) && !u3){
-      document.getElementById("u3").innerHTML="<button onclick='if (infinitypoints>=10){u3=1;infinitypoints-=10;setInterval(getmetameta,5000);}'>Get metametapoint autoclicker, 10 IP</button><br>";
+      document.getElementById("u3").innerHTML="<button onclick='if (infinitypoints>=100){u3=1;infinitypoints-=100;setInterval(getmetameta,5000);}'>Get metametapoint autoclicker, 100 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu3) && u3){
       document.getElementById("u3").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastu4) && !u4){
-      document.getElementById("u4").innerHTML="<button onclick='if (infinitypoints>=25){u4=1;infinitypoints-=25;setInterval(getIP,10000);}'>Get Infinity autoclicker, 25 IP</button><br>";
+      document.getElementById("u4").innerHTML="<button onclick='if (infinitypoints>=250){u4=1;infinitypoints-=250;setInterval(getIP,10000);}'>Get Infinity autoclicker, 250 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu4) && u4){
       document.getElementById("u4").innerHTML="<button>Already bought</button><br>";
     }
@@ -169,17 +169,17 @@ function check(){
       document.getElementById("u5").innerHTML="<button onclick='IPmult()'>Get x2 IP mult, "+stround(3**u5)+" IP</button><br>";
     }
     if ((lastscreennum!=1 || lastu6) && !u6){
-      document.getElementById("u6").innerHTML="<button onclick='if (infinitypoints>=15){u6=1;infinitypoints-=15;}'>IP boost all point gain, 15 IP</button><br>";
+      document.getElementById("u6").innerHTML="<button onclick='if (infinitypoints>=150){u6=1;infinitypoints-=150;}'>IP boost all point gain, 150 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu6) && u6){
       document.getElementById("u6").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastu7) && !u7){
-      document.getElementById("u7").innerHTML="<button onclick='if (infinitypoints>=1e10){u7=1;infinitypoints-=1e10;}'>IP gain squared, 1e10 IP</button><br>";
+      document.getElementById("u7").innerHTML="<button onclick='if (infinitypoints>=1e10){u7=1;infinitypoints-=1e10;}'>IP gain to power of 1.6, 1e10 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu7) && u7){
       document.getElementById("u7").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastbreakinf) && !breakinf){
-      document.getElementById("breakinf").innerHTML="<button onclick='if (infinitypoints>=100){breakinf=1;infinitypoints-=100;}'>Break Infinity, 100 IP</button><br>";
+      document.getElementById("breakinf").innerHTML="<button onclick='if (infinitypoints>=10000){breakinf=1;infinitypoints-=10000;}'>Break Infinity, 10000 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastbreakinf) && breakinf){
       document.getElementById("breakinf").innerHTML="<button>Infinity broken</button><br>";
     }
@@ -231,7 +231,7 @@ function check(){
   } else if (screennum!=0 && lastscreennum==0){
     document.getElementById("infinity").innerHTML="";
   }
-  if ((!u1 && infinitypoints>=1) || (!u2 && infinitypoints>=5) || (!u3 && infinitypoints>=10) || (!u4 && infinitypoints>=25) || (infinitypoints>=3**u5 && u5<647) || (!u6 && infinitypoints>=15) || (!u7 && infinitypoints>=1e10) || (!breakinf && infinitypoints>=100)){
+  if ((!u1 && infinitypoints>=10) || (!u2 && infinitypoints>=50) || (!u3 && infinitypoints>=100) || (!u4 && infinitypoints>=250) || (infinitypoints>=3**u5 && u5<647) || (!u6 && infinitypoints>=150) || (!u7 && infinitypoints>=1e10) || (!breakinf && infinitypoints>=10000)){
     document.getElementById("screen2").style.background="black";
     document.getElementById("screen2").style.color="white";
   } else if (!screen2.matches(':hover')) {
@@ -282,18 +282,18 @@ function check(){
 }
 function addpoint(){
   if (!points.gte(bigInf) || breakinf){
-    points=new bigNum(points.add(new bigNum(1,0).add(metapoints.div(new bigNum(2,0)))).round().m,points.add(new bigNum(1,0).add(metapoints.div(new bigNum(2,0)))).round().e+Math.round(Math.log10(infinitypoints+1))*u6+eternitypoints);
+    points=new bigNum(points.add(new bigNum(1,0).add(metapoints.div(new bigNum(2,0)))).round().m,points.add(new bigNum(1,0).add(metapoints.div(new bigNum(2,0)))).round().e+Math.round(Math.log10(infinitypoints+1))*u6+eternitypoints/10);
   }
 }
 function getmeta(){
   if (points.gte(ten) && (!metapoints.gte(bigInf) || breakinf)){
-    metapoints=new bigNum(metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints);
+    metapoints=new bigNum(metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints/10);
     points=zero;
   }
 }
 function getmetameta(){
   if (metapoints.gte(ten) && (!metametapoints.gte(bigInf) || breakinf)){
-    metametapoints=new bigNum(metametapoints.add(metapoints.div(ten)).round().m,metametapoints.add(metapoints.div(ten)).round().e+Math.round(Math.log10(infinitypoints+1))*u6+eternitypoints);
+    metametapoints=new bigNum(metametapoints.add(metapoints.div(ten)).round().m,metametapoints.add(metapoints.div(ten)).round().e+Math.round(Math.log10(infinitypoints+1))*u6+eternitypoints/10);
     points=zero;
     metapoints=zero;
   }
@@ -334,25 +334,25 @@ function reset(){
   document.getElementById("ach5").classList.remove("gottenach");
 }
 function save(){
-  localStorage.setItem("points",points.toString());
-  localStorage.setItem("metapoints",metapoints.toString());
-  localStorage.setItem("metametapoints",metametapoints.toString());
-  localStorage.setItem("infinitypoints",infinitypoints.toString());
-  localStorage.setItem("breakinf",breakinf.toString());
-  localStorage.setItem("u1",u1.toString());
-  localStorage.setItem("u2",u2.toString());
-  localStorage.setItem("u3",u3.toString());
-  localStorage.setItem("u4",u4.toString());
-  localStorage.setItem("u5",u5.toString());
-  localStorage.setItem("u6",u6.toString());
-  localStorage.setItem("u7",u7.toString());
-  localStorage.setItem("ach1",ach1.toString());
-  localStorage.setItem("ach2",ach2.toString());
-  localStorage.setItem("ach3",ach3.toString());
-  localStorage.setItem("ach4",ach4.toString());
-  localStorage.setItem("ach5",ach5.toString());
-  localStorage.setItem("ach6",ach6.toString());
-  localStorage.setItem("eternitypoints",eternitypoints.toString());
+  localStorage.setItem("points-",points.toString());
+  localStorage.setItem("metapoints-",metapoints.toString());
+  localStorage.setItem("metametapoints-",metametapoints.toString());
+  localStorage.setItem("infinitypoints-",infinitypoints.toString());
+  localStorage.setItem("breakinf-",breakinf.toString());
+  localStorage.setItem("u1-",u1.toString());
+  localStorage.setItem("u2-",u2.toString());
+  localStorage.setItem("u3-",u3.toString());
+  localStorage.setItem("u4-",u4.toString());
+  localStorage.setItem("u5-",u5.toString());
+  localStorage.setItem("u6-",u6.toString());
+  localStorage.setItem("u7-",u7.toString());
+  localStorage.setItem("ach1-",ach1.toString());
+  localStorage.setItem("ach2-",ach2.toString());
+  localStorage.setItem("ach3-",ach3.toString());
+  localStorage.setItem("ach4-",ach4.toString());
+  localStorage.setItem("ach5-",ach5.toString());
+  localStorage.setItem("ach6-",ach6.toString());
+  localStorage.setItem("eternitypoints-",eternitypoints.toString());
 }
 function getIP(){
   if (isInf){
@@ -366,7 +366,7 @@ function IPcalc(){
   if (isInf && !breakinf){
     return 2**u5;
   } else if (isInf){
-    return Math.round((2**u5)*metametapoints.e/308)**(u7+1);
+    return Math.round((2**u5)*metametapoints.e/308)**(u7*0.6+1);
   } else {
     return 0;
   }
