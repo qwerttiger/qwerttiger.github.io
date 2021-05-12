@@ -327,11 +327,13 @@ function reset(){
   ach3=0;
   ach4=0;
   ach5=0;
+  ach6=0;
   document.getElementById("ach1").classList.remove("gottenach");
   document.getElementById("ach2").classList.remove("gottenach");
   document.getElementById("ach3").classList.remove("gottenach");
   document.getElementById("ach4").classList.remove("gottenach");
   document.getElementById("ach5").classList.remove("gottenach");
+  document.getElementById("ach6").classList.remove("gottenach");
 }
 function save(){
   localStorage.setItem("points",points.toString());
@@ -395,7 +397,9 @@ if (u4){
 function importt(){
   var savestr=prompt("Input your save:");
   if (savestr!=null){
-    if (savestr.split("|").length==18){
+    savestr=savestr.replace(/b/g,"\.").replace(/d/g,"\|").replace(/e/g,"0").replace(/f/g,"1").replace(/g/g,"2").replace(/h/g,"3").replace(/i/g,"4").replace(/j/g,"5").replace(/k/g,"6").replace(/l/g,"7").replace(/m/g,"8").replace(/n/g,"9").replace(/c/g,"e").replace(/a/g,"Infinity");
+    if (savestr.split("|").length==19){
+      reset();
       var savelist=savestr.split("|");
       points=parse(savelist[0]);
       metapoints=parse(savelist[1]);
@@ -408,16 +412,29 @@ function importt(){
       u5=Number(savelist[8]);
       u6=Number(savelist[9]);
       u7=Number(savelist[10]);
-      ach1=Number(savelist[11]);
-      ach2=Number(savelist[12]);
-      ach3=Number(savelist[13]);
-      ach4=Number(savelist[14]);
-      ach5=Number(savelist[15]);
-      ach6=Number(savelist[16]);
-      eternitypoints=Number(savelist[17]);
+      breakinf=Number(savelist[11]);
+      ach1=Number(savelist[12]);
+      ach2=Number(savelist[13]);
+      ach3=Number(savelist[14]);
+      ach4=Number(savelist[15]);
+      ach5=Number(savelist[16]);
+      ach6=Number(savelist[17]);
+      eternitypoints=Number(savelist[18]);
+      if (u1){
+        u1l=setInterval(addpoint,100);
+      }
+      if (u2){
+        u2l=setInterval(getmeta,1000);
+      }
+      if (u3){
+        u3l=setInterval(getmetameta,5000);
+      }
+      if (u4){
+        u4l=setInterval(getIP,10000);
+      }
     }
   }
 }
 function exportt(){
-  prompt("Here is your save:",points+"|"+metapoints+"|"+metametapoints+"|"+infinitypoints+"|"+u1+"|"+u2+"|"+u3+"|"+u4+"|"+u5+"|"+u6+"|"+u7+"|"+ach1+"|"+ach2+"|"+ach3+"|"+ach4+"|"+ach5+"|"+ach6+"|"+eternitypoints);
+  prompt("Here is your save:",(points+"|"+metapoints+"|"+metametapoints+"|"+infinitypoints+"|"+u1+"|"+u2+"|"+u3+"|"+u4+"|"+u5+"|"+u6+"|"+u7+"|"+breakinf+"|"+ach1+"|"+ach2+"|"+ach3+"|"+ach4+"|"+ach5+"|"+ach6+"|"+eternitypoints).replace(/Infinity/g,"a").replace(/\./g,"b").replace(/e/g,"c").replace(/\|/g,"d").replace(/0/g,"e").replace(/1/g,"f").replace(/2/g,"g").replace(/3/g,"h").replace(/4/g,"i").replace(/5/g,"j").replace(/6/g,"k").replace(/7/g,"l").replace(/8/g,"m").replace(/9/g,"n"));
 }
