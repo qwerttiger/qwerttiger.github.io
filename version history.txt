@@ -30,3 +30,4 @@
 20215010 - "bug fixes and pcng+ and pcng-"                                                  v6.1.0
 20215012 - "fix stuff and savebank"                                                         v6.1.1
 20215014 - "autoclicker settings"                                                           v6.2.0
+20215014 - "just fixing an autoclicker bug"                                                 v6.2.1

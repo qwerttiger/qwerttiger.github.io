@@ -151,17 +151,17 @@ function check(){
       document.getElementById("u1").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastu2) && !u2){
-      document.getElementById("u2").innerHTML="<button onclick='if (infinitypoints>=5){u2=1;infinitypoints-=5;setInterval(autometa,1000);}'>Get metapoint autoclicker, 5 IP</button><br>";
+      document.getElementById("u2").innerHTML="<button onclick='if (infinitypoints>=5){u2=1;infinitypoints-=5;setInterval(autometa,100);}'>Get metapoint autoclicker, 5 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu2) && u2){
       document.getElementById("u2").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastu3) && !u3){
-      document.getElementById("u3").innerHTML="<button onclick='if (infinitypoints>=10){u3=1;infinitypoints-=10;setInterval(autometameta,5000);}'>Get metametapoint autoclicker, 10 IP</button><br>";
+      document.getElementById("u3").innerHTML="<button onclick='if (infinitypoints>=10){u3=1;infinitypoints-=10;setInterval(autometameta,100);}'>Get metametapoint autoclicker, 10 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu3) && u3){
       document.getElementById("u3").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastu4) && !u4){
-      document.getElementById("u4").innerHTML="<button onclick='if (infinitypoints>=25){u4=1;infinitypoints-=25;setInterval(autoIP,10000);}'>Get Infinity autoclicker, 25 IP</button><br>";
+      document.getElementById("u4").innerHTML="<button onclick='if (infinitypoints>=25){u4=1;infinitypoints-=25;setInterval(autoIP,100);}'>Get Infinity autoclicker, 25 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu4) && u4){
       document.getElementById("u4").innerHTML="<button>Already bought</button><br>";
     }
@@ -276,7 +276,7 @@ function check(){
     }
   } else {
     for (element of document.getElementsByClassName("ac1")){
-      element.style.display="display";
+      element.style.display="table-cell";
     }
   }
   if (!u3){
@@ -285,7 +285,7 @@ function check(){
     }
   } else {
     for (element of document.getElementsByClassName("ac2")){
-      element.style.display="display";
+      element.style.display="table-cell";
     }
   }
   if (!u4){
@@ -294,7 +294,7 @@ function check(){
     }
   } else {
     for (element of document.getElementsByClassName("ac3")){
-      element.style.display="display";
+      element.style.display="table-cell";
     }
   }
   lastpoints=points;
@@ -339,7 +339,7 @@ function getmetameta(){
 }
 function autometameta(){
   if (document.getElementById("metaaclicker").value && document.getElementById("metaaclickerenabled").checked){
-    if (new bigNum(metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints).gte(parse(eval(document.getElementById("metaaclicker").value)).add(metapoints))){
+    if (new bigNum(metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints).gte(parse(eval(document.getElementById("metaaclicker").value).toString()).add(metapoints))){
       getmetameta();
     }
   }
@@ -439,13 +439,13 @@ if (u1){
   u1l=setInterval(addpoint,100);
 }
 if (u2){
-  u2l=setInterval(autometa,1000);
+  u2l=setInterval(autometa,100);
 }
 if (u3){
-  u3l=setInterval(autometameta,5000);
+  u3l=setInterval(autometameta,100);
 }
 if (u4){
-  u4l=setInterval(autoIP,10000);
+  u4l=setInterval(autoIP,100);
 }
 function importt(){
   var savestr=prompt("Input your save:");
@@ -477,13 +477,13 @@ function importt(){
         u1l=setInterval(addpoint,100);
       }
       if (u2){
-        u2l=setInterval(autometa,1000);
+        u2l=setInterval(autometa,100);
       }
       if (u3){
-        u3l=setInterval(autometameta,5000);
+        u3l=setInterval(autometameta,100);
       }
       if (u4){
-        u4l=setInterval(autoIP,10000);
+        u4l=setInterval(autoIP,100);
       }
     }
   }
