@@ -100,7 +100,7 @@ function IPmult(){
   if (infinitypoints>=3**u5 && u5<647){
     infinitypoints-=3**u5;
     u5+=1;
-    IPmult()
+    IPmult();
   }
 }
 function check(){
@@ -146,22 +146,22 @@ function check(){
     document.getElementById("IP").innerHTML="Infinity Points: "+stround(infinitypoints)+"<br>";
     document.getElementById("EP").innerHTML="Eternity Points: "+stround(eternitypoints)+"<br>";
     if ((lastscreennum!=1 || lastu1) && !u1){
-      document.getElementById("u1").innerHTML="<button onclick='if (infinitypoints>=1){u1=1;infinitypoints-=1;setInterval(addpoint,100);}'>Get point autoclicker, 1 IP</button><br>";
+      document.getElementById("u1").innerHTML="<button onclick='if (infinitypoints>=1){u1=1;infinitypoints-=1;u1l=setInterval(addpoint,100);}'>Get point autoclicker, 1 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu1) && u1){
       document.getElementById("u1").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastu2) && !u2){
-      document.getElementById("u2").innerHTML="<button onclick='if (infinitypoints>=5){u2=1;infinitypoints-=5;setInterval(autometa,100);}'>Get metapoint autoclicker, 5 IP</button><br>";
+      document.getElementById("u2").innerHTML="<button onclick='if (infinitypoints>=5){u2=1;infinitypoints-=5;u2l=setInterval(autometa,100);}'>Get metapoint autoclicker, 5 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu2) && u2){
       document.getElementById("u2").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastu3) && !u3){
-      document.getElementById("u3").innerHTML="<button onclick='if (infinitypoints>=10){u3=1;infinitypoints-=10;setInterval(autometameta,100);}'>Get metametapoint autoclicker, 10 IP</button><br>";
+      document.getElementById("u3").innerHTML="<button onclick='if (infinitypoints>=10){u3=1;infinitypoints-=10;u3l=setInterval(autometameta,100);}'>Get metametapoint autoclicker, 10 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu3) && u3){
       document.getElementById("u3").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastu4) && !u4){
-      document.getElementById("u4").innerHTML="<button onclick='if (infinitypoints>=25){u4=1;infinitypoints-=25;setInterval(autoIP,100);}'>Get Infinity autoclicker, 25 IP</button><br>";
+      document.getElementById("u4").innerHTML="<button onclick='if (infinitypoints>=25){u4=1;infinitypoints-=25;u4l=setInterval(autoIP,100);}'>Get Infinity autoclicker, 25 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu4) && u4){
       document.getElementById("u4").innerHTML="<button>Already bought</button><br>";
     }
@@ -206,11 +206,13 @@ function check(){
   if (screennum==2 && lastscreennum!=2){
     document.getElementById("import").innerHTML="<button onclick='importt()'>Import</button><br>";
     document.getElementById("export").innerHTML="<button onclick='exportt()'>Export</button><br>";
-    document.getElementById("reset").innerHTML="<button onclick='reset()'>Reset</button><br>";
+    document.getElementById("reset").innerHTML="<button onclick='reset()'>Reset</button><br><br><br><br>";
+    document.getElementById("info").innerHTML="1,2,3,4,5 for change screen, 7,8,9 for points, metapoints, metametapoints, i and e for Infinity and Eternity, shift 1-8 for upgrades, left for import, right for export.";
   } else if (screennum!=2 && lastscreennum!=screennum){
     document.getElementById("import").innerHTML="";
     document.getElementById("export").innerHTML="";
     document.getElementById("reset").innerHTML="";
+    document.getElementById("info").innerHTML="";
   }
   if (screennum==3){
     document.getElementById('achievements').style.display='block';
@@ -490,4 +492,116 @@ function importt(){
 }
 function exportt(){
   prompt("Here is your save:",(points+"|"+metapoints+"|"+metametapoints+"|"+infinitypoints+"|"+u1+"|"+u2+"|"+u3+"|"+u4+"|"+u5+"|"+u6+"|"+u7+"|"+breakinf+"|"+ach1+"|"+ach2+"|"+ach3+"|"+ach4+"|"+ach5+"|"+ach6+"|"+eternitypoints).replace(/Infinity/g,"a").replace(/\./g,"b").replace(/e/g,"c").replace(/\|/g,"d").replace(/0/g,"e").replace(/1/g,"f").replace(/2/g,"g").replace(/3/g,"h").replace(/4/g,"i").replace(/5/g,"j").replace(/6/g,"k").replace(/7/g,"l").replace(/8/g,"m").replace(/9/g,"n"));
+}
+function keydown(event){
+  keypressed=event.key;
+  if (keypressed=="7"){
+    addpoint()
+  }
+  if (keypressed=="8"){
+    getmeta()
+  }
+  if (keypressed=="9"){
+    getmetameta()
+  }
+  if (keypressed=="i"){
+    getIP()
+  }
+  if (keypressed=="e" && infinitypoints==Infinity){
+    if (u1l){
+      clearInterval(u1l);
+    }
+    if (u2l){
+      clearInterval(u2l);
+    }
+    if (u3l){
+      clearInterval(u3l);
+    }
+    if (u4l){
+      clearInterval(u4l);
+    }
+    eternitypoints+=1;
+    infinitypoints=0;
+    metametapoints=zero;
+    metapoints=zero;
+    points=zero;
+    u1=0;
+    u2=0;
+    u3=0;
+    u4=0;
+    u5=0;
+    u6=0;
+    u7=0;
+    breakinf=0;
+  }
+  if (keypressed=="1"){
+    screennum=0;
+  }
+  if (keypressed=="2"){
+    screennum=1;
+  }
+  if (keypressed=="3"){
+    screennum=2;
+  }
+  if (keypressed=="4"){
+    screennum=3;
+  }
+  if (keypressed=="5"){
+    screennum=4;
+  }
+  if (keypressed=="ArrowRight"){
+    exportt()
+  }
+  if (keypressed=="ArrowLeft"){
+    importt()
+  }
+  if (keypressed=="!" && !u1){
+    if (infinitypoints>=1){
+      u1=1;
+      infinitypoints-=1;
+      u1l=setInterval(addpoint,100);
+    }
+  }
+  if (keypressed=="@" && !u2){
+    if (infinitypoints>=5){
+      u2=1;
+      infinitypoints-=5;
+      u2l=setInterval(autometa,100);
+    }
+  }
+  if (keypressed=="#" && !u3){
+    if (infinitypoints>=10){
+      u3=1;
+      infinitypoints-=10;
+      u3l=setInterval(autometameta,100);
+    }
+  }
+  if (keypressed=="$" && !u4){
+    if (infinitypoints>=25){
+      u4=1;
+      infinitypoints-=25;
+      u4l=setInterval(autoIP,100);
+    }
+  }
+  if (keypressed=="%" && !u6){
+    if (infinitypoints>=15){
+      u6=1;
+      infinitypoints-=15;
+    }
+  }
+  if (keypressed=="^" && !u7){
+    if (infinitypoints>=1e10){
+      u7=1;
+      infinitypoints-=1e10;
+    }
+  }
+  if (keypressed=="&"){
+    IPmult();
+  }
+  if (keypressed=="*" && !breakinf){
+    if (infinitypoints>=100){
+      breakinf=1;
+      infinitypoints-=100;
+    }
+  }
 }

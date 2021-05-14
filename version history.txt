@@ -27,7 +27,8 @@
 20210506 - "little cleaning up and make footer links"                                       v5.0.1
 20210506 - "extend soft cap again"                                                          v5.1.0
 20210510 - "eternity update!"                                                               v6.0.0
-20215010 - "bug fixes and pcng+ and pcng-"                                                  v6.1.0
-20215012 - "fix stuff and savebank"                                                         v6.1.1
-20215014 - "autoclicker settings"                                                           v6.2.0
-20215014 - "just fixing an autoclicker bug"                                                 v6.2.1
+20210510 - "bug fixes and pcng+ and pcng-"                                                  v6.1.0
+20210512 - "fix stuff and savebank"                                                         v6.1.1
+20210514 - "autoclicker settings"                                                           v6.2.0
+20210514 - "just fixing an autoclicker bug"                                                 v6.2.1
+20210514 - "keyboard shortcuts"                                                             v6.3.0
