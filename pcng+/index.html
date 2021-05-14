@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../styles.css">
   </head>
   <body>
-    <button class="top-bar" onclick="screennum=0">Points</button><button class="top-bar" id="screen2" onclick="screennum=1">Upgrades</button><button class="top-bar" onclick="screennum=2">Options</button><button class="top-bar" onclick="screennum=3">Achievements</button><br><br>
+    <button class="top-bar" onclick="screennum=0">Points</button><button class="top-bar" id="screen2" onclick="screennum=1">Upgrades</button><button class="top-bar" onclick="screennum=2">Options</button><button class="top-bar" onclick="screennum=3">Achievements</button><button class="top-bar" onclick="screennum=4">Autoclickers</button><br><br>
     <span id="points"></span>
     <span id="metapoints"></span>
     <span id="metametapoints"></span>
@@ -47,6 +47,25 @@
           <td><button id="ach6">1 Eternity points</button></td>
           <td></td>
           <td></td>
+        </tr>
+      </table>
+    </span>
+    <span id="autoclickers">
+      <table style="width: 100%">
+        <tr>
+          <td class="ac1">Metapoint Autoclicker:</td>
+          <td class="ac2">Metametapoint Autoclicker:</td>
+          <td class="ac3">Infinity Autoclicker:</td>
+        </tr>
+        <tr>
+          <td class="ac1">At least <input id="metaclicker" value=0> Metapoints Gained</input></td>
+          <td class="ac2">At least <input id="metaaclicker" value=0> Metametapoints Gained</input></td>
+          <td class="ac3">At least <input id="infclicker" value=0> Infinity Points Gained</input></td>
+        </tr>
+        <tr>
+          <td class="ac1">Enabled: <input id="metaclickerenabled" type="checkbox"></input></td>
+          <td class="ac2">Enabled: <input id="metaaclickerenabled" type="checkbox"></input></td>
+          <td class="ac3">Enabled: <input id="infclickerenabled" type="checkbox"></input></td>
         </tr>
       </table>
     </span>

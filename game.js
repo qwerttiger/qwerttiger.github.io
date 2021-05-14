@@ -151,17 +151,17 @@ function check(){
       document.getElementById("u1").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastu2) && !u2){
-      document.getElementById("u2").innerHTML="<button onclick='if (infinitypoints>=5){u2=1;infinitypoints-=5;setInterval(getmeta,1000);}'>Get metapoint autoclicker, 5 IP</button><br>";
+      document.getElementById("u2").innerHTML="<button onclick='if (infinitypoints>=5){u2=1;infinitypoints-=5;setInterval(autometa,1000);}'>Get metapoint autoclicker, 5 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu2) && u2){
       document.getElementById("u2").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastu3) && !u3){
-      document.getElementById("u3").innerHTML="<button onclick='if (infinitypoints>=10){u3=1;infinitypoints-=10;setInterval(getmetameta,5000);}'>Get metametapoint autoclicker, 10 IP</button><br>";
+      document.getElementById("u3").innerHTML="<button onclick='if (infinitypoints>=10){u3=1;infinitypoints-=10;setInterval(autometameta,5000);}'>Get metametapoint autoclicker, 10 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu3) && u3){
       document.getElementById("u3").innerHTML="<button>Already bought</button><br>";
     }
     if ((lastscreennum!=1 || lastu4) && !u4){
-      document.getElementById("u4").innerHTML="<button onclick='if (infinitypoints>=25){u4=1;infinitypoints-=25;setInterval(getIP,10000);}'>Get Infinity autoclicker, 25 IP</button><br>";
+      document.getElementById("u4").innerHTML="<button onclick='if (infinitypoints>=25){u4=1;infinitypoints-=25;setInterval(autoIP,10000);}'>Get Infinity autoclicker, 25 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu4) && u4){
       document.getElementById("u4").innerHTML="<button>Already bought</button><br>";
     }
@@ -185,7 +185,7 @@ function check(){
     }
     if (lastscreennum!=1 || infinitypoints!=lastinfinitypoints){
       if (infinitypoints==Infinity){
-        document.getElementById("eternity").innerHTML="<button onclick='eternitypoints+=1;infinitypoints=0;metametapoints=zero;metapoints=zero;points=zero;u1=0;u2=0;u3=0;u4=0;u5=0;u6=0;u7=0;breakinf=0;'>Infinity for 1 Eternity Point</button>";
+        document.getElementById("eternity").innerHTML="<button onclick='if (u1l){clearInterval(u1l);};if (u2l){clearInterval(u2l);};if (u3l){clearInterval(u3l);};if (u4l){clearInterval(u4l);};eternitypoints+=1;infinitypoints=0;metametapoints=zero;metapoints=zero;points=zero;u1=0;u2=0;u3=0;u4=0;u5=0;u6=0;u7=0;breakinf=0;'>Infinity for 1 Eternity Point</button>";
       } else {
         document.getElementById("eternity").innerHTML="<button>Get Infinity IP to Eternity</button>";
       }
@@ -216,6 +216,11 @@ function check(){
     document.getElementById('achievements').style.display='block';
   } else {
     document.getElementById('achievements').style.display='none';
+  }
+  if (screennum==4){
+    document.getElementById('autoclickers').style.display='block';
+  } else {
+    document.getElementById('autoclickers').style.display='none';
   }
   if (metametapoints.gte(bigInf)){
     isInf=true;
@@ -265,6 +270,33 @@ function check(){
     ach6=1;
     document.getElementById("ach6").classList.add("gottenach");
   }
+  if (!u2){
+    for (element of document.getElementsByClassName("ac1")){
+      element.style.display="none";
+    }
+  } else {
+    for (element of document.getElementsByClassName("ac1")){
+      element.style.display="display";
+    }
+  }
+  if (!u3){
+    for (element of document.getElementsByClassName("ac2")){
+      element.style.display="none";
+    }
+  } else {
+    for (element of document.getElementsByClassName("ac2")){
+      element.style.display="display";
+    }
+  }
+  if (!u4){
+    for (element of document.getElementsByClassName("ac3")){
+      element.style.display="none";
+    }
+  } else {
+    for (element of document.getElementsByClassName("ac3")){
+      element.style.display="display";
+    }
+  }
   lastpoints=points;
   lastmetapoints=metapoints;
   lastmetametapoints=metametapoints;
@@ -291,11 +323,25 @@ function getmeta(){
     points=zero;
   }
 }
+function autometa(){
+  if (document.getElementById("metaclicker").value && document.getElementById("metaclickerenabled").checked){
+    if (new bigNum(metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints).gte(parse(eval(document.getElementById("metaclicker").value).toString()).add(metapoints))){
+      getmeta();
+    }
+  }
+}
 function getmetameta(){
   if (metapoints.gte(ten) && (!metametapoints.gte(bigInf) || breakinf)){
     metametapoints=new bigNum(metametapoints.add(metapoints.div(ten)).round().m,metametapoints.add(metapoints.div(ten)).round().e+Math.round(Math.log10(infinitypoints+1))*u6+eternitypoints);
     points=zero;
     metapoints=zero;
+  }
+}
+function autometameta(){
+  if (document.getElementById("metaaclicker").value && document.getElementById("metaaclickerenabled").checked){
+    if (new bigNum(metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints).gte(parse(eval(document.getElementById("metaaclicker").value)).add(metapoints))){
+      getmetameta();
+    }
   }
 }
 function reset(){
@@ -364,6 +410,13 @@ function getIP(){
     metametapoints=zero;
   }
 }
+function autoIP(){
+  if (document.getElementById("infclicker").value && document.getElementById("infclickerenabled").checked){
+    if (IPcalc()>=eval(document.getElementById("infclicker").value)){
+      getIP();
+    }
+  }
+}
 function IPcalc(){
   if (isInf && !breakinf){
     return 2**u5;
@@ -386,13 +439,13 @@ if (u1){
   u1l=setInterval(addpoint,100);
 }
 if (u2){
-  u2l=setInterval(getmeta,1000);
+  u2l=setInterval(autometa,1000);
 }
 if (u3){
-  u3l=setInterval(getmetameta,5000);
+  u3l=setInterval(autometameta,5000);
 }
 if (u4){
-  u4l=setInterval(getIP,10000);
+  u4l=setInterval(autoIP,10000);
 }
 function importt(){
   var savestr=prompt("Input your save:");
@@ -424,13 +477,13 @@ function importt(){
         u1l=setInterval(addpoint,100);
       }
       if (u2){
-        u2l=setInterval(getmeta,1000);
+        u2l=setInterval(autometa,1000);
       }
       if (u3){
-        u3l=setInterval(getmetameta,5000);
+        u3l=setInterval(autometameta,5000);
       }
       if (u4){
-        u4l=setInterval(getIP,10000);
+        u4l=setInterval(autoIP,10000);
       }
     }
   }
