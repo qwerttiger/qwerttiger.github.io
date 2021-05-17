@@ -10,6 +10,7 @@ var lastmetametapoints=bigInf;
 var infinitypoints=0;
 var lastinfinitypoints=Infinity;
 var eternitypoints=0;
+var luckypoints=0;
 var isInf=false;
 var lastisInf=true;
 var u1=0;
@@ -39,7 +40,7 @@ var ach2=0;
 var ach3=0;
 var ach4=0;
 var ach5=0;
-var charlist="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+="
+var ach6=0;
 if (localStorage.getItem("points-")){
   points=parse(localStorage.getItem("points-"));
 }
@@ -96,6 +97,9 @@ if (localStorage.getItem("ach6-")){
 }
 if (localStorage.getItem("eternitypoints-")){
   eternitypoints=Number(localStorage.getItem("eternitypoints-"));
+}
+if (localStorage.getItem("luckypoints-")){
+  luckypoints=Number(localStorage.getItem("luckypoints-"));
 }
 function IPmult(){
   if (infinitypoints>=3**u5 && u5<647){
@@ -186,7 +190,7 @@ function check(){
     }
     if (lastscreennum!=1 || infinitypoints!=lastinfinitypoints){
       if (infinitypoints==Infinity){
-        document.getElementById("eternity").innerHTML="<button onclick='if (u1l){clearInterval(u1l);};if (u2l){clearInterval(u2l);};if (u3l){clearInterval(u3l);};if (u4l){clearInterval(u4l);};eternitypoints+=1;infinitypoints=0;metametapoints=zero;metapoints=zero;points=zero;u1=0;u2=0;u3=0;u4=0;u5=0;u6=0;u7=0;breakinf=0;'>Infinity for 1 Eternity Point</button>";
+        document.getElementById("eternity").innerHTML="<button onclick='if (u1l){clearInterval(u1l);};if (u2l){clearInterval(u2l);};if (u3l){clearInterval(u3l);};if (u4l){clearInterval(u4l);};eternitypoints+=Math.pow(10,luckypoints);infinitypoints=0;metametapoints=zero;metapoints=zero;points=zero;u1=0;u2=0;u3=0;u4=0;u5=0;u6=0;u7=0;breakinf=0;'>Eternity for "+pow(10,luckypoints)+" Eternity Point</button>";
       } else {
         document.getElementById("eternity").innerHTML="<button>Get Infinity IP to Eternity</button>";
       }
@@ -300,6 +304,10 @@ function check(){
       element.style.display="table-cell";
     }
   }
+  if (document.getElementById("lucky").style.display=="none" && Math.random()*10000/Math.log10(eternitypoints)<=1){
+    document.getElementById("lucky").style.top=Math.floor(Math.random()*(window.innerHeight-100))+"px";
+    document.getElementById("lucky").style.left=Math.floor(Math.random()*(window.innerWidth-100))+"px";document.getElementById("lucky").style.display="inline";
+  }
   lastpoints=points;
   lastmetapoints=metapoints;
   lastmetametapoints=metametapoints;
@@ -364,6 +372,7 @@ function reset(){
   metapoints=zero;
   metametapoints=zero;
   infinitypoints=0;
+  eternitypoints=0;
   breakinf=0;
   u1=0;
   u2=0;
@@ -371,6 +380,7 @@ function reset(){
   u4=0;
   u5=0;
   u6=0;
+  u7=0;
   ach1=0;
   ach2=0;
   ach3=0;
@@ -404,6 +414,7 @@ function save(){
   localStorage.setItem("ach5-",ach5.toString());
   localStorage.setItem("ach6-",ach6.toString());
   localStorage.setItem("eternitypoints-",eternitypoints.toString());
+  localStorage.setItem("luckypoints-",luckypoints.toString());
 }
 function getIP(){
   if (isInf){
@@ -436,6 +447,7 @@ function stround(num){
     return num;
   }
 }
+document.getElementById('lucky').style.display="none";
 setInterval(save,1000);
 setInterval(check,50);
 if (u1){
@@ -454,7 +466,7 @@ function importt(){
   var savestr=prompt("Input your save:");
   if (savestr!=null){
     savestr=savestr.replace(/b/g,"\.").replace(/d/g,"\|").replace(/e/g,"0").replace(/f/g,"1").replace(/g/g,"2").replace(/h/g,"3").replace(/i/g,"4").replace(/j/g,"5").replace(/k/g,"6").replace(/l/g,"7").replace(/m/g,"8").replace(/n/g,"9").replace(/c/g,"e").replace(/a/g,"Infinity");
-    if (savestr.split("|").length==18){
+    if (savestr.split("|").length==20){
       reset();
       var savelist=savestr.split("|");
       points=parse(savelist[0]);
@@ -468,13 +480,15 @@ function importt(){
       u5=Number(savelist[8]);
       u6=Number(savelist[9]);
       u7=Number(savelist[10]);
-      ach1=Number(savelist[11]);
-      ach2=Number(savelist[12]);
-      ach3=Number(savelist[13]);
-      ach4=Number(savelist[14]);
-      ach5=Number(savelist[15]);
-      ach6=Number(savelist[16]);
-      eternitypoints=Number(savelist[17]);
+      breakinf=Number(savelist[11]);
+      ach1=Number(savelist[12]);
+      ach2=Number(savelist[13]);
+      ach3=Number(savelist[14]);
+      ach4=Number(savelist[15]);
+      ach5=Number(savelist[16]);
+      ach6=Number(savelist[17]);
+      eternitypoints=Number(savelist[18]);
+      luckypoints=Number(savelist[19]);
       if (u1){
         u1l=setInterval(addpoint,100);
       }
@@ -491,117 +505,126 @@ function importt(){
   }
 }
 function exportt(){
-  prompt("Here is your save:",(points+"|"+metapoints+"|"+metametapoints+"|"+infinitypoints+"|"+u1+"|"+u2+"|"+u3+"|"+u4+"|"+u5+"|"+u6+"|"+u7+"|"+ach1+"|"+ach2+"|"+ach3+"|"+ach4+"|"+ach5+"|"+ach6+"|"+eternitypoints).replace(/Infinity/g,"a").replace(/\./g,"b").replace(/e/g,"c").replace(/\|/g,"d").replace(/0/g,"e").replace(/1/g,"f").replace(/2/g,"g").replace(/3/g,"h").replace(/4/g,"i").replace(/5/g,"j").replace(/6/g,"k").replace(/7/g,"l").replace(/8/g,"m").replace(/9/g,"n"));
+  prompt("Here is your save:",(points+"|"+metapoints+"|"+metametapoints+"|"+infinitypoints+"|"+u1+"|"+u2+"|"+u3+"|"+u4+"|"+u5+"|"+u6+"|"+u7+"|"+breakinf+"|"+ach1+"|"+ach2+"|"+ach3+"|"+ach4+"|"+ach5+"|"+ach6+"|"+eternitypoints+"|"+luckypoints).replace(/Infinity/g,"a").replace(/\./g,"b").replace(/e/g,"c").replace(/\|/g,"d").replace(/0/g,"e").replace(/1/g,"f").replace(/2/g,"g").replace(/3/g,"h").replace(/4/g,"i").replace(/5/g,"j").replace(/6/g,"k").replace(/7/g,"l").replace(/8/g,"m").replace(/9/g,"n"));
 }
 function keydown(event){
   keypressed=event.key;
-  if (keypressed=="7"){
-    addpoint()
-  }
-  if (keypressed=="8"){
-    getmeta()
-  }
-  if (keypressed=="9"){
-    getmetameta()
-  }
-  if (keypressed=="i"){
-    getIP()
-  }
-  if (keypressed=="e" && infinitypoints==Infinity){
-    if (u1l){
-      clearInterval(u1l);
+  function detect(event){
+    if (keypressed=="7"){
+      addpoint()
     }
-    if (u2l){
-      clearInterval(u2l);
+    if (keypressed=="8"){
+      getmeta()
     }
-    if (u3l){
-      clearInterval(u3l);
+    if (keypressed=="9"){
+      getmetameta()
     }
-    if (u4l){
-      clearInterval(u4l);
+    if (keypressed=="i"){
+      getIP()
     }
-    eternitypoints+=1;
-    infinitypoints=0;
-    metametapoints=zero;
-    metapoints=zero;
-    points=zero;
-    u1=0;
-    u2=0;
-    u3=0;
-    u4=0;
-    u5=0;
-    u6=0;
-    u7=0;
-    breakinf=0;
-  }
-  if (keypressed=="1"){
-    screennum=0;
-  }
-  if (keypressed=="2"){
-    screennum=1;
-  }
-  if (keypressed=="3"){
-    screennum=2;
-  }
-  if (keypressed=="4"){
-    screennum=3;
-  }
-  if (keypressed=="5"){
-    screennum=4;
-  }
-  if (keypressed=="ArrowRight"){
-    exportt()
-  }
-  if (keypressed=="ArrowLeft"){
-    importt()
-  }
-  if (keypressed=="!" && !u1){
-    if (infinitypoints>=1){
-      u1=1;
-      infinitypoints-=1;
-      u1l=setInterval(addpoint,100);
+    if (keypressed=="e" && infinitypoints==Infinity){
+      if (u1l){
+        clearInterval(u1l);
+      }
+      if (u2l){
+        clearInterval(u2l);
+      }
+      if (u3l){
+        clearInterval(u3l);
+      }
+      if (u4l){
+        clearInterval(u4l);
+      }
+      eternitypoints+=Math.pow(10,luckypoints);
+      infinitypoints=0;
+      metametapoints=zero;
+      metapoints=zero;
+      points=zero;
+      u1=0;
+      u2=0;
+      u3=0;
+      u4=0;
+      u5=0;
+      u6=0;
+      u7=0;
+      breakinf=0;
+    }
+    if (keypressed=="1"){
+      screennum=0;
+    }
+    if (keypressed=="2"){
+      screennum=1;
+    }
+    if (keypressed=="3"){
+      screennum=2;
+    }
+    if (keypressed=="4"){
+      screennum=3;
+    }
+    if (keypressed=="5"){
+      screennum=4;
+    }
+    if (keypressed=="ArrowRight"){
+      exportt()
+    }
+    if (keypressed=="ArrowLeft"){
+      importt()
+    }
+    if (keypressed=="!" && !u1){
+      if (infinitypoints>=10){
+        u1=1;
+        infinitypoints-=10;
+        u1l=setInterval(addpoint,100);
+      }
+    }
+    if (keypressed=="@" && !u2){
+      if (infinitypoints>=50){
+        u2=1;
+        infinitypoints-=50;
+        u2l=setInterval(autometa,100);
+      }
+    }
+    if (keypressed=="#" && !u3){
+      if (infinitypoints>=100){
+        u3=1;
+        infinitypoints-=100;
+        u3l=setInterval(autometameta,100);
+      }
+    }
+    if (keypressed=="$" && !u4){
+      if (infinitypoints>=250){
+        u4=1;
+        infinitypoints-=250;
+        u4l=setInterval(autoIP,100);
+      }
+    }
+    if (keypressed=="%" && !u6){
+      if (infinitypoints>=150){
+        u6=1;
+        infinitypoints-=150;
+      }
+    }
+    if (keypressed=="^" && !u7){
+      if (infinitypoints>=1e10){
+        u7=1;
+        infinitypoints-=1e10;
+      }
+    }
+    if (keypressed=="&"){
+      IPmult();
+    }
+    if (keypressed=="*" && !breakinf){
+      if (infinitypoints>=10000){
+        breakinf=1;
+        infinitypoints-=10000;
+      }
     }
   }
-  if (keypressed=="@" && !u2){
-    if (infinitypoints>=5){
-      u2=1;
-      infinitypoints-=5;
-      u2l=setInterval(autometa,100);
+  if (screennum==4){
+    if (event.ctrlKey && event.altKey){
+      detect();
     }
-  }
-  if (keypressed=="#" && !u3){
-    if (infinitypoints>=10){
-      u3=1;
-      infinitypoints-=10;
-      u3l=setInterval(autometameta,100);
-    }
-  }
-  if (keypressed=="$" && !u4){
-    if (infinitypoints>=25){
-      u4=1;
-      infinitypoints-=25;
-      u4l=setInterval(autoIP,100);
-    }
-  }
-  if (keypressed=="%" && !u6){
-    if (infinitypoints>=15){
-      u6=1;
-      infinitypoints-=15;
-    }
-  }
-  if (keypressed=="^" && !u7){
-    if (infinitypoints>=1e10){
-      u7=1;
-      infinitypoints-=1e10;
-    }
-  }
-  if (keypressed=="&"){
-    IPmult();
-  }
-  if (keypressed=="*" && !breakinf){
-    if (infinitypoints>=100){
-      breakinf=1;
-      infinitypoints-=100;
-    }
+  } else {
+    detect();
   }
 }

@@ -56,3 +56,6 @@ table {
 #autoclickers td {
   font-size: 20px;
 }
+#lucky {
+  position: absolute;
+}
