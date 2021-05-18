@@ -33,3 +33,4 @@
 20210514 - "just fixing an autoclicker bug"                                                 v6.2.1
 20210514 - "keyboard shortcuts"                                                             v6.3.0
 20210517 - "lucky points so you can get infinity EP and break the game and bug fixes"       v7.0.0
+20210518 - "fix LOTS of luckypoint bugs"                                                    v7.1.0

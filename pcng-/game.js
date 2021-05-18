@@ -11,6 +11,7 @@ var infinitypoints=0;
 var lastinfinitypoints=Infinity;
 var eternitypoints=0;
 var luckypoints=0;
+var lastlucky=0;
 var isInf=false;
 var lastisInf=true;
 var u1=0;
@@ -150,6 +151,7 @@ function check(){
   if (screennum==1){
     document.getElementById("IP").innerHTML="Infinity Points: "+stround(infinitypoints)+"<br>";
     document.getElementById("EP").innerHTML="Eternity Points: "+stround(eternitypoints)+"<br>";
+    document.getElementById("LP").innerHTML="Lucky Points: "+stround(luckypoints)+"<br>";
     if ((lastscreennum!=1 || lastu1) && !u1){
       document.getElementById("u1").innerHTML="<button onclick='if (infinitypoints>=10){u1=1;infinitypoints-=10;u1l=setInterval(addpoint,100);}'>Get point autoclicker, 10 IP</button><br>";
     } else if ((lastscreennum!=1 || !lastu1) && u1){
@@ -188,9 +190,9 @@ function check(){
     } else if ((lastscreennum!=1 || !lastbreakinf) && breakinf){
       document.getElementById("breakinf").innerHTML="<button>Infinity broken</button><br>";
     }
-    if (lastscreennum!=1 || infinitypoints!=lastinfinitypoints){
+    if (lastscreennum!=1 || infinitypoints!=lastinfinitypoints || luckypoints!=lastlucky){
       if (infinitypoints==Infinity){
-        document.getElementById("eternity").innerHTML="<button onclick='if (u1l){clearInterval(u1l);};if (u2l){clearInterval(u2l);};if (u3l){clearInterval(u3l);};if (u4l){clearInterval(u4l);};eternitypoints+=Math.pow(10,luckypoints);infinitypoints=0;metametapoints=zero;metapoints=zero;points=zero;u1=0;u2=0;u3=0;u4=0;u5=0;u6=0;u7=0;breakinf=0;'>Eternity for "+pow(10,luckypoints)+" Eternity Point</button>";
+        document.getElementById("eternity").innerHTML="<button onclick='if (u1l){clearInterval(u1l);};if (u2l){clearInterval(u2l);};if (u3l){clearInterval(u3l);};if (u4l){clearInterval(u4l);};eternitypoints+=Math.pow(10,luckypoints);infinitypoints=0;metametapoints=zero;metapoints=zero;points=zero;u1=0;u2=0;u3=0;u4=0;u5=0;u6=0;u7=0;breakinf=0;'>Eternity for "+stround(Math.pow(10,luckypoints))+" Eternity Point</button>";
       } else {
         document.getElementById("eternity").innerHTML="<button>Get Infinity IP to Eternity</button>";
       }
@@ -198,6 +200,7 @@ function check(){
   } else if (screennum!=1 && lastscreennum!=screennum){
     document.getElementById("IP").innerHTML="";
     document.getElementById("EP").innerHTML="";
+    document.getElementById("LP").innerHTML="";
     document.getElementById("u1").innerHTML="";
     document.getElementById("u2").innerHTML="";
     document.getElementById("u3").innerHTML="";
@@ -212,7 +215,7 @@ function check(){
     document.getElementById("import").innerHTML="<button onclick='importt()'>Import</button><br>";
     document.getElementById("export").innerHTML="<button onclick='exportt()'>Export</button><br>";
     document.getElementById("reset").innerHTML="<button onclick='reset()'>Reset</button><br><br><br><br>";
-    document.getElementById("info").innerHTML="1,2,3,4,5 for change screen, 7,8,9 for points, metapoints, metametapoints, i and e for Infinity and Eternity, shift 1-8 for upgrades, left for import, right for export.";
+    document.getElementById("info").innerHTML="1,2,3,4,5 for change screen, 7,8,9 for points, metapoints, metametapoints, i and e for Infinity and Eternity, shift 1-8 for upgrades, left for import, right for export, c for clicking clover. On Autoclicker tab, you need to hold down Control and Alt for it to work.";
   } else if (screennum!=2 && lastscreennum!=screennum){
     document.getElementById("import").innerHTML="";
     document.getElementById("export").innerHTML="";
@@ -304,7 +307,7 @@ function check(){
       element.style.display="table-cell";
     }
   }
-  if (document.getElementById("lucky").style.display=="none" && Math.random()*10000/Math.log10(eternitypoints)<=1){
+  if (document.getElementById("lucky").style.display=="none" && Math.random()*10000/Math.log10(eternitypoints)<=1 && eternitypoints>=1){
     document.getElementById("lucky").style.top=Math.floor(Math.random()*(window.innerHeight-100))+"px";
     document.getElementById("lucky").style.left=Math.floor(Math.random()*(window.innerWidth-100))+"px";document.getElementById("lucky").style.display="inline";
   }
@@ -312,6 +315,7 @@ function check(){
   lastmetapoints=metapoints;
   lastmetametapoints=metametapoints;
   lastinfinitypoints=infinitypoints;
+  lastlucky=luckypoints;
   lastscreennum=screennum;
   lastisInf=isInf;
   lastu1=u1;
@@ -548,6 +552,9 @@ function keydown(event){
       u6=0;
       u7=0;
       breakinf=0;
+    }
+    if (keypressed=="c" && document.getElementById("lucky").style.display=="inline"){
+      document.getElementById("lucky").click();
     }
     if (keypressed=="1"){
       screennum=0;
