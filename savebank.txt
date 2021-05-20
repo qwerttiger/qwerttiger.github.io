@@ -1,8 +1,13 @@
-Initial save:                                    edededededededededededededededededede
-1 metapoint:                                     edfdededededededededededfdfdedededede
-1 metametapoint:                                 ededfdedededededededededfdfdfdededede
-Upgrade 1:                                       ededededfdedededededededfdfdfdfdedede
-Break Infinity:                                  ededededfdfdfdfdidfdedfdfdfdfdfdedede
-IP squared upgrade:                              edededfeeeeeeeeedfdfdfdfdgfdfdfdfdfdfdfdfdfdede
-1 Eternity Point:                                ededededededededededededededededededf
-10 Eternity Points:                              ededededededededededededededededededfe
+Initial save:                                    ededededededededededededededededededede
+1 metapoint:                                     edfdededededededededededfdfdededededede
+1 metametapoint:                                 ededfdedededededededededfdfdfdedededede
+Upgrade 1:                                       ededededfdedededededededfdfdfdfdededede
+Break Infinity:                                  ededededfdfdfdfdidfdedfdfdfdfdfdededede
+IP squared upgrade:                              edededfeeeeeeeeedfdfdfdfdgfdfdfdfdfdfdfdfdfdedede
+1 Eternity Point:                                ededededededededededededededededededfde
+10 Eternity Points:                              ededededededededededededededededededfede
+1 Lucky Point:                                   ededededededededededededededededededgedf
+5 Lucky Points:                                  ededededededededededededededededededfeeeeedj
+20 Lucky Points:                                 ededededededededededededededededededfeeeeeeeeeeeeeeeeeeeedge
+100 Lucky Points:                                ededededededededededededededededededfeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeedfee
+Infinity Eternity Points:                        ededededededededededededededededededadfeee

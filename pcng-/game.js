@@ -340,7 +340,7 @@ function getmeta(){
 }
 function autometa(){
   if (document.getElementById("metaclicker").value && document.getElementById("metaclickerenabled").checked){
-    if (new bigNum(metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints/10).gte(parse(eval(document.getElementById("metaclicker").value).toString()).add(metapoints))){
+    if (new bigNum(metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(ten))).round().m,metapoints.add(points.div(ten).mult(metametapoints.div(new bigNum(2,0)).add(ten))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints/10).gte(parse(eval(document.getElementById("metaclicker").value).toString()).add(metapoints))){
       getmeta();
     }
   }
@@ -354,7 +354,7 @@ function getmetameta(){
 }
 function autometameta(){
   if (document.getElementById("metaaclicker").value && document.getElementById("metaaclickerenabled").checked){
-    if (new bigNum(metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints/10).gte(parse(eval(document.getElementById("metaaclicker").value).toString()).add(metapoints))){
+    if (new bigNum(metametapoints.add(metapoints.div(ten)).round().m,metametapoints.add(metapoints.div(ten)).round().e+Math.round(Math.log10(infinitypoints+1))*u6+eternitypoints).gte(parse(eval(document.getElementById("metaaclicker").value).toString()).add(metametapoints))){
       getmetameta();
     }
   }
