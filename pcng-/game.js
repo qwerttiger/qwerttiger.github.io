@@ -307,7 +307,7 @@ function check(){
       element.style.display="table-cell";
     }
   }
-  if (document.getElementById("lucky").style.display=="none" && Math.random()*10000/Math.log10(eternitypoints)<=1 && eternitypoints>=1){
+  if (document.getElementById("lucky").style.display=="none" && Math.random()*120000/(Math.log10(eternitypoints)+1)<=1 && eternitypoints>=1){
     document.getElementById("lucky").style.top=Math.floor(Math.random()*(window.innerHeight-100))+"px";
     document.getElementById("lucky").style.left=Math.floor(Math.random()*(window.innerWidth-100))+"px";document.getElementById("lucky").style.display="inline";
   }

@@ -307,7 +307,7 @@ function check(){
       element.style.display="table-cell";
     }
   }
-  if (document.getElementById("lucky").style.display=="none" && Math.random()*10000/Math.log10(eternitypoints)<=1 && eternitypoints>=1){
+  if (document.getElementById("lucky").style.display=="none" && Math.random()*120/(Math.log10(eternitypoints)+1)<=1 && eternitypoints>=1){
     document.getElementById("lucky").style.top=Math.floor(Math.random()*(window.innerHeight-100))+"px";
     document.getElementById("lucky").style.left=Math.floor(Math.random()*(window.innerWidth-100))+"px";document.getElementById("lucky").style.display="inline";
   }
@@ -334,27 +334,27 @@ function addpoint(){
 }
 function getmeta(){
   if (points.gte(new bigNum(1,0)) && (!metapoints.gte(bigInf) || breakinf)){
-    metapoints=new bigNum(metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints*10);
+    metapoints=new bigNum(metapoints.add(points).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0))).round().m,metapoints.add(points).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints*10);
     points=zero;
   }
 }
 function autometa(){
   if (document.getElementById("metaclicker").value && document.getElementById("metaclickerenabled").checked){
-    if (new bigNum(metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints*10).gte(parse(eval(document.getElementById("metaclicker").value).toString()).add(metapoints))){
+    if (new bigNum(metapoints.add(points).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0))).round().m,metapoints.add(points).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints*10).gte(parse(eval(document.getElementById("metaclicker").value).toString()).add(metapoints))){
       getmeta();
     }
   }
 }
 function getmetameta(){
   if (metapoints.gte(new bigNum(1,0)) && (!metametapoints.gte(bigInf) || breakinf)){
-    metametapoints=new bigNum(metametapoints.add(metapoints.div(new bigNum(1,0))).round().m,metametapoints.add(metapoints.div(new bigNum(1,0))).round().e+Math.round(Math.log10(infinitypoints+1))*u6+eternitypoints*10);
+    metametapoints=new bigNum(metametapoints.add(metapoints).round().m,metametapoints.add(metapoints).round().e+Math.round(Math.log10(infinitypoints+1))*u6+eternitypoints*10);
     points=zero;
     metapoints=zero;
   }
 }
 function autometameta(){
   if (document.getElementById("metaaclicker").value && document.getElementById("metaaclickerenabled").checked){
-    if (new bigNum(metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().m,metapoints.add(points.div(new bigNum(1,0)).mult(metametapoints.div(new bigNum(2,0)).add(new bigNum(1,0)))).round().e+Math.round(Math.log10(infinitypoints+1)*u6)+eternitypoints*10).gte(parse(eval(document.getElementById("metaaclicker").value).toString()).add(metapoints))){
+    if (new bigNum(metametapoints.add(metapoints).round().m,metametapoints.add(metapoints).round().e+Math.round(Math.log10(infinitypoints+1))*u6+eternitypoints*10).gte(parse(eval(document.getElementById("metaaclicker").value).toString()).add(metapoints))){
       getmetameta();
     }
   }

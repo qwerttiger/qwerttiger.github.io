@@ -307,7 +307,7 @@ function check(){
       element.style.display="table-cell";
     }
   }
-  if (document.getElementById("lucky").style.display=="none" && Math.random()*10000/Math.log10(eternitypoints)<=1 && eternitypoints>=1){
+  if (document.getElementById("lucky").style.display=="none" && Math.random()*12000/(Math.log10(eternitypoints)+1)<=1 && eternitypoints>=1){
     document.getElementById("lucky").style.top=Math.floor(Math.random()*(window.innerHeight-100))+"px";
     document.getElementById("lucky").style.left=Math.floor(Math.random()*(window.innerWidth-100))+"px";document.getElementById("lucky").style.display="inline";
   }
@@ -453,7 +453,7 @@ function stround(num){
 }
 document.getElementById('lucky').style.display="none";
 setInterval(save,1000);
-setInterval(check,100);
+setInterval(check,50);
 if (u1){
   u1l=setInterval(addpoint,100);
 }
