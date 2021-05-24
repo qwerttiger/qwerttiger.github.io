@@ -35,4 +35,5 @@
 20210517 - "lucky points so you can get infinity EP and break the game and bug fixes"       v7.0.0
 20210518 - "fix LOTS of luckypoint bugs"                                                    v7.1.0
 20210520 - "just fix stuff"                                                                 v7.1.1
-20200521 - "balancing lucky points"                                                         v7.1.2
+20210521 - "balancing lucky points"                                                         v7.1.2
+20210524 - "making golden and wrath clovers"                                                v7.2.0

@@ -308,6 +308,13 @@ function check(){
     }
   }
   if (document.getElementById("lucky").style.display=="none" && Math.random()*12000/(Math.log10(eternitypoints)+1)<=1 && eternitypoints>=1){
+    document.getElementById("lucky").src="clover.png";
+    var luckypic=Math.random()*10;
+    if (luckypic<=1){
+      document.getElementById("lucky").src="golden.png";
+    } else if (luckypic<=2){
+      document.getElementById("lucky").src="wrath.png";
+    }
     document.getElementById("lucky").style.top=Math.floor(Math.random()*(window.innerHeight-100))+"px";
     document.getElementById("lucky").style.left=Math.floor(Math.random()*(window.innerWidth-100))+"px";document.getElementById("lucky").style.display="inline";
   }
@@ -443,6 +450,11 @@ function IPcalc(){
   } else {
     return 0;
   }
+}
+function getlucky(){
+  if (document.getElementById("lucky").src=="https://"+location.hostname+"/clover.png"){luckypoints+=1}
+  if (document.getElementById("lucky").src=="https://"+location.hostname+"/golden.png"){luckypoints+=10}
+  if (document.getElementById("lucky").src=="https://"+location.hostname+"/wrath.png" && luckypoints>=2){luckypoints-=2}
 }
 function stround(num){
   if (num>=1000000){
