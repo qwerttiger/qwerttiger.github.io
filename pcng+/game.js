@@ -307,14 +307,24 @@ function check(){
       element.style.display="table-cell";
     }
   }
-  if (document.getElementById("lucky").style.display=="none" && Math.random()*120/(Math.log10(eternitypoints)+1)<=1 && eternitypoints>=1){
-    document.getElementById("lucky").src="../clover.png";
+  if (document.getElementById("lucky").style.display=="none" && Math.random()*300/(Math.log10(eternitypoints)+1)<=1 && eternitypoints>=1){
     var luckypic=Math.random()*10;
     if (luckypic<=1){
       document.getElementById("lucky").src="../golden.png";
+    } else {
+      document.getElementById("lucky").src="../clover.png";
     }
+    //no wrath
+    //no wrath
+    //no wrath
     document.getElementById("lucky").style.top=Math.floor(Math.random()*(window.innerHeight-100))+"px";
-    document.getElementById("lucky").style.left=Math.floor(Math.random()*(window.innerWidth-100))+"px";document.getElementById("lucky").style.display="inline";
+    document.getElementById("lucky").style.left=Math.floor(Math.random()*(window.innerWidth-100))+"px";
+    document.getElementById("lucky").style.display="inline";
+  }
+  document.getElementById("ticker").style.left=Number(document.getElementById("ticker").style.left.slice(0,-1))-0.1+"%";
+  if (Number(document.getElementById("ticker").style.left.slice(0,-1))<=-100-(parseFloat(window.getComputedStyle(document.getElementById("ticker")).getPropertyValue('width'))-parseFloat(window.getComputedStyle(document.getElementById("ticker")).getPropertyValue('padding-left'))-parseFloat(window.getComputedStyle(document.getElementById("ticker")).getPropertyValue('padding-right')))/window.innerWidth*100){
+    document.getElementById("ticker").style.left="0%";
+    document.getElementById("ticker").innerHTML=ticker();
   }
   lastpoints=points;
   lastmetapoints=metapoints;
@@ -460,9 +470,29 @@ function getlucky(){
   if (document.getElementById("lucky").src=="https://"+location.hostname+"/clover.png"){luckypoints+=10}
   if (document.getElementById("lucky").src=="https://"+location.hostname+"/golden.png"){luckypoints+=100}
 }
+function ticker(){
+  var tickerlist=["you are a point", "click click click clickkkkkkkkkkkkkkkkk", "i cant speel -me", "i like coding -me", "i actually can't beat my own game -me", "Sponsored by <a href='https://ivark.github.io'>Antimatter Dimensions!</a>", "you know you can enter javascript in the autoclicker text boxes right?", "i need more quotes - me"];
+  if (metametapoints>=10 && infinitypoints==0 && eternitypoints==0){
+    tickerlist.push("wat about metametametapoints")
+  }
+  if (infinitypoints>=10 && eternitypoints==0){
+    tickerlist.push("metainfinitypoints? please?")
+  }
+  if (luckypoints>=1 && luckypoints<10){
+    tickerlist.push("WOW OMG U SO LUCKY U HAVE ONE LUCKY POINT!!!!!")
+  }
+  if (luckypoints>=10){
+    tickerlist.push("how u get "+luckypoints+" lucky points?")
+  }
+  if (luckypoints>=10000){
+    tickerlist=["ok gg u beat the game now beat <a href='../'>normal prestige clicker</a>"]
+  }
+  return tickerlist[Math.floor(Math.random()*tickerlist.length)]
+}
 document.getElementById('lucky').style.display="none";
+document.getElementById("ticker").innerHTML=ticker();
 setInterval(save,1000);
-setInterval(check,50);
+setInterval(check,20);
 if (u1){
   u1l=setInterval(addpoint,100);
 }

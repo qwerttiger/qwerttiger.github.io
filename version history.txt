@@ -37,3 +37,4 @@
 20210520 - "just fix stuff"                                                                 v7.1.1
 20210521 - "balancing lucky points"                                                         v7.1.2
 20210524 - "making golden and wrath clovers"                                                v7.2.0
+20210526 - "news ticker!"                                                                   v8.0.0
