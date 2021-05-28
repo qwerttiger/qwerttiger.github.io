@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="../styles.css">
   </head>
   <body onkeydown="keydown(event)">
-    <span id="tickercontainer"><button id="ticker"></button></span><br>
-    <button class="top-bar" onclick="screennum=0">Points</button><button class="top-bar" id="screen2" onclick="screennum=1">Upgrades</button><button class="top-bar" onclick="screennum=2">Options</button><button class="top-bar" onclick="screennum=3">Achievements</button><button class="top-bar" onclick="screennum=4">Autoclickers</button><br><br>
+    <span id="tickercontainer"><button id="ticker"></button></span><br><br>
+    <button class="top-bar" onclick="screennum=0">Points</button><button class="top-bar" id="screen2" onclick="screennum=1">Upgrades</button><button class="top-bar" onclick="screennum=2">Options</button><button class="top-bar" onclick="screennum=3">Achievements</button><button class="top-bar" onclick="screennum=4">Autoclickers</button><button class="top-bar" onclick="screennum=5">Minecraftify</button><br><br>
     <span id="points"></span>
     <span id="metapoints"></span>
     <span id="metametapoints"></span>
@@ -29,6 +29,7 @@
       <span id="u5"></span>
       <span id="breakinf"></span>
       <span id="eternity"></span>
+      <span id="minecraftify"><button>Get Infinity Eternity points to Minecraftify</button></span>
     </span>
     
     <span id="options">
@@ -37,6 +38,7 @@
       <span id="reset"></span>
       <span id="info"></span>
     </span>
+
     <span id="achievements">
       <table>
         <tr>
@@ -53,6 +55,7 @@
         </tr>
       </table>
     </span>
+    
     <span id="autoclickers">
       <table style="width: 100%">
         <tr>
@@ -72,7 +75,116 @@
         </tr>
       </table>
     </span>
+    
+    <span id="minecraft">
+      <span id="crafts"></span>
+      <span id="goldenapple"></span>
+      <table style="width: 100%">
+        <tr>
+          <td id="mc1"></td>
+          <td id="mc2"></td>
+          <td id="mc3"></td>
+          <td id="mc4"></td>
+          <td id="mc5"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button onclick="make('stick')">make</button></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td id="mc6"></td>
+          <td id="mc7"></td>
+          <td id="mc8"></td>
+          <td id="mc9"></td>
+          <td id="mc10"></td>
+        </tr>
+        <tr>
+          <td><button onclick="make('iron block')">make</button></td>
+          <td></td>
+          <td></td>
+          <td><button onclick="make('golden apple')">make</button><br><button onclick="if (mc9>=1){goldenapple+=1;mc9-=1}">use</button></td>
+          <td><button onclick="make('diamond block')">make</button></td>
+        </tr>
+        <tr>
+          <td id="mc11"></td>
+          <td id="mc12"></td>
+          <td id="mc13"></td>
+          <td id="mc14"></td>
+          <td id="mc15"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><button onclick="make('netherite')">make</button></td>
+          <td><button onclick="make('netherite block')">make</button></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td id="mc16"></td>
+          <td id="mc17"></td>
+          <td id="mc18"></td>
+          <td id="mc19"></td>
+          <td id="mc20"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button onclick="make('eye of ender')">make</button></td>
+          <td></td>
+          <td><button onclick="make('enderite')">make</button></td>
+          <td><button onclick="if (mc20>=1){metaminecraftify()}">use (actually does nothing)</button></td>
+        </tr>
+      </table>
+      <br><br>
+      <table style="width: 100%">
+        <tr id="pick">
+          <td id="px1"></td>
+          <td id="px2"></td>
+          <td id="px3"></td>
+          <td id="px4"></td>
+          <td id="px5"></td>
+          <td id="px6"></td>
+          <td id="px7"></td>
+          <td id="px8"></td>
+          <td id="px9"></td>
+          <td id="px10"></td>
+          <td id="px11"></td>
+          <td id="px12"></td>
+        </tr>
+        <tr>
+          <td><button onclick="mine(1)">Mine</button></td>
+          <td><button onclick="mine(2)">Mine</button></td>
+          <td><button onclick="mine(3)">Mine</button></td>
+          <td><button onclick="mine(4)">Mine</button></td>
+          <td><button onclick="mine(5)">Mine</button></td>
+          <td><button onclick="mine(6)">Mine</button></td>
+          <td><button onclick="mine(7)">Mine</button></td>
+          <td><button onclick="mine(8)">Mine</button></td>
+          <td><button onclick="mine(9)">Mine</button></td>
+          <td><button onclick="mine(10)">Mine</button></td>
+          <td><button onclick="mine(11)">Mine</button></td>
+          <td><button onclick="mine(12)">Mine</button></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button onclick="pmake(2)">Make</button></td>
+          <td><button onclick="pmake(3)">Make</button></td>
+          <td><button onclick="pmake(4)">Make</button></td>
+          <td><button onclick="pmake(5)">Make</button></td>
+          <td><button onclick="pmake(6)">Make</button></td>
+          <td><button onclick="pmake(7)">Make</button></td>
+          <td><button onclick="pmake(8)">Make</button></td>
+          <td><button onclick="pmake(9)">Make</button></td>
+          <td><button onclick="pmake(10)">Make</button></td>
+          <td><button onclick="pmake(11)">Make</button></td>
+          <td><button onclick="pmake(12)">Make</button></td>
+        </tr>
+      </table>
+    </span>
     <img src="../clover.png" width="100" height="100" id="lucky" onclick="document.getElementById('lucky').style.display='none'; getlucky()">
+    <!--no footer-->
     <script src="../breakinf.js"></script>
     <script src="game.js"></script>
   </body>

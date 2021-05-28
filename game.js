@@ -42,6 +42,40 @@ var ach3=0;
 var ach4=0;
 var ach5=0;
 var ach6=0;
+var mc1=0;
+var mc2=0;
+var mc3=0;
+var mc4=0;
+var mc5=0;
+var mc6=0;
+var mc7=0;
+var mc8=0;
+var mc9=0;
+var mc10=0;
+var mc11=0;
+var mc12=0;
+var mc13=0;
+var mc14=0;
+var mc15=0;
+var mc16=0;
+var mc17=0;
+var mc18=0;
+var mc19=0;
+var mc20=0;
+var px1=0;
+var px2=0;
+var px3=0;
+var px4=0;
+var px5=0;
+var px6=0;
+var px7=0;
+var px8=0;
+var px9=0;
+var px10=0;
+var px11=0;
+var px12=0;
+var goldenapple=0;
+var crafts=0;
 if (localStorage.getItem("points")){
   points=parse(localStorage.getItem("points"));
 }
@@ -101,6 +135,18 @@ if (localStorage.getItem("eternitypoints")){
 }
 if (localStorage.getItem("luckypoints")){
   luckypoints=Number(localStorage.getItem("luckypoints"));
+}
+if (localStorage.getItem("crafts")){
+  crafts=Number(localStorage.getItem("crafts"));
+}
+if (localStorage.getItem("goldenapple")){
+  goldenapple=Number(localStorage.getItem("goldenapple"));
+}
+for (var i=1; i<=20; i++){
+  eval("if (localStorage.getItem('mc"+i+"')){mc"+i+"=Number(localStorage.getItem('mc"+i+"'))}")
+}
+for (var i=1; i<=12; i++){
+  eval("if (localStorage.getItem('px"+i+"')){px"+i+"=Number(localStorage.getItem('px"+i+"'))}")
 }
 function IPmult(){
   if (infinitypoints>=3**u5 && u5<647){
@@ -192,10 +238,15 @@ function check(){
     }
     if (lastscreennum!=1 || infinitypoints!=lastinfinitypoints || luckypoints!=lastlucky){
       if (infinitypoints==Infinity){
-        document.getElementById("eternity").innerHTML="<button onclick='if (u1l){clearInterval(u1l);};if (u2l){clearInterval(u2l);};if (u3l){clearInterval(u3l);};if (u4l){clearInterval(u4l);};eternitypoints+=Math.pow(10,luckypoints);infinitypoints=0;metametapoints=zero;metapoints=zero;points=zero;u1=0;u2=0;u3=0;u4=0;u5=0;u6=0;u7=0;breakinf=0;'>Eternity for "+stround(Math.pow(10,luckypoints))+" Eternity Point</button>";
+        document.getElementById("eternity").innerHTML="<button onclick='if (u1l){clearInterval(u1l);};if (u2l){clearInterval(u2l);};if (u3l){clearInterval(u3l);};if (u4l){clearInterval(u4l);};eternitypoints+=Math.pow(10,luckypoints);infinitypoints=0;metametapoints=zero;metapoints=zero;points=zero;u1=0;u2=0;u3=0;u4=0;u5=0;u6=0;u7=0;breakinf=0;'>Eternity for "+stround(Math.pow(10,luckypoints))+" Eternity Point</button><br>";
       } else {
-        document.getElementById("eternity").innerHTML="<button>Get Infinity IP to Eternity</button>";
+        document.getElementById("eternity").innerHTML="<button>Get Infinity IP to Eternity</button><br>";
       }
+    }
+    if (eternitypoints==Infinity && (document.getElementById("minecraftify").innerHTML=="<button>Get Infinity Eternity points to Minecraftify</button>" || lastscreennum!=1)){
+      document.getElementById("minecraftify").innerHTML="<button onclick='minecraftify()'>Minecraftify for 1 fist and 1 craft</button>"
+    } else if (eternitypoints!=Infinity && (document.getElementById("minecraftify").innerHTML=="<button onclick='minecraftify()'>Minecraftify for 1 fist and 1 craft</button>" || lastscreennum!=1)){
+      document.getElementById("minecraftify").innerHTML="<button>Get Infinity Eternity points to Minecraftify</button>"
     }
   } else if (screennum!=1 && lastscreennum!=screennum){
     document.getElementById("IP").innerHTML="";
@@ -210,6 +261,7 @@ function check(){
     document.getElementById("u7").innerHTML="";
     document.getElementById("breakinf").innerHTML="";
     document.getElementById("eternity").innerHTML="";
+    document.getElementById("minecraftify").innerHTML="";
   }
   if (screennum==2 && lastscreennum!=2){
     document.getElementById("import").innerHTML="<button onclick='importt()'>Import</button><br>";
@@ -231,6 +283,11 @@ function check(){
     document.getElementById('autoclickers').style.display='block';
   } else {
     document.getElementById('autoclickers').style.display='none';
+  }
+  if (screennum==5){
+    document.getElementById('minecraft').style.display='block';
+  } else {
+    document.getElementById('minecraft').style.display='none';
   }
   if (metametapoints.gte(bigInf)){
     isInf=true;
@@ -325,6 +382,40 @@ function check(){
     document.getElementById("ticker").style.left="0%";
     document.getElementById("ticker").innerHTML=ticker();
   }
+  document.getElementById("crafts").innerHTML="Crafts: "+crafts;
+  document.getElementById("goldenapple").innerHTML="Used golden apples: "+goldenapple;
+  document.getElementById("mc1").innerHTML="Wood: "+mc1;
+  document.getElementById("mc2").innerHTML="Sticks: "+mc2;
+  document.getElementById("mc3").innerHTML="Apple: "+mc3;
+  document.getElementById("mc4").innerHTML="Stone: "+mc4;
+  document.getElementById("mc5").innerHTML="Iron: "+mc5;
+  document.getElementById("mc6").innerHTML="Iron block: "+mc6;
+  document.getElementById("mc7").innerHTML="Gold: "+mc7;
+  document.getElementById("mc8").innerHTML="Diamond: "+mc8;
+  document.getElementById("mc9").innerHTML="Golden apple: "+mc9;
+  document.getElementById("mc10").innerHTML="Diamond block: "+mc10;
+  document.getElementById("mc11").innerHTML="Obsidian: "+mc11;
+  document.getElementById("mc12").innerHTML="Nether scrap: "+mc12;
+  document.getElementById("mc13").innerHTML="Netherite: "+mc13;
+  document.getElementById("mc14").innerHTML="Netherite block: "+mc14;
+  document.getElementById("mc15").innerHTML="Blaze powder: "+mc15;
+  document.getElementById("mc16").innerHTML="Ender pearls: "+mc16;
+  document.getElementById("mc17").innerHTML="Eye of enders: "+mc17;
+  document.getElementById("mc18").innerHTML="Enderite scrap: "+mc18;
+  document.getElementById("mc19").innerHTML="Enderite: "+mc19;
+  document.getElementById("mc20").innerHTML="Meta-portal: "+mc20;
+  document.getElementById("px1").innerHTML="Fist: "+px1;
+  document.getElementById("px2").innerHTML="Wood: "+px2;
+  document.getElementById("px3").innerHTML="Stone: "+px3;
+  document.getElementById("px4").innerHTML="Iron: "+px4;
+  document.getElementById("px5").innerHTML="Iron block: "+px5;
+  document.getElementById("px6").innerHTML="Diamond: "+px6;
+  document.getElementById("px7").innerHTML="Diamond block: "+px7;
+  document.getElementById("px8").innerHTML="Obsidian: "+px8;
+  document.getElementById("px9").innerHTML="Netherite: "+px9;
+  document.getElementById("px10").innerHTML="Netherite block: "+px10;
+  document.getElementById("px11").innerHTML="Eye of ender: "+px11;
+  document.getElementById("px12").innerHTML="Enderite: "+px12;
   lastpoints=points;
   lastmetapoints=metapoints;
   lastmetametapoints=metametapoints;
@@ -391,6 +482,7 @@ function reset(){
   metametapoints=zero;
   infinitypoints=0;
   eternitypoints=0;
+  luckypoints=0;
   breakinf=0;
   u1=0;
   u2=0;
@@ -433,6 +525,14 @@ function save(){
   localStorage.setItem("ach6",ach6.toString());
   localStorage.setItem("eternitypoints",eternitypoints.toString());
   localStorage.setItem("luckypoints",luckypoints.toString());
+  localStorage.setItem("crafts",crafts.toString());
+  localStorage.setItem("goldenapple",goldenapple.toString());
+  for (var i=1; i<=20; i++){
+    eval("localStorage.setItem('mc"+i+"',mc"+i+".toString())")
+  }
+  for (var i=1; i<=12; i++){
+    eval("localStorage.setItem('px"+i+"',px"+i+".toString())")
+  }
 }
 function getIP(){
   if (isInf){
@@ -488,6 +588,288 @@ function ticker(){
     tickerlist=["ok gg u beat the game now beat <a href='pcng-'>NG-</a>"]
   }
   return tickerlist[Math.floor(Math.random()*tickerlist.length)]
+}
+function make(string){
+  if (crafts>=1){
+    switch (string){
+      case "stick":
+        if (mc1>=1){
+          mc1-=1;
+          mc2+=2;
+          crafts-=1;
+        }
+        break;
+      case "iron block":
+        if (mc5>=9){
+          mc5-=9;
+          mc6+=1;
+          crafts-=1;
+        }
+        break;
+      case "golden apple":
+        if (mc3>=1 && mc7>=9){
+          mc3-=1;
+          mc7-=9
+          mc9+=1;
+          crafts-=1;
+        }
+        break;
+      case "diamond block":
+        if (mc8>=9){
+          mc8-=9;
+          mc10+=1;
+          crafts-=1;
+        }
+        break;
+      case "netherite":
+        if (mc7>=4 && mc12>=4){
+          mc7-=4;
+          mc12-=4;
+          mc13+=2;
+          crafts-=1;
+        }
+        break;
+      case "netherite block":
+        if (mc13>=9){
+          mc13-=9;
+          mc14+=1;
+          crafts-=1;
+        }
+        break;
+      case "eye of ender":
+        if (mc15>=1 && mc16>=1){
+          mc15-=1;
+          mc16-=1;
+          mc17+=1;
+          crafts-=1;
+        }
+        break;
+      case "enderite":
+        if (mc10>=3 && mc12>=3 && mc18>=3){
+          mc10-=3;
+          mc12-=3;
+          mc18-=3;
+          mc19+=1;
+          crafts-=1;
+        }
+        break;
+    }
+  }
+}
+function mine(num){
+  for (var i=0; i<Number(eval("px"+num))*(1+goldenapple);i++){
+    var randomnum=Math.floor(Math.random()*100)
+    switch (num){
+      case 1:
+        if (randomnum<=50){
+          mc1+=1;
+        } else if (randomnum<=55){
+          mc3+=1;
+        }
+        break;
+      case 2:
+        if (randomnum<=20){
+          mc4+=1;
+        } else if (randomnum<=30){
+          mc1+=1;
+        }
+        break;
+      case 3:
+        if (randomnum<=10){
+          mc5+=1;
+        } else if (randomnum<=20){
+          mc4+=1;
+        } else if (randomnum<=25){
+          mc1+=1
+        }
+        break;
+      case 4:
+        if (randomnum<=5){
+          mc7+=1;
+        } else if (randomnum<=7){
+          mc8+=1;
+        } else if (randomnum<=17){
+          mc5+=1;
+        } else if (randomnum<=22){
+          mc1+=1;
+        }
+        break;
+      case 5:
+        if (randomnum<=30){
+          mc7+=1;
+        } else if (randomnum<=50){
+          mc8+=1;
+        } else if (randomnum<=90){
+          mc5+=1;
+        }
+        break;
+      case 6:
+        if (randomnum<=10){
+          mc8+=1;
+        } else if (randomnum<=12){
+          mc11+=1;
+        } else if (randomnum<=32){
+          mc5+=1;
+        } else if (randomnum<=52){
+          mc7+=1;
+        }
+        break;
+      case 7:
+        if (randomnum<=50){
+          mc8+=1;
+        } else if (randomnum<=80){
+          mc11+=1;
+        }
+        break;
+      case 8:
+        if (randomnum<=10){
+          mc11+=1;
+        } else if (randomnum<=20){
+          mc8+=1;
+        } else if (randomnum<=25){
+          mc12+=1;
+        }
+        break;
+      case 9:
+        if (randomnum<=20){
+          mc12+=1;
+        } else if (randomnum<=22){
+          mc15+=1;
+        } else if (randomnum<=24){
+          mc16+=1;
+        }
+        break;
+      case 10:
+        if (randomnum<=50){
+          mc15+=1;
+        } else if (randomnum<=100){
+          mc16+=1;
+        }
+        break;
+      case 11:
+        if (randomnum<=2){
+          mc18+=1;
+        } else if (randomnum<=22){
+          mc16+=1;
+        }
+        break;
+      case 12:
+        if (randomnum<=1){
+          mc20+=1;
+        }
+        break;
+    }
+  }
+}
+function pmake(num){
+  switch (num){
+    case 2:
+      if (mc1>=3 && mc2>=2){
+        mc1-=3;
+        mc2-=2;
+        px2+=1;
+      }
+      break;
+    case 3:
+      if (mc4>=3 && mc2>=2){
+        mc4-=3;
+        mc2-=2;
+        px3+=1;
+      }
+      break;
+    case 4:
+      if (mc5>=3 && mc2>=2){
+        mc1-=3;
+        mc2-=2;
+        px4+=1;
+      }
+      break;
+    case 5:
+      if (mc6>=3 && mc1>=2){
+        mc6-=3;
+        mc1-=2;
+        px5+=1;
+      }
+      break;
+    case 6:
+      if (mc8>=3 && mc2>=2){
+        mc8-=3;
+        mc2-=2;
+        px6+=1;
+      }
+      break;
+    case 7:
+      if (mc10>=3 && mc1>=2){
+        mc10-=3;
+        mc1-=2;
+        px7+=1;
+      }
+      break;
+    case 8:
+      if (mc11>=10){
+        mc11-=10;
+        px8+=1;
+      }
+      break;
+    case 9:
+      if (mc13>=3 && mc2>=2){
+        mc13-=3;
+        mc2-=2;
+        px9+=1;
+      }
+      break;
+    case 10:
+      if (mc14>=3 && mc1>=2){
+        mc14-=3;
+        mc2-=2;
+        px10+=1;
+      }
+      break;
+    case 11:
+      if (mc17>=3 && mc2>=2){
+        mc17-=3;
+        mc2-=2;
+        px11+=1;
+      }
+      break;
+    case 12:
+      if (mc19>=3 && mc2>=2){
+        mc19-=3;
+        mc2-=2;
+        px12+=1;
+      }
+      break;
+  }
+}
+function minecraftify(){
+  if (u1l){
+    clearInterval(u1l);
+  }
+  if (u2l){
+    clearInterval(u2l);
+  }
+  if (u3l){
+    clearInterval(u3l);
+  }
+  if (u4l){
+    clearInterval(u4l);
+  }
+  points=zero;
+  metapoints=zero;
+  metametapoints=zero;
+  infinitypoints=0;
+  breakinf=0;
+  u1=0;
+  u2=0;
+  u3=0;
+  u4=0;
+  u5=0;
+  u6=0;
+  u7=0;
+  crafts+=5;
+  luckypoints=crafts;
+  eternitypoints=10**crafts;
+  px1+=1;
 }
 document.getElementById('lucky').style.display="none";
 document.getElementById("ticker").innerHTML=ticker();
