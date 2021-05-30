@@ -244,8 +244,8 @@ function check(){
       }
     }
     if (eternitypoints==Infinity && (document.getElementById("minecraftify").innerHTML=="<button>Get Infinity Eternity points to Minecraftify</button>" || lastscreennum!=1)){
-      document.getElementById("minecraftify").innerHTML="<button onclick='minecraftify()'>Minecraftify for 1 fist and 1 craft</button>"
-    } else if (eternitypoints!=Infinity && (document.getElementById("minecraftify").innerHTML=="<button onclick='minecraftify()'>Minecraftify for 1 fist and 1 craft</button>" || lastscreennum!=1)){
+      document.getElementById("minecraftify").innerHTML="<button onclick='minecraftify()'>Minecraftify for 1 fist and 5 craft</button>"
+    } else if (eternitypoints!=Infinity && (document.getElementById("minecraftify").innerHTML=="<button onclick='minecraftify()'>Minecraftify for 1 fist and 5 craft</button>" || lastscreennum!=1)){
       document.getElementById("minecraftify").innerHTML="<button>Get Infinity Eternity points to Minecraftify</button>"
     }
   } else if (screennum!=1 && lastscreennum!=screennum){
@@ -286,8 +286,10 @@ function check(){
   }
   if (screennum==5){
     document.getElementById('minecraft').style.display='block';
+    document.getElementById('footer').style.display='none';
   } else {
     document.getElementById('minecraft').style.display='none';
+    document.getElementById('footer').style.display='block';
   }
   if (metametapoints.gte(bigInf)){
     isInf=true;
