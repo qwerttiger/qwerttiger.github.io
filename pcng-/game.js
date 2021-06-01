@@ -286,10 +286,10 @@ function check(){
   }
   if (screennum==5){
     document.getElementById('minecraft').style.display='block';
-    document.getElementById('footer').style.display='none';
+    //no footer
   } else {
     document.getElementById('minecraft').style.display='none';
-    document.getElementById('footer').style.display='block';
+    //no footer
   }
   if (metametapoints.gte(bigInf)){
     isInf=true;
