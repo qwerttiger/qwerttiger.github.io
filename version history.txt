@@ -42,3 +42,4 @@ date       update name                                                          
 20210528 - "MINECRAFTIFY. took a lot of code (+496 lines)"                                  v9.0.0           191          89          1058       167               1505          496           32.96
 20210528 - "bug fixes"                                                                      v9.0.1           191          90          1060       167               1508          003           00.20
 20210609 - "way better fixes"                                                               v9.1.0           193          90          1126       167               1576          068           04.31
+20210609 - "more achievements"                                                              v9.1.1           198          90          1161       167               1616          040           02.48

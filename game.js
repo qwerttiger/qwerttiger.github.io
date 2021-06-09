@@ -42,6 +42,11 @@ var ach3=0;
 var ach4=0;
 var ach5=0;
 var ach6=0;
+var ach7=0;
+var ach8=0;
+var ach9=0;
+var ach10=0;
+var ach11=0;
 var mc1=0;
 var mc2=0;
 var mc3=0;
@@ -346,6 +351,26 @@ function check(){
     ach6=1;
     document.getElementById("ach6").classList.add("gottenach");
   }
+  if (luckypoints>=1 || ach7){
+    ach7=1;
+    document.getElementById("ach7").classList.add("gottenach");
+  }
+  if (luckypoints>=10 || ach8){
+    ach8=1;
+    document.getElementById("ach8").classList.add("gottenach");
+  }
+  if (eternitypoints==Infinity || ach9){
+    ach9=1;
+    document.getElementById("ach9").classList.add("gottenach");
+  }
+  if (px2>=1 || ach10){
+    ach10=1;
+    document.getElementById("ach10").classList.add("gottenach");
+  }
+  if (mc20>=1 || ach11){
+    ach11=1;
+    document.getElementById("ach11").classList.add("gottenach");
+  }
   if (!u2){
     for (element of document.getElementsByClassName("ac1")){
       element.style.display="none";
@@ -533,6 +558,11 @@ function save(){
   localStorage.setItem("ach4",ach4.toString());
   localStorage.setItem("ach5",ach5.toString());
   localStorage.setItem("ach6",ach6.toString());
+  localStorage.setItem("ach7",ach7.toString());
+  localStorage.setItem("ach8",ach8.toString());
+  localStorage.setItem("ach9",ach9.toString());
+  localStorage.setItem("ach10",ach10.toString());
+  localStorage.setItem("ach11",ach11.toString());
   localStorage.setItem("eternitypoints",eternitypoints.toString());
   localStorage.setItem("luckypoints",luckypoints.toString());
   localStorage.setItem("crafts",crafts.toString());
@@ -919,7 +949,7 @@ function importt(){
   var savestr=prompt("Input your save:");
   if (savestr!=null){
     savestr=savestr.replace(/b/g,"\.").replace(/d/g,"\|").replace(/e/g,"0").replace(/f/g,"1").replace(/g/g,"2").replace(/h/g,"3").replace(/i/g,"4").replace(/j/g,"5").replace(/k/g,"6").replace(/l/g,"7").replace(/m/g,"8").replace(/n/g,"9").replace(/c/g,"e").replace(/a/g,"Infinity");
-    if (savestr.split("|").length==54){
+    if (savestr.split("|").length==59){
       reset();
       var savelist=savestr.split("|");
       points=parse(savelist[0]);
@@ -976,6 +1006,11 @@ function importt(){
       crafts=Number(savelist[51]);
       goldenapple=Number(savelist[52]);
       mines=Number(savelist[53]);
+      ach7=Number(savelist[54]);
+      ach8=Number(savelist[55]);
+      ach9=Number(savelist[56]);
+      ach10=Number(savelist[57]);
+      ach11=Number(savelist[58]);
       if (u1){
         u1l=setInterval(addpoint,100);
       }
@@ -992,7 +1027,7 @@ function importt(){
   }
 }
 function exportt(){
-  prompt("Here is your save:",(points+"|"+metapoints+"|"+metametapoints+"|"+infinitypoints+"|"+u1+"|"+u2+"|"+u3+"|"+u4+"|"+u5+"|"+u6+"|"+u7+"|"+breakinf+"|"+ach1+"|"+ach2+"|"+ach3+"|"+ach4+"|"+ach5+"|"+ach6+"|"+eternitypoints+"|"+luckypoints+"|"+mc1+"|"+mc2+"|"+mc3+"|"+mc4+"|"+mc5+"|"+mc6+"|"+mc7+"|"+mc8+"|"+mc9+"|"+mc10+"|"+mc11+"|"+mc12+"|"+mc13+"|"+mc14+"|"+mc15+"|"+mc16+"|"+mc17+"|"+mc18+"|"+mc19+"|"+px1+"|"+px2+"|"+px3+"|"+px4+"|"+px5+"|"+px6+"|"+px7+"|"+px8+"|"+px9+"|"+px10+"|"+px11+"|"+px12+"|"+crafts+"|"+goldenapple+"|"+mines).replace(/Infinity/g,"a").replace(/\./g,"b").replace(/e/g,"c").replace(/\|/g,"d").replace(/0/g,"e").replace(/1/g,"f").replace(/2/g,"g").replace(/3/g,"h").replace(/4/g,"i").replace(/5/g,"j").replace(/6/g,"k").replace(/7/g,"l").replace(/8/g,"m").replace(/9/g,"n"));
+  prompt("Here is your save:",(points+"|"+metapoints+"|"+metametapoints+"|"+infinitypoints+"|"+u1+"|"+u2+"|"+u3+"|"+u4+"|"+u5+"|"+u6+"|"+u7+"|"+breakinf+"|"+ach1+"|"+ach2+"|"+ach3+"|"+ach4+"|"+ach5+"|"+ach6+"|"+eternitypoints+"|"+luckypoints+"|"+mc1+"|"+mc2+"|"+mc3+"|"+mc4+"|"+mc5+"|"+mc6+"|"+mc7+"|"+mc8+"|"+mc9+"|"+mc10+"|"+mc11+"|"+mc12+"|"+mc13+"|"+mc14+"|"+mc15+"|"+mc16+"|"+mc17+"|"+mc18+"|"+mc19+"|"+px1+"|"+px2+"|"+px3+"|"+px4+"|"+px5+"|"+px6+"|"+px7+"|"+px8+"|"+px9+"|"+px10+"|"+px11+"|"+px12+"|"+crafts+"|"+goldenapple+"|"+mines+"|"+ach7+"|"+ach8+"|"+ach9+"|"+ach10+"|"+ach11).replace(/Infinity/g,"a").replace(/\./g,"b").replace(/e/g,"c").replace(/\|/g,"d").replace(/0/g,"e").replace(/1/g,"f").replace(/2/g,"g").replace(/3/g,"h").replace(/4/g,"i").replace(/5/g,"j").replace(/6/g,"k").replace(/7/g,"l").replace(/8/g,"m").replace(/9/g,"n"));
 }
 function keydown(event){
   keypressed=event.key;
