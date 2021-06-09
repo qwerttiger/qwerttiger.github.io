@@ -595,7 +595,7 @@ function ticker(){
   if (luckypoints>=10){
     tickerlist.push("how u get "+luckypoints+" lucky points?")
   }
-  if (luckypoints>=1000){
+  if (mc20>=1){
     tickerlist=["ok gg u beat the game now beat <a href='pcng-'>NG-</a>"]
   }
   return tickerlist[Math.floor(Math.random()*tickerlist.length)]
@@ -668,10 +668,10 @@ function make(string){
   }
 }
 function mine(num){
-  for (var i=0; i<Number(eval("px"+num))*(1+goldenapple);i++){
-    var randomnum=Math.floor(Math.random()*100)
-    if (mines>=1){
-      mines-=1;
+  if (mines>=1){
+    mines-=1;
+    for (var i=0; i<Number(eval("px"+num))*(1+goldenapple);i++){
+      var randomnum=Math.floor(Math.random()*100)
       switch (num){
         case 1:
           if (randomnum<=50){

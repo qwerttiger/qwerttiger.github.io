@@ -1,13 +1,16 @@
-Initial save:                                    ededededededededededededededededededede
-1 metapoint:                                     edfdededededededededededfdfdededededede
-1 metametapoint:                                 ededfdedededededededededfdfdfdedededede
-Upgrade 1:                                       ededededfdedededededededfdfdfdfdededede
-Break Infinity:                                  ededededfdfdfdfdidfdedfdfdfdfdfdededede
-IP squared upgrade:                              edededfeeeeeeeeedfdfdfdfdgfdfdfdfdfdfdfdfdfdedede
-1 Eternity Point:                                ededededededededededededededededededfde
-10 Eternity Points:                              ededededededededededededededededededfede
-1 Lucky Point:                                   ededededededededededededededededededgedf
-5 Lucky Points:                                  ededededededededededededededededededfeeeeedj
-20 Lucky Points:                                 ededededededededededededededededededfeeeeeeeeeeeeeeeeeeeedge
-100 Lucky Points:                                ededededededededededededededededededfeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeedfee
-Infinity Eternity Points:                        ededededededededededededededededededadfeee
+Initial save:                       ededededededededededededededededededededededededededededededededededededededededededededededededededededede
+1 metapoint:                        edfdededededededededededfdfdededededededededededededededededededededededededededededededededededededededede
+1 metametapoint:                    ededfdedededededededededfdfdfdedededededededededededededededededededededededededededededededededededededede
+Upgrade 1:                          ededededfdedededededededfdfdfdfdededededededededededededededededededededededededededededededededededededede
+Break Infinity:                     ededededfdfdfdfdidfdedfdfdfdfdfdededededededededededededededededededededededededededededededededededededede
+IP squared upgrade:                 edededfeeeeeeeeedfdfdfdfdgfdfdfdfdfdfdfdfdfdedededededededededededededededededededededededededededededededededededede
+1 Eternity Point:                   ededededededededededededfdfdfdfdfdfdfdedededededededededededededededededededededededededededededededededede
+10 Eternity Points:                 ededededededededededededfdfdfdfdfdfdfededededededededededededededededededededededededededededededededededede
+1 Lucky Point:                      ededededededededededededfdfdfdfdfdfdgedfdededededededededededededededededededededededededededededededededede
+5 Lucky Points:                     ededededededededededededfdfdfdfdfdfdfeeeeedjdededededededededededededededededededededededededededededededededede
+20 Lucky Points:                    ededededededededededededfdfdfdfdfdfdfeeeeeeeeeeeeeeeeeeeedgedededededededededededededededededededededededededededededededededede
+100 Lucky Points:                   ededededededededededededededededededfeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeedfeedededededededededededededededededededededededededededededededededede
+Infinity Eternity Points:           ededededededededededededededededededadfeeedededededededededededededededededededededededededededededededededede
+Start of Minecraftify:              ededededededededededededfdfdfdfdfdfdedededededededededededededededededededededjdedededededededededededgjdedfee
+Play Minecraft here:                ededededededededededededfdfdfdfdfdfdedededededededededededededededededededededgeededededededededededededfeeededieee
+end of the game:                    ededededededededededededfdfdfdfdfdfdedededededededededededededededededededededgeedfeedfeedfeedfeedfeedfeedfeedfeedfeedfeedfeedfeeededieee
