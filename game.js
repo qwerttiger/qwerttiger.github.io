@@ -76,6 +76,7 @@ var px11=0;
 var px12=0;
 var goldenapple=0;
 var crafts=0;
+var mines=0;
 if (localStorage.getItem("points")){
   points=parse(localStorage.getItem("points"));
 }
@@ -141,6 +142,9 @@ if (localStorage.getItem("crafts")){
 }
 if (localStorage.getItem("goldenapple")){
   goldenapple=Number(localStorage.getItem("goldenapple"));
+}
+if (localStorage.getItem("mines")){
+  mines=Number(localStorage.getItem("mines"));
 }
 for (var i=1; i<=20; i++){
   eval("if (localStorage.getItem('mc"+i+"')){mc"+i+"=Number(localStorage.getItem('mc"+i+"'))}")
@@ -244,8 +248,8 @@ function check(){
       }
     }
     if (eternitypoints==Infinity && (document.getElementById("minecraftify").innerHTML=="<button>Get Infinity Eternity points to Minecraftify</button>" || lastscreennum!=1)){
-      document.getElementById("minecraftify").innerHTML="<button onclick='minecraftify()'>Minecraftify for 1 fist and 5 craft</button>"
-    } else if (eternitypoints!=Infinity && (document.getElementById("minecraftify").innerHTML=="<button onclick='minecraftify()'>Minecraftify for 1 fist and 5 craft</button>" || lastscreennum!=1)){
+      document.getElementById("minecraftify").innerHTML="<button onclick=\"minecraftify()\">Minecraftify for 1 fist and 5 craft</button>"
+    } else if (eternitypoints!=Infinity && (document.getElementById("minecraftify").innerHTML=="<button onclick=\"minecraftify()\">Minecraftify for 1 fist and 5 craft</button>" || lastscreennum!=1)){
       document.getElementById("minecraftify").innerHTML="<button>Get Infinity Eternity points to Minecraftify</button>"
     }
   } else if (screennum!=1 && lastscreennum!=screennum){
@@ -286,10 +290,13 @@ function check(){
   }
   if (screennum==5){
     document.getElementById('minecraft').style.display='block';
-    document.getElementById('footer').style.display='none';
   } else {
     document.getElementById('minecraft').style.display='none';
+  }
+  if (screennum==0){
     document.getElementById('footer').style.display='block';
+  } else {
+    document.getElementById('footer').style.display='none';
   }
   if (metametapoints.gte(bigInf)){
     isInf=true;
@@ -386,6 +393,7 @@ function check(){
   }
   document.getElementById("crafts").innerHTML="Crafts: "+crafts;
   document.getElementById("goldenapple").innerHTML="Used golden apples: "+goldenapple;
+  document.getElementById("mines").innerHTML="Mines: "+mines;
   document.getElementById("mc1").innerHTML="Wood: "+mc1;
   document.getElementById("mc2").innerHTML="Sticks: "+mc2;
   document.getElementById("mc3").innerHTML="Apple: "+mc3;
@@ -529,6 +537,7 @@ function save(){
   localStorage.setItem("luckypoints",luckypoints.toString());
   localStorage.setItem("crafts",crafts.toString());
   localStorage.setItem("goldenapple",goldenapple.toString());
+  localStorage.setItem("mines",mines.toString());
   for (var i=1; i<=20; i++){
     eval("localStorage.setItem('mc"+i+"',mc"+i+".toString())")
   }
@@ -661,192 +670,208 @@ function make(string){
 function mine(num){
   for (var i=0; i<Number(eval("px"+num))*(1+goldenapple);i++){
     var randomnum=Math.floor(Math.random()*100)
+    if (mines>=1){
+      mines-=1;
+      switch (num){
+        case 1:
+          if (randomnum<=50){
+            mc1+=1;
+          } else if (randomnum<=55){
+            mc3+=1;
+          }
+          break;
+        case 2:
+          if (randomnum<=20){
+            mc4+=1;
+          } else if (randomnum<=30){
+            mc1+=1;
+          }
+          break;
+        case 3:
+          if (randomnum<=10){
+            mc5+=1;
+          } else if (randomnum<=20){
+            mc4+=1;
+          } else if (randomnum<=25){
+            mc1+=1
+          }
+          break;
+        case 4:
+          if (randomnum<=5){
+            mc7+=1;
+          } else if (randomnum<=7){
+            mc8+=1;
+          } else if (randomnum<=17){
+            mc5+=1;
+          } else if (randomnum<=22){
+            mc1+=1;
+          }
+          break;
+        case 5:
+          if (randomnum<=30){
+            mc7+=1;
+          } else if (randomnum<=50){
+            mc8+=1;
+          } else if (randomnum<=90){
+            mc5+=1;
+          }
+          break;
+        case 6:
+          if (randomnum<=10){
+            mc8+=1;
+          } else if (randomnum<=12){
+            mc11+=1;
+          } else if (randomnum<=32){
+            mc5+=1;
+          } else if (randomnum<=52){
+            mc7+=1;
+          }
+          break;
+        case 7:
+          if (randomnum<=50){
+            mc8+=1;
+          } else if (randomnum<=80){
+            mc11+=1;
+          }
+          break;
+        case 8:
+          if (randomnum<=10){
+            mc11+=1;
+          } else if (randomnum<=20){
+            mc8+=1;
+          } else if (randomnum<=25){
+            mc12+=1;
+          }
+          break;
+        case 9:
+          if (randomnum<=20){
+            mc12+=1;
+          } else if (randomnum<=22){
+            mc15+=1;
+          } else if (randomnum<=24){
+            mc16+=1;
+          }
+          break;
+        case 10:
+          if (randomnum<=50){
+            mc15+=1;
+          } else if (randomnum<=100){
+            mc16+=1;
+          }
+          break;
+        case 11:
+          if (randomnum<=2){
+            mc18+=1;
+          } else if (randomnum<=22){
+            mc16+=1;
+          }
+          break;
+        case 12:
+          if (randomnum<=1){
+            mc20+=1;
+          }
+          break;
+      }
+    }
+  }
+}
+function pmake(num){
+  if (crafts>=1){
     switch (num){
-      case 1:
-        if (randomnum<=50){
-          mc1+=1;
-        } else if (randomnum<=55){
-          mc3+=1;
-        }
-        break;
       case 2:
-        if (randomnum<=20){
-          mc4+=1;
-        } else if (randomnum<=30){
-          mc1+=1;
+        if (mc1>=3 && mc2>=2){
+          mc1-=3;
+          mc2-=2;
+          px2+=1;
+          crafts-=1;
         }
         break;
       case 3:
-        if (randomnum<=10){
-          mc5+=1;
-        } else if (randomnum<=20){
-          mc4+=1;
-        } else if (randomnum<=25){
-          mc1+=1
+        if (mc4>=3 && mc2>=2){
+          mc4-=3;
+          mc2-=2;
+          px3+=1;
+          crafts-=1;
         }
         break;
       case 4:
-        if (randomnum<=5){
-          mc7+=1;
-        } else if (randomnum<=7){
-          mc8+=1;
-        } else if (randomnum<=17){
-          mc5+=1;
-        } else if (randomnum<=22){
-          mc1+=1;
+        if (mc5>=3 && mc2>=2){
+          mc5-=3;
+          mc2-=2;
+          px4+=1;
+          crafts-=1;
         }
         break;
       case 5:
-        if (randomnum<=30){
-          mc7+=1;
-        } else if (randomnum<=50){
-          mc8+=1;
-        } else if (randomnum<=90){
-          mc5+=1;
+        if (mc6>=3 && mc1>=2){
+          mc6-=3;
+          mc1-=2;
+          px5+=1;
+          crafts-=1;
         }
         break;
       case 6:
-        if (randomnum<=10){
-          mc8+=1;
-        } else if (randomnum<=12){
-          mc11+=1;
-        } else if (randomnum<=32){
-          mc5+=1;
-        } else if (randomnum<=52){
-          mc7+=1;
+        if (mc8>=3 && mc2>=2){
+          mc8-=3;
+          mc2-=2;
+          px6+=1;
+          crafts-=1;
         }
         break;
       case 7:
-        if (randomnum<=50){
-          mc8+=1;
-        } else if (randomnum<=80){
-          mc11+=1;
+        if (mc10>=3 && mc1>=2){
+          mc10-=3;
+          mc1-=2;
+          px7+=1;
+          crafts-=1;
         }
         break;
       case 8:
-        if (randomnum<=10){
-          mc11+=1;
-        } else if (randomnum<=20){
-          mc8+=1;
-        } else if (randomnum<=25){
-          mc12+=1;
+        if (mc11>=10){
+          mc11-=10;
+          px8+=1;
+          crafts-=1;
         }
         break;
       case 9:
-        if (randomnum<=20){
-          mc12+=1;
-        } else if (randomnum<=22){
-          mc15+=1;
-        } else if (randomnum<=24){
-          mc16+=1;
+        if (mc13>=3 && mc2>=2){
+          mc13-=3;
+          mc2-=2;
+          px9+=1;
+          crafts-=1;
         }
         break;
       case 10:
-        if (randomnum<=50){
-          mc15+=1;
-        } else if (randomnum<=100){
-          mc16+=1;
+        if (mc14>=3 && mc1>=2){
+          mc14-=3;
+          mc2-=2;
+          px10+=1;
+          crafts-=1;
         }
         break;
       case 11:
-        if (randomnum<=2){
-          mc18+=1;
-        } else if (randomnum<=22){
-          mc16+=1;
+        if (mc17>=3 && mc2>=2){
+          mc17-=3;
+          mc2-=2;
+          px11+=1;
+          crafts-=1;
         }
         break;
       case 12:
-        if (randomnum<=1){
-          mc20+=1;
+        if (mc19>=3 && mc2>=2){
+          mc19-=3;
+          mc2-=2;
+          px12+=1;
+          crafts-=1;
         }
         break;
     }
   }
 }
-function pmake(num){
-  switch (num){
-    case 2:
-      if (mc1>=3 && mc2>=2){
-        mc1-=3;
-        mc2-=2;
-        px2+=1;
-      }
-      break;
-    case 3:
-      if (mc4>=3 && mc2>=2){
-        mc4-=3;
-        mc2-=2;
-        px3+=1;
-      }
-      break;
-    case 4:
-      if (mc5>=3 && mc2>=2){
-        mc1-=3;
-        mc2-=2;
-        px4+=1;
-      }
-      break;
-    case 5:
-      if (mc6>=3 && mc1>=2){
-        mc6-=3;
-        mc1-=2;
-        px5+=1;
-      }
-      break;
-    case 6:
-      if (mc8>=3 && mc2>=2){
-        mc8-=3;
-        mc2-=2;
-        px6+=1;
-      }
-      break;
-    case 7:
-      if (mc10>=3 && mc1>=2){
-        mc10-=3;
-        mc1-=2;
-        px7+=1;
-      }
-      break;
-    case 8:
-      if (mc11>=10){
-        mc11-=10;
-        px8+=1;
-      }
-      break;
-    case 9:
-      if (mc13>=3 && mc2>=2){
-        mc13-=3;
-        mc2-=2;
-        px9+=1;
-      }
-      break;
-    case 10:
-      if (mc14>=3 && mc1>=2){
-        mc14-=3;
-        mc2-=2;
-        px10+=1;
-      }
-      break;
-    case 11:
-      if (mc17>=3 && mc2>=2){
-        mc17-=3;
-        mc2-=2;
-        px11+=1;
-      }
-      break;
-    case 12:
-      if (mc19>=3 && mc2>=2){
-        mc19-=3;
-        mc2-=2;
-        px12+=1;
-      }
-      break;
-  }
-}
 function minecraftify(){
   if (u1l){
     clearInterval(u1l);
-  }
+  } 
   if (u2l){
     clearInterval(u2l);
   }
@@ -869,6 +894,7 @@ function minecraftify(){
   u6=0;
   u7=0;
   crafts+=5;
+  mines+=20;
   luckypoints=crafts;
   eternitypoints=10**crafts;
   px1+=1;
@@ -893,7 +919,7 @@ function importt(){
   var savestr=prompt("Input your save:");
   if (savestr!=null){
     savestr=savestr.replace(/b/g,"\.").replace(/d/g,"\|").replace(/e/g,"0").replace(/f/g,"1").replace(/g/g,"2").replace(/h/g,"3").replace(/i/g,"4").replace(/j/g,"5").replace(/k/g,"6").replace(/l/g,"7").replace(/m/g,"8").replace(/n/g,"9").replace(/c/g,"e").replace(/a/g,"Infinity");
-    if (savestr.split("|").length==20){
+    if (savestr.split("|").length==54){
       reset();
       var savelist=savestr.split("|");
       points=parse(savelist[0]);
@@ -916,6 +942,40 @@ function importt(){
       ach6=Number(savelist[17]);
       eternitypoints=Number(savelist[18]);
       luckypoints=Number(savelist[19]);
+      mc1=Number(savelist[20]);
+      mc2=Number(savelist[21]);
+      mc3=Number(savelist[22]);
+      mc4=Number(savelist[23]);
+      mc5=Number(savelist[24]);
+      mc6=Number(savelist[25]);
+      mc7=Number(savelist[26]);
+      mc8=Number(savelist[27]);
+      mc9=Number(savelist[28]);
+      mc10=Number(savelist[29]);
+      mc11=Number(savelist[30]);
+      mc12=Number(savelist[31]);
+      mc13=Number(savelist[32]);
+      mc14=Number(savelist[33]);
+      mc15=Number(savelist[34]);
+      mc16=Number(savelist[35]);
+      mc17=Number(savelist[36]);
+      mc18=Number(savelist[37]);
+      mc19=Number(savelist[38]);
+      px1=Number(savelist[39]);
+      px2=Number(savelist[40]);
+      px3=Number(savelist[41]);
+      px4=Number(savelist[42]);
+      px5=Number(savelist[43]);
+      px6=Number(savelist[44]);
+      px7=Number(savelist[45]);
+      px8=Number(savelist[46]);
+      px9=Number(savelist[47]);
+      px10=Number(savelist[48]);
+      px11=Number(savelist[49]);
+      px12=Number(savelist[50]);
+      crafts=Number(savelist[51]);
+      goldenapple=Number(savelist[52]);
+      mines=Number(savelist[53]);
       if (u1){
         u1l=setInterval(addpoint,100);
       }
@@ -932,7 +992,7 @@ function importt(){
   }
 }
 function exportt(){
-  prompt("Here is your save:",(points+"|"+metapoints+"|"+metametapoints+"|"+infinitypoints+"|"+u1+"|"+u2+"|"+u3+"|"+u4+"|"+u5+"|"+u6+"|"+u7+"|"+breakinf+"|"+ach1+"|"+ach2+"|"+ach3+"|"+ach4+"|"+ach5+"|"+ach6+"|"+eternitypoints+"|"+luckypoints).replace(/Infinity/g,"a").replace(/\./g,"b").replace(/e/g,"c").replace(/\|/g,"d").replace(/0/g,"e").replace(/1/g,"f").replace(/2/g,"g").replace(/3/g,"h").replace(/4/g,"i").replace(/5/g,"j").replace(/6/g,"k").replace(/7/g,"l").replace(/8/g,"m").replace(/9/g,"n"));
+  prompt("Here is your save:",(points+"|"+metapoints+"|"+metametapoints+"|"+infinitypoints+"|"+u1+"|"+u2+"|"+u3+"|"+u4+"|"+u5+"|"+u6+"|"+u7+"|"+breakinf+"|"+ach1+"|"+ach2+"|"+ach3+"|"+ach4+"|"+ach5+"|"+ach6+"|"+eternitypoints+"|"+luckypoints+"|"+mc1+"|"+mc2+"|"+mc3+"|"+mc4+"|"+mc5+"|"+mc6+"|"+mc7+"|"+mc8+"|"+mc9+"|"+mc10+"|"+mc11+"|"+mc12+"|"+mc13+"|"+mc14+"|"+mc15+"|"+mc16+"|"+mc17+"|"+mc18+"|"+mc19+"|"+px1+"|"+px2+"|"+px3+"|"+px4+"|"+px5+"|"+px6+"|"+px7+"|"+px8+"|"+px9+"|"+px10+"|"+px11+"|"+px12+"|"+crafts+"|"+goldenapple+"|"+mines).replace(/Infinity/g,"a").replace(/\./g,"b").replace(/e/g,"c").replace(/\|/g,"d").replace(/0/g,"e").replace(/1/g,"f").replace(/2/g,"g").replace(/3/g,"h").replace(/4/g,"i").replace(/5/g,"j").replace(/6/g,"k").replace(/7/g,"l").replace(/8/g,"m").replace(/9/g,"n"));
 }
 function keydown(event){
   keypressed=event.key;
@@ -979,6 +1039,9 @@ function keydown(event){
     if (keypressed=="c" && document.getElementById("lucky").style.display=="inline"){
       document.getElementById("lucky").click();
     }
+    if (keypressed=="m" && eternitypoints==Infinity){
+      minecraftify();
+    }
     if (keypressed=="1"){
       screennum=0;
     }
@@ -993,6 +1056,9 @@ function keydown(event){
     }
     if (keypressed=="5"){
       screennum=4;
+    }
+    if (keypressed=="6"){
+      screennum=5;
     }
     if (keypressed=="ArrowRight"){
       exportt()

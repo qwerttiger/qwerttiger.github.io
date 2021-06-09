@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--update craft pick bug-->
 <html>
   <head>
     <title>Prestige Clicker (v9.0.1)</title>
@@ -77,8 +78,9 @@
     </span>
 
     <span id="minecraft">
-      <span id="crafts"></span>
-      <span id="goldenapple"></span>
+      <span id="crafts"></span><br>
+      <span id="goldenapple"></span><br>
+      <span id="mines"></span>
       <table style="width: 100%">
         <tr>
           <td id="mc1"></td>
@@ -105,7 +107,7 @@
           <td><button onclick="make('iron block')">make</button></td>
           <td></td>
           <td></td>
-          <td><button onclick="make('golden apple')">make</button><br><button onclick="if (mc9>=1){goldenapple+=1;mc9-=1}">use</button></td>
+          <td><button onclick="make('golden apple')">make</button><br><button onclick="if (mc9>=1 && goldenapple+mc9<100){goldenapple+=1;mc9-=1}">use (max 100)</button></td>
           <td><button onclick="make('diamond block')">make</button></td>
         </tr>
         <tr>
