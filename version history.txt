@@ -1,5 +1,5 @@
 date       update name                                                                      version number   html lines   css lines   js lines   break inf lines   total lines   added lines   added percent
-20210419 - "very low quality"                                                               v1.0.0           012          00          0005       000               0017          N/A           N/A-
+20210419 - "very low quality"                                                               v1.0.0           012          00          0005       000               0017          N/A           -N/A-
 20210419 - "hmmmm"                                                                          v1.1.0           013          00          0011       000               0024          007           29.17
 20210419 - "this *should* work now"                                                         v1.1.1           013          00          0012       000               0025          001           04.00
 20210419 - "why is this here"                                                               v1.1.2           013          00          0012       000               0025          000           00.00
@@ -43,3 +43,4 @@ date       update name                                                          
 20210528 - "bug fixes"                                                                      v9.0.1           191          90          1060       167               1508          003           00.20
 20210609 - "way better fixes"                                                               v9.1.0           193          90          1126       167               1576          068           04.31
 20210609 - "more achievements"                                                              v9.1.1           198          90          1161       167               1616          040           02.48
+20210610 - "metaminecraftify"                                                               v9.2.0           199          90          1168       167               1624          008           00.49

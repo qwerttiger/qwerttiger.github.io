@@ -82,6 +82,7 @@ var px12=0;
 var goldenapple=0;
 var crafts=0;
 var mines=0;
+var metamultiplier=0;
 if (localStorage.getItem("points-")){
   points=parse(localStorage.getItem("points-"));
 }
@@ -150,6 +151,9 @@ if (localStorage.getItem("goldenapple-")){
 }
 if (localStorage.getItem("mines-")){
   mines=Number(localStorage.getItem("mines-"));
+}
+if (localStorage.getItem("metamultiplier")){
+  metamultiplier=Number(localStorage.getItem("metamultiplier"));
 }
 for (var i=1; i<=20; i++){
   eval("if (localStorage.getItem('mc"+i+"-')){mc"+i+"=Number(localStorage.getItem('mc"+i+"-'))}")
@@ -419,6 +423,7 @@ function check(){
   document.getElementById("crafts").innerHTML="Crafts: "+crafts;
   document.getElementById("goldenapple").innerHTML="Used golden apples: "+goldenapple;
   document.getElementById("mines").innerHTML="Mines: "+mines;
+  document.getElementById("metamult").innerHTML="Metamultiplier: "+(metamultiplier+1);
   document.getElementById("mc1").innerHTML="Wood: "+mc1;
   document.getElementById("mc2").innerHTML="Sticks: "+mc2;
   document.getElementById("mc3").innerHTML="Apple: "+mc3;
@@ -500,44 +505,8 @@ function autometameta(){
   }
 }
 function reset(){
-  if (u1l){
-    clearInterval(u1l);
-  }
-  if (u2l){
-    clearInterval(u2l);
-  }
-  if (u3l){
-    clearInterval(u3l);
-  }
-  if (u4l){
-    clearInterval(u4l);
-  }
-  points=zero;
-  metapoints=zero;
-  metametapoints=zero;
-  infinitypoints=0;
-  eternitypoints=0;
-  luckypoints=0;
-  breakinf=0;
-  u1=0;
-  u2=0;
-  u3=0;
-  u4=0;
-  u5=0;
-  u6=0;
-  u7=0;
-  ach1=0;
-  ach2=0;
-  ach3=0;
-  ach4=0;
-  ach5=0;
-  ach6=0;
-  document.getElementById("ach1").classList.remove("gottenach");
-  document.getElementById("ach2").classList.remove("gottenach");
-  document.getElementById("ach3").classList.remove("gottenach");
-  document.getElementById("ach4").classList.remove("gottenach");
-  document.getElementById("ach5").classList.remove("gottenach");
-  document.getElementById("ach6").classList.remove("gottenach");
+  localStorage.clear();
+  location.reload();
 }
 function save(){
   localStorage.setItem("points-",points.toString());
@@ -560,19 +529,20 @@ function save(){
   localStorage.setItem("ach6-",ach6.toString());
   localStorage.setItem("eternitypoints-",eternitypoints.toString());
   localStorage.setItem("luckypoints-",luckypoints.toString());
-  localStorage.setItem("crafts",crafts.toString());
-  localStorage.setItem("goldenapple",goldenapple.toString());
-  localStorage.setItem("mines",mines.toString());
-  localStorage.setItem("ach7",ach7.toString());
-  localStorage.setItem("ach8",ach8.toString());
-  localStorage.setItem("ach9",ach9.toString());
-  localStorage.setItem("ach10",ach10.toString());
-  localStorage.setItem("ach11",ach11.toString());
+  localStorage.setItem("crafts-",crafts.toString());
+  localStorage.setItem("goldenapple-",goldenapple.toString());
+  localStorage.setItem("mines-",mines.toString());
+  localStorage.setItem("ach7-",ach7.toString());
+  localStorage.setItem("ach8-",ach8.toString());
+  localStorage.setItem("ach9-",ach9.toString());
+  localStorage.setItem("ach10-",ach10.toString());
+  localStorage.setItem("ach11-",ach11.toString());
+  localStorage.setItem("metamultiplier-",metamultiplier.toString());
   for (var i=1; i<=20; i++){
-    eval("localStorage.setItem('mc"+i+"',mc"+i+".toString())")
+    eval("localStorage.setItem('mc"+i+"-',mc"+i+".toString())")
   }
   for (var i=1; i<=12; i++){
-    eval("localStorage.setItem('px"+i+"',px"+i+".toString())")
+    eval("localStorage.setItem('px"+i+"-',px"+i+".toString())")
   }
 }
 function getIP(){
@@ -700,7 +670,7 @@ function make(string){
 function mine(num){
   if (mines>=1){
     mines-=1;
-    for (var i=0; i<Number(eval("px"+num))*(1+goldenapple);i++){
+    for (var i=0; i<Number(eval("px"+num))*(1+goldenapple)*(1+metamultiplier) ;i++){
       var randomnum=Math.floor(Math.random()*100)
       switch (num){
         case 1:
@@ -928,6 +898,43 @@ function minecraftify(){
   luckypoints=crafts;
   eternitypoints=10**crafts;
   px1+=1;
+}
+function metaminecraftify(){
+  if (u1l){
+    clearInterval(u1l);
+  }
+  if (u2l){
+    clearInterval(u2l);
+  }
+  if (u3l){
+    clearInterval(u3l);
+  }
+  if (u4l){
+    clearInterval(u4l);
+  }
+  points=zero;
+  metapoints=zero;
+  metametapoints=zero;
+  infinitypoints=0;
+  breakinf=0;
+  u1=0;
+  u2=0;
+  u3=0;
+  u4=0;
+  u5=0;
+  u6=0;
+  u7=0;
+  crafts=0;
+  mines=0;
+  luckypoints=0;
+  eternitypoints=0;
+  for (var i=1; i<=20; i++){
+    eval("mc"+i+"=0");
+  }
+  for (var i=1; i<=12; i++){
+    eval("px"+i+"=0")
+  }
+  metamultiplier+=1;
 }
 document.getElementById('lucky').style.display="none";
 document.getElementById("ticker").innerHTML=ticker();
