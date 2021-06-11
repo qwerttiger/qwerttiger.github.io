@@ -600,7 +600,12 @@ function ticker(){
   }
   return tickerlist[Math.floor(Math.random()*tickerlist.length)]
 }
-function make(string){
+function make(num){
+  for (var i=0; i<Number(document.getElementById("craftnum").value); i++){
+    makenomult(num);
+  }
+}
+function makenomult(string){
   if (crafts>=1){
     switch (string){
       case "stick":
@@ -776,6 +781,11 @@ function mine(num){
   }
 }
 function pmake(num){
+  for (var i=0; i<Number(document.getElementById("craftnum").value); i++){
+    pmakenomult(num);
+  }
+}
+function pmakenomult(num){
   if (crafts>=1){
     switch (num){
       case 2:
@@ -844,7 +854,7 @@ function pmake(num){
       case 10:
         if (mc14>=3 && mc1>=2){
           mc14-=3;
-          mc2-=2;
+          mc1-=2;
           px10+=1;
           crafts-=1;
         }
@@ -893,10 +903,10 @@ function minecraftify(){
   u5=0;
   u6=0;
   u7=0;
-  crafts+=5;
-  mines+=20;
-  luckypoints=crafts;
-  eternitypoints=10**crafts;
+  crafts+=1;
+  mines+=1;
+  luckypoints=0;
+  eternitypoints=0;
   px1+=1;
 }
 function metaminecraftify(){
@@ -928,7 +938,7 @@ function metaminecraftify(){
   mines=0;
   luckypoints=0;
   eternitypoints=0;
-  metamultiplier+=Math.round(Math.cbrt(mc20));
+  metamultiplier+=1;
   for (var i=1; i<=20; i++){
     eval("mc"+i+"=0");
   }
@@ -1112,37 +1122,37 @@ function keydown(event){
       importt()
     }
     if (keypressed=="!" && !u1){
-      if (infinitypoints>=1){
+      if (infinitypoints>=10){
         u1=1;
-        infinitypoints-=1;
+        infinitypoints-=10;
         u1l=setInterval(addpoint,100);
       }
     }
     if (keypressed=="@" && !u2){
-      if (infinitypoints>=5){
+      if (infinitypoints>=50){
         u2=1;
-        infinitypoints-=5;
+        infinitypoints-=50;
         u2l=setInterval(autometa,100);
       }
     }
     if (keypressed=="#" && !u3){
-      if (infinitypoints>=10){
+      if (infinitypoints>=100){
         u3=1;
-        infinitypoints-=10;
+        infinitypoints-=100;
         u3l=setInterval(autometameta,100);
       }
     }
     if (keypressed=="$" && !u4){
-      if (infinitypoints>=25){
+      if (infinitypoints>=250){
         u4=1;
-        infinitypoints-=25;
+        infinitypoints-=250;
         u4l=setInterval(autoIP,100);
       }
     }
     if (keypressed=="%" && !u6){
-      if (infinitypoints>=15){
+      if (infinitypoints>=150){
         u6=1;
-        infinitypoints-=15;
+        infinitypoints-=150;
       }
     }
     if (keypressed=="^" && !u7){
@@ -1155,9 +1165,9 @@ function keydown(event){
       IPmult();
     }
     if (keypressed=="*" && !breakinf){
-      if (infinitypoints>=100){
+      if (infinitypoints>=10000){
         breakinf=1;
-        infinitypoints-=100;
+        infinitypoints-=10000;
       }
     }
   }

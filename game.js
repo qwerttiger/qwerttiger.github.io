@@ -600,7 +600,12 @@ function ticker(){
   }
   return tickerlist[Math.floor(Math.random()*tickerlist.length)]
 }
-function make(string){
+function make(num){
+  for (var i=0; i<Number(document.getElementById("craftnum").value); i++){
+    makenomult(num);
+  }
+}
+function makenomult(string){
   if (crafts>=1){
     switch (string){
       case "stick":
@@ -776,6 +781,11 @@ function mine(num){
   }
 }
 function pmake(num){
+  for (var i=0; i<Number(document.getElementById("craftnum").value); i++){
+    pmakenomult(num);
+  }
+}
+function pmakenomult(num){
   if (crafts>=1){
     switch (num){
       case 2:
@@ -844,7 +854,7 @@ function pmake(num){
       case 10:
         if (mc14>=3 && mc1>=2){
           mc14-=3;
-          mc2-=2;
+          mc1-=2;
           px10+=1;
           crafts-=1;
         }
@@ -852,7 +862,7 @@ function pmake(num){
       case 11:
         if (mc17>=3 && mc2>=2){
           mc17-=3;
-          mc2-=2;
+          mc1-=2;
           px11+=1;
           crafts-=1;
         }
@@ -1161,7 +1171,7 @@ function keydown(event){
       }
     }
   }
-  if (screennum==4){
+  if (screennum==4 || screennum==5){
     if (event.ctrlKey && event.altKey){
       detect();
     }

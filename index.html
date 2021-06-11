@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Prestige Clicker (v9.2.0)</title>
+    <title>Prestige Clicker (v9.2.2)</title>
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -70,19 +70,20 @@
           <td class="ac3">Infinity Autoclicker:</td>
         </tr>
         <tr>
-          <td class="ac1">At least <input id="metaclicker" value=0> Metapoints Gained</input></td>
-          <td class="ac2">At least <input id="metaaclicker" value=0> Metametapoints Gained</input></td>
-          <td class="ac3">At least <input id="infclicker" value=0> Infinity Points Gained</input></td>
+          <td class="ac1">At least <input id="metaclicker" value=0> Metapoints Gained</td>
+          <td class="ac2">At least <input id="metaaclicker" value=0> Metametapoints Gained</td>
+          <td class="ac3">At least <input id="infclicker" value=0> Infinity Points Gained</td>
         </tr>
         <tr>
-          <td class="ac1">Enabled: <input id="metaclickerenabled" type="checkbox"></input></td>
-          <td class="ac2">Enabled: <input id="metaaclickerenabled" type="checkbox"></input></td>
-          <td class="ac3">Enabled: <input id="infclickerenabled" type="checkbox"></input></td>
+          <td class="ac1">Enabled: <input id="metaclickerenabled" type="checkbox"></td>
+          <td class="ac2">Enabled: <input id="metaaclickerenabled" type="checkbox"></td>
+          <td class="ac3">Enabled: <input id="infclickerenabled" type="checkbox"></td>
         </tr>
       </table>
     </span>
 
     <span id="minecraft">
+      How many times to craft: <input type="number" id="craftnum" min=0 value=1><br>
       <span id="crafts"></span><br>
       <span id="goldenapple"></span><br>
       <span id="mines"></span><br>
@@ -113,7 +114,7 @@
           <td><button onclick="make('iron block')">make</button></td>
           <td></td>
           <td></td>
-          <td><button onclick="make('golden apple')">make</button><br><button onclick="if (mc9>=1 && goldenapple+mc9<100){goldenapple+=1;mc9-=1}">use (max 100)</button></td>
+          <td><button onclick="make('golden apple')">make</button><br><button onclick="if (mc9>=1 && goldenapple<100){goldenapple+=1;mc9-=1}">use (max 100)</button></td>
           <td><button onclick="make('diamond block')">make</button></td>
         </tr>
         <tr>
