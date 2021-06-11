@@ -928,13 +928,13 @@ function metaminecraftify(){
   mines=0;
   luckypoints=0;
   eternitypoints=0;
+  metamultiplier+=Math.round(Math.cbrt(mc20));
   for (var i=1; i<=20; i++){
     eval("mc"+i+"=0");
   }
   for (var i=1; i<=12; i++){
     eval("px"+i+"=0")
   }
-  metamultiplier+=1;
 }
 document.getElementById('lucky').style.display="none";
 document.getElementById("ticker").innerHTML=ticker();
@@ -1083,6 +1083,9 @@ function keydown(event){
     }
     if (keypressed=="m" && eternitypoints==Infinity){
       minecraftify();
+    }
+    if (keypressed=="n" && mc20>=1){
+      metaminecraftify();
     }
     if (keypressed=="1"){
       screennum=0;
