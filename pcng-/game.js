@@ -966,7 +966,7 @@ function importt(){
   var savestr=prompt("Input your save:");
   if (savestr!=null){
     savestr=savestr.replace(/b/g,"\.").replace(/d/g,"\|").replace(/e/g,"0").replace(/f/g,"1").replace(/g/g,"2").replace(/h/g,"3").replace(/i/g,"4").replace(/j/g,"5").replace(/k/g,"6").replace(/l/g,"7").replace(/m/g,"8").replace(/n/g,"9").replace(/c/g,"e").replace(/a/g,"Infinity");
-    if (savestr.split("|").length==59){
+    if (savestr.split("|").length==61){
       reset();
       var savelist=savestr.split("|");
       points=parse(savelist[0]);
@@ -1008,26 +1008,28 @@ function importt(){
       mc17=Number(savelist[36]);
       mc18=Number(savelist[37]);
       mc19=Number(savelist[38]);
-      px1=Number(savelist[39]);
-      px2=Number(savelist[40]);
-      px3=Number(savelist[41]);
-      px4=Number(savelist[42]);
-      px5=Number(savelist[43]);
-      px6=Number(savelist[44]);
-      px7=Number(savelist[45]);
-      px8=Number(savelist[46]);
-      px9=Number(savelist[47]);
-      px10=Number(savelist[48]);
-      px11=Number(savelist[49]);
-      px12=Number(savelist[50]);
-      crafts=Number(savelist[51]);
-      goldenapple=Number(savelist[52]);
-      mines=Number(savelist[53]);
-      ach7=Number(savelist[54]);
-      ach8=Number(savelist[55]);
-      ach9=Number(savelist[56]);
-      ach10=Number(savelist[57]);
-      ach11=Number(savelist[58]);
+      mc20=Number(savelist[39])
+      px1=Number(savelist[40]);
+      px2=Number(savelist[41]);
+      px3=Number(savelist[42]);
+      px4=Number(savelist[43]);
+      px5=Number(savelist[44]);
+      px6=Number(savelist[45]);
+      px7=Number(savelist[46]);
+      px8=Number(savelist[47]);
+      px9=Number(savelist[48]);
+      px10=Number(savelist[49]);
+      px11=Number(savelist[50]);
+      px12=Number(savelist[51]);
+      crafts=Number(savelist[52]);
+      goldenapple=Number(savelist[53]);
+      mines=Number(savelist[54]);
+      ach7=Number(savelist[55]);
+      ach8=Number(savelist[56]);
+      ach9=Number(savelist[57]);
+      ach10=Number(savelist[58]);
+      ach11=Number(savelist[59]);
+      metamultiplier=Number(savelist[60]);
       if (u1){
         u1l=setInterval(addpoint,100);
       }
@@ -1044,7 +1046,7 @@ function importt(){
   }
 }
 function exportt(){
-  prompt("Here is your save:",(points+"|"+metapoints+"|"+metametapoints+"|"+infinitypoints+"|"+u1+"|"+u2+"|"+u3+"|"+u4+"|"+u5+"|"+u6+"|"+u7+"|"+breakinf+"|"+ach1+"|"+ach2+"|"+ach3+"|"+ach4+"|"+ach5+"|"+ach6+"|"+eternitypoints+"|"+luckypoints+"|"+mc1+"|"+mc2+"|"+mc3+"|"+mc4+"|"+mc5+"|"+mc6+"|"+mc7+"|"+mc8+"|"+mc9+"|"+mc10+"|"+mc11+"|"+mc12+"|"+mc13+"|"+mc14+"|"+mc15+"|"+mc16+"|"+mc17+"|"+mc18+"|"+mc19+"|"+px1+"|"+px2+"|"+px3+"|"+px4+"|"+px5+"|"+px6+"|"+px7+"|"+px8+"|"+px9+"|"+px10+"|"+px11+"|"+px12+"|"+crafts+"|"+goldenapple+"|"+mines+"|"+ach7+"|"+ach8+"|"+ach9+"|"+ach10+"|"+ach11).replace(/Infinity/g,"a").replace(/\./g,"b").replace(/e/g,"c").replace(/\|/g,"d").replace(/0/g,"e").replace(/1/g,"f").replace(/2/g,"g").replace(/3/g,"h").replace(/4/g,"i").replace(/5/g,"j").replace(/6/g,"k").replace(/7/g,"l").replace(/8/g,"m").replace(/9/g,"n"));
+  prompt("Here is your save:",(points+"|"+metapoints+"|"+metametapoints+"|"+infinitypoints+"|"+u1+"|"+u2+"|"+u3+"|"+u4+"|"+u5+"|"+u6+"|"+u7+"|"+breakinf+"|"+ach1+"|"+ach2+"|"+ach3+"|"+ach4+"|"+ach5+"|"+ach6+"|"+eternitypoints+"|"+luckypoints+"|"+mc1+"|"+mc2+"|"+mc3+"|"+mc4+"|"+mc5+"|"+mc6+"|"+mc7+"|"+mc8+"|"+mc9+"|"+mc10+"|"+mc11+"|"+mc12+"|"+mc13+"|"+mc14+"|"+mc15+"|"+mc16+"|"+mc17+"|"+mc18+"|"+mc19+"|"+mc20+"|"+px1+"|"+px2+"|"+px3+"|"+px4+"|"+px5+"|"+px6+"|"+px7+"|"+px8+"|"+px9+"|"+px10+"|"+px11+"|"+px12+"|"+crafts+"|"+goldenapple+"|"+mines+"|"+ach7+"|"+ach8+"|"+ach9+"|"+ach10+"|"+ach11+"|"+metamultiplier).replace(/Infinity/g,"a").replace(/\./g,"b").replace(/e/g,"c").replace(/\|/g,"d").replace(/0/g,"e").replace(/1/g,"f").replace(/2/g,"g").replace(/3/g,"h").replace(/4/g,"i").replace(/5/g,"j").replace(/6/g,"k").replace(/7/g,"l").replace(/8/g,"m").replace(/9/g,"n"));
 }
 function keydown(event){
   keypressed=event.key;
@@ -1171,7 +1173,7 @@ function keydown(event){
       }
     }
   }
-  if (screennum==4){
+  if (screennum==4 || screennum==5){
     if (event.ctrlKey && event.altKey){
       detect();
     }
