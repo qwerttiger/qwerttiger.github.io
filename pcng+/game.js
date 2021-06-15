@@ -938,7 +938,7 @@ function metaminecraftify(){
   mines=0;
   luckypoints=0;
   eternitypoints=0;
-  metamultiplier+=mc20;
+  metamultiplier+=Math.round(Math.log(mc20+1)/Math.log(1.05)-metamultiplier);
   for (var i=1; i<=20; i++){
     eval("mc"+i+"=0");
   }
