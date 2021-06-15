@@ -862,7 +862,7 @@ function pmakenomult(num){
       case 11:
         if (mc17>=3 && mc2>=2){
           mc17-=3;
-          mc1-=2;
+          mc2-=2;
           px11+=1;
           crafts-=1;
         }
