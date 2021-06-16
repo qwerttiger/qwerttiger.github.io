@@ -161,6 +161,33 @@ for (var i=1; i<=20; i++){
 for (var i=1; i<=12; i++){
   eval("if (localStorage.getItem('px"+i+"+')){px"+i+"=Number(localStorage.getItem('px"+i+"+'))}")
 }
+if (localStorage.getItem("bgcolor+")){
+  document.getElementById("bgcolor").value=localStorage.getItem("bgcolor+");
+}
+if (localStorage.getItem("textcolor+")){
+  document.getElementById("textcolor").value=localStorage.getItem("textcolor+");
+}
+if (localStorage.getItem("bbgcolor+")){
+  document.getElementById("bbgcolor").value=localStorage.getItem("bbgcolor+");
+}
+if (localStorage.getItem("bhbgcolor+")){
+  document.getElementById("bhbgcolor").value=localStorage.getItem("bhbgcolor+");
+}
+if (localStorage.getItem("achlbgcolor+")){
+  document.getElementById("achlbgcolor").value=localStorage.getItem("achlbgcolor+");
+}
+if (localStorage.getItem("achubgcolor+")){
+  document.getElementById("achubgcolor").value=localStorage.getItem("achubgcolor+");
+}
+if (localStorage.getItem("achutextcolor+")){
+  document.getElementById("achutextcolor").value=localStorage.getItem("achutextcolor+");
+}
+if (localStorage.getItem("bbcolor+")){
+  document.getElementById("bbcolor").value=localStorage.getItem("bbcolor+");
+}
+if (localStorage.getItem("tbcolor+")){
+  document.getElementById("tbcolor").value=localStorage.getItem("tbcolor+");
+}
 function IPmult(){
   if (infinitypoints>=3**u5 && u5<647){
     infinitypoints-=3**u5;
@@ -276,16 +303,10 @@ function check(){
     document.getElementById("eternity").innerHTML="";
     document.getElementById("minecraftify").innerHTML="";
   }
-  if (screennum==2 && lastscreennum!=2){
-    document.getElementById("import").innerHTML="<button onclick='importt()'>Import</button><br>";
-    document.getElementById("export").innerHTML="<button onclick='exportt()'>Export</button><br>";
-    document.getElementById("reset").innerHTML="<button onclick='reset()'>Reset</button><br><br><br><br>";
-    document.getElementById("info").innerHTML="1,2,3,4,5 for change screen, 7,8,9 for points, metapoints, metametapoints, i and e for Infinity and Eternity, shift 1-8 for upgrades, left for import, right for export, c for clicking clover. On Autoclicker tab, you need to hold down Control and Alt for it to work.";
-  } else if (screennum!=2 && lastscreennum!=screennum){
-    document.getElementById("import").innerHTML="";
-    document.getElementById("export").innerHTML="";
-    document.getElementById("reset").innerHTML="";
-    document.getElementById("info").innerHTML="";
+  if (screennum==2){
+    document.getElementById('options').style.display='block';
+  } else {
+    document.getElementById('options').style.display='none';
   }
   if (screennum==3){
     document.getElementById('achievements').style.display='block';
@@ -320,16 +341,6 @@ function check(){
     }
   } else if (screennum!=0 && lastscreennum==0){
     document.getElementById("infinity").innerHTML="";
-  }
-  if ((!u1 && infinitypoints>=1) || (!u2 && infinitypoints>=1) || (!u3 && infinitypoints>=1) || (!u4 && infinitypoints>=1) || (infinitypoints>=3**u5 && u5<647) || (!u6 && infinitypoints>=1) || (!u7 && infinitypoints>=1) || (!breakinf && infinitypoints>=1)){
-    document.getElementById("screen2").style.background="black";
-    document.getElementById("screen2").style.color="white";
-  } else if (!screen2.matches(':hover')) {
-    document.getElementById("screen2").style.background="#f0f0f0";
-    document.getElementById("screen2").style.color="black";
-  } else {
-    document.getElementById("screen2").style.background="#d0d0d0";
-    document.getElementById("screen2").style.color="black";
   }
   if (points>=1 || ach1){
     ach1=1;
@@ -456,6 +467,22 @@ function check(){
   document.getElementById("px10").innerHTML="Netherite block: "+px10;
   document.getElementById("px11").innerHTML="Eye of ender: "+px11;
   document.getElementById("px12").innerHTML="Enderite: "+px12;
+  document.getElementsByTagName("html")[0].style.backgroundColor=document.getElementById("bgcolor").value;
+  document.getElementsByTagName("html")[0].style.color=document.getElementById("textcolor").value;
+  for (i of document.getElementsByTagName("button")){i.style.color=document.getElementById("textcolor").value}
+  for (i of document.getElementsByTagName("button")){if (!i.matches(":hover") && i.id!="ticker"){i.style.backgroundColor=document.getElementById("bbgcolor").value}}
+  for (i of document.getElementsByTagName("button")){if (i.matches(":hover") && i.id!="ticker"){i.style.backgroundColor=document.getElementById("bhbgcolor").value}}
+  for (i of document.getElementsByTagName("input")){if (i.matches("input[type=\"color\"]")){i.style.backgroundColor=document.getElementById("bbgcolor").value}}
+  for (i of document.getElementsByTagName("button")){if (i.matches("#achievements :not(gottenach)")){i.style.backgroundColor=document.getElementById("achlbgcolor").value}};
+  for (i of document.getElementsByTagName("button")){if (i.matches("#achievements .gottenach")){i.style.backgroundColor=document.getElementById("achubgcolor").value}};
+  for (i of document.getElementsByTagName("button")){if (i.matches("#achievements .gottenach")){i.style.color=document.getElementById("achutextcolor").value}};
+  for (i of document.getElementsByTagName("button")){i.style.borderColor=document.getElementById("bbcolor").value};
+  document.getElementById("tickercontainer").style.borderTopColor=document.getElementById("tbcolor").value;
+  document.getElementById("tickercontainer").style.borderBottomColor=document.getElementById("tbcolor").value;
+  if ((!u1 && infinitypoints>=1) || (!u2 && infinitypoints>=5) || (!u3 && infinitypoints>=10) || (!u4 && infinitypoints>=25) || (infinitypoints>=3**u5 && u5<647) || (!u6 && infinitypoints>=15) || (!u7 && infinitypoints>=1e10) || (!breakinf && infinitypoints>=100)){
+    document.getElementById("screen2").style.background="black";
+    document.getElementById("screen2").style.color="white";
+  }
   lastpoints=points;
   lastmetapoints=metapoints;
   lastmetametapoints=metametapoints;
@@ -544,6 +571,15 @@ function save(){
   for (var i=1; i<=12; i++){
     eval("localStorage.setItem('px"+i+"+',px"+i+".toString())")
   }
+  localStorage.setItem("bgcolor+",document.getElementById("bgcolor").value);
+  localStorage.setItem("textcolor+",document.getElementById("textcolor").value);
+  localStorage.setItem("bbgcolor+",document.getElementById("bbgcolor").value);
+  localStorage.setItem("bhbgcolor+",document.getElementById("bhbgcolor").value);
+  localStorage.setItem("achlbgcolor+",document.getElementById("achlbgcolor").value);
+  localStorage.setItem("achubgcolor+",document.getElementById("achubgcolor").value);
+  localStorage.setItem("achutextcolor+",document.getElementById("achutextcolor").value);
+  localStorage.setItem("bbcolor+",document.getElementById("bbcolor").value);
+  localStorage.setItem("tbcolor+",document.getElementById("tbcolor").value);
 }
 function getIP(){
   if (isInf){

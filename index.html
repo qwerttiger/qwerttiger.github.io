@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Prestige Clicker (v9.2.3)</title>
+    <title>Prestige Clicker (v9.3.0)</title>
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -33,10 +33,19 @@
     </span>
 
     <span id="options">
-      <span id="import"></span>
-      <span id="export"></span>
-      <span id="reset"></span>
-      <span id="info"></span>
+      Background colour: <input type="color" id="bgcolor" value="#ffffff"><br>
+      Text colour: <input type="color" id="textcolor" value="#000000"><br>
+      Button background colour: <input type="color" id="bbgcolor" value="#f0f0f0"><br>
+      Button hover background colour: <input type="color" id="bhbgcolor" value="#d0d0d0"><br>
+      Locked achievement background colour: <input type="color" id="achlbgcolor" value="#f0f0f0"><br>
+      Unlocked achievement background colour: <input type="color" id="achubgcolor" value="#000000"><br>
+      Unlocked achievement text colour: <input type="color" id="achutextcolor" value="#ffffff"><br>
+      Button border colour: <input type="color" id="bbcolor" value="#808080"><br>
+      Ticker border colour: <input type="color" id="tbcolor" value="#000000"><br>
+      <span id="import"><button onclick='importt()'>Import</button><br></span>
+      <span id="export"><button onclick='exportt()'>Export</button><br></span>
+      <span id="reset"><button onclick='reset()'>Reset</button><br><br><br><br></span>
+      <span id="info">1,2,3,4,5,6 for change screen, 7,8,9 for points, metapoints, metametapoints, i and e for Infinity and Eternity, shift 1-8 for upgrades, left for import, right for export, c for clicking clover, m and n for Minecraftify and Metaminecraftify. On Autoclicker and Minecraftify tab, you need to hold down Control and Alt for it to work.</span>
     </span>
 
     <span id="achievements">

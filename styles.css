@@ -4,12 +4,14 @@ html, button {
   font-family: Arial;
 }
 button {
-  background: #f0f0f0;
   border-radius: 15px;
   border: 2px solid rgb(128, 128, 128);
 }
+input[type="color"] {
+  background: #f0f0f0;
+  border: 2px solid rgb(128, 128, 128);
+}
 button:hover {
-  background: #d0d0d0;
   cursor: pointer;
 }
 .top-bar{
@@ -28,16 +30,7 @@ button:hover {
   font-size: 20px;
 }
 #achievements button:hover {
-  background: #f0f0f0;
   cursor: default;
-}
-#achievements .gottenach {
-  background: black;
-  color: white;
-}
-#achievements .gottenach:hover {
-  background: black;
-  color: white;
 }
 #achievements {
   display: none;
