@@ -535,6 +535,18 @@ function reset(){
   localStorage.clear();
   location.reload();
 }
+function resetcolour(){
+  localStorage.setItem("bgcolor","#ffffff");
+  localStorage.setItem("textcolor","#000000");
+  localStorage.setItem("bbgcolor","#f0f0f0");
+  localStorage.setItem("bhbgcolor","#d0d0d0");
+  localStorage.setItem("achlbgcolor","#f0f0f0");
+  localStorage.setItem("achubgcolor","#000000");
+  localStorage.setItem("achutextcolor","#ffffff");
+  localStorage.setItem("bbcolor","#808080");
+  localStorage.setItem("tbcolor","#000000");
+  location.reload();
+}
 function save(){
   localStorage.setItem("points",points.toString());
   localStorage.setItem("metapoints",metapoints.toString());
@@ -1207,6 +1219,9 @@ function keydown(event){
         breakinf=1;
         infinitypoints-=100;
       }
+    }
+    if (keypressed=="R"){
+      resetcolour()
     }
   }
   if (screennum==4 || screennum==5){

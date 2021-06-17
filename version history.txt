@@ -48,3 +48,4 @@ date       update name                                                          
 20210611 - "minecraftify settings"                                                          v9.2.2           200          90          1181       167               1638          011           00.67%
 20210614 - "import/export fixes"                                                            v9.2.3           200          90          1183       167               1639          002           00.12%
 20210616 - "colour settings"                                                                v9.3.0           209          83          1219       167               1678          039           02.32%
+20210617 - "reset colour"                                                                   v9.3.1           210          83          1234       167               1694          016           00.94%
