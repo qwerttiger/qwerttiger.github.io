@@ -1,3 +1,4 @@
+var gdlvldata=[[1,1,0,0,0,0,0],[1,1,0,0,0,0,0],[3,1,0,0,0,0,0],[3,2,0,0,0,0,0],[2,2,0,0,0,0,0],[4,4,0,0,0,0,0],[3,3,0,0,0,0,0],[8,4,0,0,0,0,0],[4,3,2,0,0,0,0],[4,3,2,0,0,0,0],[5,6,4,0,0,0,0],[4,3,3,2,0,0,0],[4,3,4,2,0,0,0],[5,8,3,4,0,0,0],[6,7,1,4,0,0,0],[5,3,5,3,0,0,0],[2,2,2,2,2,0,0],[2,10,2,3,4,0,0],[7,1,1,2,2,1,0],[4,5,2,2,8,4,0],[2,2,0,1,2,1,3]];
 var bigInf=new bigNum(1.8,308);
 var screennum=0;
 var lastscreennum=1;
@@ -83,6 +84,35 @@ var goldenapple=0;
 var crafts=0;
 var mines=0;
 var metamultiplier=0;
+var gdsk1=1;
+var gdsk2=1;
+var gdsk3=1;
+var gdsk4=1;
+var gdsk5=1;
+var gdsk6=1;
+var gdsk7=1;
+var gdlvl1=0;
+var gdlvl2=0;
+var gdlvl3=0;
+var gdlvl4=0;
+var gdlvl5=0;
+var gdlvl6=0;
+var gdlvl7=0;
+var gdlvl8=0;
+var gdlvl9=0;
+var gdlvl10=0;
+var gdlvl11=0;
+var gdlvl12=0;
+var gdlvl13=0;
+var gdlvl14=0;
+var gdlvl15=0;
+var gdlvl16=0;
+var gdlvl17=0;
+var gdlvl18=0;
+var gdlvl19=0;
+var gdlvl20=0;
+var gdlvl21=0;
+var energy=0;
 if (localStorage.getItem("points+")){
   points=parse(localStorage.getItem("points+"));
 }
@@ -155,10 +185,10 @@ if (localStorage.getItem("mines+")){
 if (localStorage.getItem("metamultiplier+")){
   metamultiplier=Number(localStorage.getItem("metamultiplier+"));
 }
-for (var i=1; i<=20; i++){
+for (i=1; i<=20; i++){
   eval("if (localStorage.getItem('mc"+i+"+')){mc"+i+"=Number(localStorage.getItem('mc"+i+"+'))}")
 }
-for (var i=1; i<=12; i++){
+for (i=1; i<=12; i++){
   eval("if (localStorage.getItem('px"+i+"+')){px"+i+"=Number(localStorage.getItem('px"+i+"+'))}")
 }
 if (localStorage.getItem("bgcolor+")){
@@ -187,6 +217,15 @@ if (localStorage.getItem("bbcolor+")){
 }
 if (localStorage.getItem("tbcolor+")){
   document.getElementById("tbcolor").value=localStorage.getItem("tbcolor+");
+}
+for (i=1; i<=7; i++){
+  eval("if (localStorage.getItem('gdsk"+i+"+')){gdsk"+i+"=Number(localStorage.getItem('gdsk"+i+"+'))}")
+}
+for (i=1; i<=21; i++){
+  eval("if (localStorage.getItem('gdlvl"+i+"+')){gdlvl"+i+"=Number(localStorage.getItem('gdlvl"+i+"+'))}")
+}
+if (localStorage.getItem("energy+")){
+  energy=Number(localStorage.getItem("energy+"));
 }
 function IPmult(){
   if (infinitypoints>=3**u5 && u5<647){
@@ -234,74 +273,69 @@ function check(){
     document.getElementById("metametapoints").innerHTML="";
     document.getElementById("getpoint").innerHTML="";
   }
+  document.getElementById("IP").innerHTML="Infinity Points: "+stround(infinitypoints)+"<br>";
+  document.getElementById("EP").innerHTML="Eternity Points: "+stround(eternitypoints)+"<br>";
+  document.getElementById("LP").innerHTML="Lucky Points: "+stround(luckypoints)+"<br>";
+  if ((lastscreennum!=1 || lastu1) && !u1){
+    document.getElementById("u1").innerHTML="<button onclick='if (infinitypoints>=1){u1=1;infinitypoints-=1;u1l=setInterval(addpoint,100);}'>Get point autoclicker, 1 IP</button><br>";
+  } else if ((lastscreennum!=1 || !lastu1) && u1){
+    document.getElementById("u1").innerHTML="<button>Already bought</button><br>";
+  }
+  if ((lastscreennum!=1 || lastu2) && !u2){
+    document.getElementById("u2").innerHTML="<button onclick='if (infinitypoints>=1){u2=1;infinitypoints-=1;u2l=setInterval(autometa,100);}'>Get metapoint autoclicker, 1 IP</button><br>";
+  } else if ((lastscreennum!=1 || !lastu2) && u2){
+    document.getElementById("u2").innerHTML="<button>Already bought</button><br>";
+  }
+  if ((lastscreennum!=1 || lastu3) && !u3){
+    document.getElementById("u3").innerHTML="<button onclick='if (infinitypoints>=1){u3=1;infinitypoints-=1;u3l=setInterval(autometameta,100);}'>Get metametapoint autoclicker, 1 IP</button><br>";
+  } else if ((lastscreennum!=1 || !lastu3) && u3){
+    document.getElementById("u3").innerHTML="<button>Already bought</button><br>";
+  }
+  if ((lastscreennum!=1 || lastu4) && !u4){
+    document.getElementById("u4").innerHTML="<button onclick='if (infinitypoints>=1){u4=1;infinitypoints-=1;u4l=setInterval(autoIP,100);}'>Get Infinity autoclicker, 1 IP</button><br>";
+  } else if ((lastscreennum!=1 || !lastu4) && u4){
+    document.getElementById("u4").innerHTML="<button>Already bought</button><br>";
+  }
+  if (lastscreennum!=1 || lastu5!=u5){
+    document.getElementById("u5").innerHTML="<button onclick='IPmult()'>Get x2 IP mult, "+stround(3**u5)+" IP</button><br>";
+  }
+  if ((lastscreennum!=1 || lastu6) && !u6){
+    document.getElementById("u6").innerHTML="<button onclick='if (infinitypoints>=1){u6=1;infinitypoints-=1;}'>IP boost all point gain, 1 IP</button><br>";
+  } else if ((lastscreennum!=1 || !lastu6) && u6){
+    document.getElementById("u6").innerHTML="<button>Already bought</button><br>";
+  }
+  if ((lastscreennum!=1 || lastu7) && !u7){
+    document.getElementById("u7").innerHTML="<button onclick='if (infinitypoints>=1){u7=1;infinitypoints-=1;}'>IP gain squared, 1 IP</button><br>";
+  } else if ((lastscreennum!=1 || !lastu7) && u7){
+    document.getElementById("u7").innerHTML="<button>Already bought</button><br>";
+  }
+  if ((lastscreennum!=1 || lastbreakinf) && !breakinf){
+    document.getElementById("breakinf").innerHTML="<button onclick='if (infinitypoints>=1){breakinf=1;infinitypoints-=1;}'>Break Infinity, 1 IP</button><br>";
+  } else if ((lastscreennum!=1 || !lastbreakinf) && breakinf){
+    document.getElementById("breakinf").innerHTML="<button>Infinity broken</button><br>";
+  }
+  if (lastscreennum!=1 || infinitypoints!=lastinfinitypoints || luckypoints!=lastlucky){
+    if (infinitypoints==Infinity){
+      document.getElementById("eternity").innerHTML="<button onclick='if (u1l){clearInterval(u1l);};if (u2l){clearInterval(u2l);};if (u3l){clearInterval(u3l);};if (u4l){clearInterval(u4l);};eternitypoints+=Math.pow(10,luckypoints);infinitypoints=0;metametapoints=zero;metapoints=zero;points=zero;u1=0;u2=0;u3=0;u4=0;u5=0;u6=0;u7=0;breakinf=0;'>Eternity for "+stround(Math.pow(10,luckypoints))+" Eternity Point</button><br>";
+    } else {
+      document.getElementById("eternity").innerHTML="<button>Get Infinity IP to Eternity</button><br>";
+    }
+  }
+  if (eternitypoints==Infinity && (document.getElementById("minecraftify").innerHTML=="Get Infinity Eternity points to Minecraftify<br>" || lastscreennum!=1)){
+    document.getElementById("minecraftify").innerHTML="Minecraftify for 1 fist and 5 craft";
+    document.getElementById("minecraftify").setAttribute("onclick","minecraftify()")
+    document.getElementById("geometrydashify").innerHTML="Geometrydashify for 100% energy";
+    document.getElementById("geometrydashify").setAttribute("onclick","geometrydashify()")
+  } else if (eternitypoints!=Infinity && (document.getElementById("minecraftify").innerHTML=="Minecraftify for 1 fist and 5 craft<br>" || lastscreennum!=1)){
+    document.getElementById("minecraftify").innerHTML="Get Infinity Eternity points to Minecraftify";
+    document.getElementById("minecraftify").removeAttribute("onclick");
+    document.getElementById("geometrydashify").innerHTML="Get Infinity Eternity points to Geometrydashify";
+    document.getElementById("geometrydashify").removeAttribute("onclick");
+  }
   if (screennum==1){
-    document.getElementById("IP").innerHTML="Infinity Points: "+stround(infinitypoints)+"<br>";
-    document.getElementById("EP").innerHTML="Eternity Points: "+stround(eternitypoints)+"<br>";
-    document.getElementById("LP").innerHTML="Lucky Points: "+stround(luckypoints)+"<br>";
-    if ((lastscreennum!=1 || lastu1) && !u1){
-      document.getElementById("u1").innerHTML="<button onclick='if (infinitypoints>=1){u1=1;infinitypoints-=1;u1l=setInterval(addpoint,100);}'>Get point autoclicker, 1 IP</button><br>";
-    } else if ((lastscreennum!=1 || !lastu1) && u1){
-      document.getElementById("u1").innerHTML="<button>Already bought</button><br>";
-    }
-    if ((lastscreennum!=1 || lastu2) && !u2){
-      document.getElementById("u2").innerHTML="<button onclick='if (infinitypoints>=1){u2=1;infinitypoints-=1;u2l=setInterval(autometa,100);}'>Get metapoint autoclicker, 1 IP</button><br>";
-    } else if ((lastscreennum!=1 || !lastu2) && u2){
-      document.getElementById("u2").innerHTML="<button>Already bought</button><br>";
-    }
-    if ((lastscreennum!=1 || lastu3) && !u3){
-      document.getElementById("u3").innerHTML="<button onclick='if (infinitypoints>=1){u3=1;infinitypoints-=1;u3l=setInterval(autometameta,100);}'>Get metametapoint autoclicker, 1 IP</button><br>";
-    } else if ((lastscreennum!=1 || !lastu3) && u3){
-      document.getElementById("u3").innerHTML="<button>Already bought</button><br>";
-    }
-    if ((lastscreennum!=1 || lastu4) && !u4){
-      document.getElementById("u4").innerHTML="<button onclick='if (infinitypoints>=1){u4=1;infinitypoints-=1;u4l=setInterval(autoIP,100);}'>Get Infinity autoclicker, 1 IP</button><br>";
-    } else if ((lastscreennum!=1 || !lastu4) && u4){
-      document.getElementById("u4").innerHTML="<button>Already bought</button><br>";
-    }
-    if (lastscreennum!=1 || lastu5!=u5){
-      document.getElementById("u5").innerHTML="<button onclick='IPmult()'>Get x2 IP mult, "+stround(3**u5)+" IP</button><br>";
-    }
-    if ((lastscreennum!=1 || lastu6) && !u6){
-      document.getElementById("u6").innerHTML="<button onclick='if (infinitypoints>=1){u6=1;infinitypoints-=1;}'>IP boost all point gain, 1 IP</button><br>";
-    } else if ((lastscreennum!=1 || !lastu6) && u6){
-      document.getElementById("u6").innerHTML="<button>Already bought</button><br>";
-    }
-    if ((lastscreennum!=1 || lastu7) && !u7){
-      document.getElementById("u7").innerHTML="<button onclick='if (infinitypoints>=1){u7=1;infinitypoints-=1;}'>IP gain squared, 1 IP</button><br>";
-    } else if ((lastscreennum!=1 || !lastu7) && u7){
-      document.getElementById("u7").innerHTML="<button>Already bought</button><br>";
-    }
-    if ((lastscreennum!=1 || lastbreakinf) && !breakinf){
-      document.getElementById("breakinf").innerHTML="<button onclick='if (infinitypoints>=1){breakinf=1;infinitypoints-=1;}'>Break Infinity, 1 IP</button><br>";
-    } else if ((lastscreennum!=1 || !lastbreakinf) && breakinf){
-      document.getElementById("breakinf").innerHTML="<button>Infinity broken</button><br>";
-    }
-    if (lastscreennum!=1 || infinitypoints!=lastinfinitypoints || luckypoints!=lastlucky){
-      if (infinitypoints==Infinity){
-        document.getElementById("eternity").innerHTML="<button onclick='if (u1l){clearInterval(u1l);};if (u2l){clearInterval(u2l);};if (u3l){clearInterval(u3l);};if (u4l){clearInterval(u4l);};eternitypoints+=Math.pow(10,luckypoints);infinitypoints=0;metametapoints=zero;metapoints=zero;points=zero;u1=0;u2=0;u3=0;u4=0;u5=0;u6=0;u7=0;breakinf=0;'>Eternity for "+stround(Math.pow(10,luckypoints))+" Eternity Point</button><br>";
-      } else {
-        document.getElementById("eternity").innerHTML="<button>Get Infinity IP to Eternity</button><br>";
-      }
-    }
-    if (eternitypoints==Infinity && (document.getElementById("minecraftify").innerHTML=="<button>Get Infinity Eternity points to Minecraftify</button>" || lastscreennum!=1)){
-      document.getElementById("minecraftify").innerHTML="<button onclick=\"minecraftify()\">Minecraftify for 1 fist and 5 craft</button>"
-    } else if (eternitypoints!=Infinity && (document.getElementById("minecraftify").innerHTML=="<button onclick=\"minecraftify()\">Minecraftify for 1 fist and 5 craft</button>" || lastscreennum!=1)){
-      document.getElementById("minecraftify").innerHTML="<button>Get Infinity Eternity points to Minecraftify</button>"
-    }
-  } else if (screennum!=1 && lastscreennum!=screennum){
-    document.getElementById("IP").innerHTML="";
-    document.getElementById("EP").innerHTML="";
-    document.getElementById("LP").innerHTML="";
-    document.getElementById("u1").innerHTML="";
-    document.getElementById("u2").innerHTML="";
-    document.getElementById("u3").innerHTML="";
-    document.getElementById("u4").innerHTML="";
-    document.getElementById("u5").innerHTML="";
-    document.getElementById("u6").innerHTML="";
-    document.getElementById("u7").innerHTML="";
-    document.getElementById("breakinf").innerHTML="";
-    document.getElementById("eternity").innerHTML="";
-    document.getElementById("minecraftify").innerHTML="";
+    document.getElementById('infinityup').style.display='block';
+  } else {
+    document.getElementById('infinityup').style.display='none';
   }
   if (screennum==2){
     document.getElementById('options').style.display='block';
@@ -328,6 +362,11 @@ function check(){
   //no footer
   //no footer
   //no footer
+  if (screennum==6){
+    document.getElementById('geometrydash').style.display='block';
+  } else {
+    document.getElementById('geometrydash').style.display='none';
+  }
   if (metametapoints.gte(bigInf)){
     isInf=true;
   } else if (lastisInf && !metametapoints.gte(bigInf)) {
@@ -479,10 +518,124 @@ function check(){
   for (i of document.getElementsByTagName("button")){i.style.borderColor=document.getElementById("bbcolor").value};
   document.getElementById("tickercontainer").style.borderTopColor=document.getElementById("tbcolor").value;
   document.getElementById("tickercontainer").style.borderBottomColor=document.getElementById("tbcolor").value;
-  if ((!u1 && infinitypoints>=1) || (!u2 && infinitypoints>=5) || (!u3 && infinitypoints>=10) || (!u4 && infinitypoints>=25) || (infinitypoints>=3**u5 && u5<647) || (!u6 && infinitypoints>=15) || (!u7 && infinitypoints>=1e10) || (!breakinf && infinitypoints>=100)){
+  if ((!u1 && infinitypoints>=1) || (!u2 && infinitypoints>=1) || (!u3 && infinitypoints>=1) || (!u4 && infinitypoints>=1) || (infinitypoints>=3**u5 && u5<647) || (!u6 && infinitypoints>=1) || (!u7 && infinitypoints>=1) || (!breakinf && infinitypoints>=1)){
     document.getElementById("screen2").style.background="black";
     document.getElementById("screen2").style.color="white";
   }
+  if (gdlvl1==0){
+    document.getElementById("gdcomp1").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp1").innerHTML="✔️"
+  }
+  if (gdlvl2==0){
+    document.getElementById("gdcomp2").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp2").innerHTML="✔️"
+  }
+  if (gdlvl3==0){
+    document.getElementById("gdcomp3").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp3").innerHTML="✔️"
+  }
+  if (gdlvl4==0){
+    document.getElementById("gdcomp4").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp4").innerHTML="✔️"
+  }
+  if (gdlvl5==0){
+    document.getElementById("gdcomp5").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp5").innerHTML="✔️"
+  }
+  if (gdlvl6==0){
+    document.getElementById("gdcomp6").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp6").innerHTML="✔️"
+  }
+  if (gdlvl7==0){
+    document.getElementById("gdcomp7").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp7").innerHTML="✔️"
+  }
+  if (gdlvl8==0){
+    document.getElementById("gdcomp8").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp8").innerHTML="✔️"
+  }
+  if (gdlvl9==0){
+    document.getElementById("gdcomp9").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp9").innerHTML="✔️"
+  }
+  if (gdlvl10==0){
+    document.getElementById("gdcomp10").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp10").innerHTML="✔️"
+  }
+  if (gdlvl11==0){
+    document.getElementById("gdcomp11").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp11").innerHTML="✔️"
+  }
+  if (gdlvl12==0){
+    document.getElementById("gdcomp12").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp12").innerHTML="✔️"
+  }
+  if (gdlvl13==0){
+    document.getElementById("gdcomp13").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp13").innerHTML="✔️"
+  }
+  if (gdlvl14==0){
+    document.getElementById("gdcomp14").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp14").innerHTML="✔️"
+  }
+  if (gdlvl15==0){
+    document.getElementById("gdcomp15").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp15").innerHTML="✔️"
+  }
+  if (gdlvl16==0){
+    document.getElementById("gdcomp16").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp16").innerHTML="✔️"
+  }
+  if (gdlvl17==0){
+    document.getElementById("gdcomp17").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp17").innerHTML="✔️"
+  }
+  if (gdlvl18==0){
+    document.getElementById("gdcomp18").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp18").innerHTML="✔️"
+  }
+  if (gdlvl19==0){
+    document.getElementById("gdcomp19").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp19").innerHTML="✔️"
+  }
+  if (gdlvl20==0){
+    document.getElementById("gdcomp20").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp20").innerHTML="✔️"
+  }
+  if (gdlvl21==0){
+    document.getElementById("gdcomp21").innerHTML="❌"
+  } else {
+    document.getElementById("gdcomp21").innerHTML="✔️"
+  }
+  document.getElementById("gdskl1").innerHTML=gdsk1;
+  document.getElementById("gdskl2").innerHTML=gdsk2;
+  document.getElementById("gdskl3").innerHTML=gdsk3;
+  document.getElementById("gdskl4").innerHTML=gdsk4;
+  document.getElementById("gdskl5").innerHTML=gdsk5;
+  document.getElementById("gdskl6").innerHTML=gdsk6;
+  document.getElementById("gdskl7").innerHTML=gdsk7;
+  document.getElementById("energyspace").style="position:absolute; height:"+2*energy+"px; width: 70px; bottom: 0px; background: green"
+  document.getElementById("energynum").innerHTML=energy;
   lastpoints=points;
   lastmetapoints=metapoints;
   lastmetametapoints=metametapoints;
@@ -577,10 +730,10 @@ function save(){
   localStorage.setItem("ach10+",ach10.toString());
   localStorage.setItem("ach11+",ach11.toString());
   localStorage.setItem("metamultiplier+",metamultiplier.toString());
-  for (var i=1; i<=20; i++){
+  for (i=1; i<=20; i++){
     eval("localStorage.setItem('mc"+i+"+',mc"+i+".toString())")
   }
-  for (var i=1; i<=12; i++){
+  for (i=1; i<=12; i++){
     eval("localStorage.setItem('px"+i+"+',px"+i+".toString())")
   }
   localStorage.setItem("bgcolor+",document.getElementById("bgcolor").value);
@@ -592,6 +745,13 @@ function save(){
   localStorage.setItem("achutextcolor+",document.getElementById("achutextcolor").value);
   localStorage.setItem("bbcolor+",document.getElementById("bbcolor").value);
   localStorage.setItem("tbcolor+",document.getElementById("tbcolor").value);
+  for (i=1; i<=7; i++){
+    eval("localStorage.setItem('gdsk"+i+"+',gdsk"+i+".toString())")
+  }
+  for (i=1; i<=21; i++){
+    eval("localStorage.setItem('gdlvl"+i+"+',gdlvl"+i+".toString())")
+  }
+  localStorage.setItem("energy+",energy.toString());
 }
 function getIP(){
   if (isInf){
@@ -649,7 +809,7 @@ function ticker(){
   return tickerlist[Math.floor(Math.random()*tickerlist.length)]
 }
 function make(num){
-  for (var i=0; i<Number(document.getElementById("craftnum").value); i++){
+  for (i=0; i<Number(document.getElementById("craftnum").value); i++){
     makenomult(num);
   }
 }
@@ -723,7 +883,7 @@ function makenomult(string){
 function mine(num){
   if (mines>=1){
     mines-=1;
-    for (var i=0; i<Number(eval("px"+num))*(1+goldenapple)*(1+metamultiplier); i++){
+    for (i=0; i<Number(eval("px"+num))*(1+goldenapple)*(1+metamultiplier); i++){
       var randomnum=Math.floor(Math.random()*100)
       switch (num){
         case 1:
@@ -829,7 +989,7 @@ function mine(num){
   }
 }
 function pmake(num){
-  for (var i=0; i<Number(document.getElementById("craftnum").value); i++){
+  for (i=0; i<Number(document.getElementById("craftnum").value); i++){
     pmakenomult(num);
   }
 }
@@ -926,6 +1086,34 @@ function pmakenomult(num){
     }
   }
 }
+function train(num){
+  level=eval("gdsk"+num);
+  if (energy>=1 && level==0){
+    energy-=1;
+    eval("gdsk"+num+"+=10");
+    //nerfed
+    //nerfed
+  }
+}
+function play(num){
+  if (energy>=5 && eval("gdlvl"+num)==0){
+    energy-=5;
+    var chance=1;
+    for (i=1; i<=7; i++){
+      trychance=eval("gdsk"+i)/(gdlvldata[num-1][i-1]+1)
+      if (trychance<1){
+        chance*=trychance;
+      }
+    }
+    if (Math.random()<=chance){
+      eval("gdlvl"+num+"=1");
+      for (i=1; i<=7; i++){
+        eval("gdsk"+i+"+=gdlvldata[num-1][i-1]/10");
+        eval("if(gdsk"+i+">10){gdsk"+i+"=10}");
+      }
+    }
+  }
+}
 function minecraftify(){
   if (u1l){
     clearInterval(u1l);
@@ -987,12 +1175,41 @@ function metaminecraftify(){
   luckypoints=0;
   eternitypoints=0;
   metamultiplier+=Math.round(Math.log(mc20+1)/Math.log(1.05)-metamultiplier);
-  for (var i=1; i<=20; i++){
+  for (i=1; i<=20; i++){
     eval("mc"+i+"=0");
   }
-  for (var i=1; i<=12; i++){
+  for (i=1; i<=12; i++){
     eval("px"+i+"=0")
   }
+}
+function geometrydashify(){
+  if (u1l){
+    clearInterval(u1l);
+  } 
+  if (u2l){
+    clearInterval(u2l);
+  }
+  if (u3l){
+    clearInterval(u3l);
+  }
+  if (u4l){
+    clearInterval(u4l);
+  }
+  points=zero;
+  metapoints=zero;
+  metametapoints=zero;
+  infinitypoints=0;
+  breakinf=0;
+  u1=0;
+  u2=0;
+  u3=0;
+  u4=0;
+  u5=0;
+  u6=0;
+  u7=0;
+  energy=100;
+  eternitypoints=10000**(gdsk1+gdsk2+gdsk3+gdsk4+gdsk5+gdsk6+gdsk7);
+  luckypoints=4*(gdsk1+gdsk2+gdsk3+gdsk4+gdsk5+gdsk6+gdsk7-6);
 }
 document.getElementById('lucky').style.display="none";
 document.getElementById("ticker").innerHTML=ticker();
@@ -1014,7 +1231,7 @@ function importt(){
   var savestr=prompt("Input your save:");
   if (savestr!=null){
     savestr=savestr.replace(/b/g,"\.").replace(/d/g,"\|").replace(/e/g,"0").replace(/f/g,"1").replace(/g/g,"2").replace(/h/g,"3").replace(/i/g,"4").replace(/j/g,"5").replace(/k/g,"6").replace(/l/g,"7").replace(/m/g,"8").replace(/n/g,"9").replace(/c/g,"e").replace(/a/g,"Infinity");
-    if (savestr.split("|").length==61){
+    if (savestr.split("|").length==90){
       reset();
       var savelist=savestr.split("|");
       points=parse(savelist[0]);
@@ -1078,6 +1295,35 @@ function importt(){
       ach10=Number(savelist[58]);
       ach11=Number(savelist[59]);
       metamultiplier=Number(savelist[60]);
+      gdlvl1=Number(savelist[61]);
+      gdlvl2=Number(savelist[62]);
+      gdlvl3=Number(savelist[63]);
+      gdlvl4=Number(savelist[64]);
+      gdlvl5=Number(savelist[65]);
+      gdlvl6=Number(savelist[66]);
+      gdlvl7=Number(savelist[67]);
+      gdlvl8=Number(savelist[68]);
+      gdlvl9=Number(savelist[69]);
+      gdlvl10=Number(savelist[70]);
+      gdlvl11=Number(savelist[71]);
+      gdlvl12=Number(savelist[72]);
+      gdlvl13=Number(savelist[73]);
+      gdlvl14=Number(savelist[74]);
+      gdlvl15=Number(savelist[75]);
+      gdlvl16=Number(savelist[76]);
+      gdlvl17=Number(savelist[77]);
+      gdlvl18=Number(savelist[78]);
+      gdlvl19=Number(savelist[79]);
+      gdlvl20=Number(savelist[80]);
+      gdlvl21=Number(savelist[81]);
+      gdsk1=Number(savelist[82]);
+      gdsk2=Number(savelist[83]);
+      gdsk3=Number(savelist[84]);
+      gdsk4=Number(savelist[85]);
+      gdsk5=Number(savelist[86]);
+      gdsk6=Number(savelist[87]);
+      gdsk7=Number(savelist[88]);
+      energy=Number(savelist[89]);
       if (u1){
         u1l=setInterval(addpoint,100);
       }
@@ -1094,7 +1340,7 @@ function importt(){
   }
 }
 function exportt(){
-  prompt("Here is your save:",(points+"|"+metapoints+"|"+metametapoints+"|"+infinitypoints+"|"+u1+"|"+u2+"|"+u3+"|"+u4+"|"+u5+"|"+u6+"|"+u7+"|"+breakinf+"|"+ach1+"|"+ach2+"|"+ach3+"|"+ach4+"|"+ach5+"|"+ach6+"|"+eternitypoints+"|"+luckypoints+"|"+mc1+"|"+mc2+"|"+mc3+"|"+mc4+"|"+mc5+"|"+mc6+"|"+mc7+"|"+mc8+"|"+mc9+"|"+mc10+"|"+mc11+"|"+mc12+"|"+mc13+"|"+mc14+"|"+mc15+"|"+mc16+"|"+mc17+"|"+mc18+"|"+mc19+"|"+mc20+"|"+px1+"|"+px2+"|"+px3+"|"+px4+"|"+px5+"|"+px6+"|"+px7+"|"+px8+"|"+px9+"|"+px10+"|"+px11+"|"+px12+"|"+crafts+"|"+goldenapple+"|"+mines+"|"+ach7+"|"+ach8+"|"+ach9+"|"+ach10+"|"+ach11+"|"+metamultiplier).replace(/Infinity/g,"a").replace(/\./g,"b").replace(/e/g,"c").replace(/\|/g,"d").replace(/0/g,"e").replace(/1/g,"f").replace(/2/g,"g").replace(/3/g,"h").replace(/4/g,"i").replace(/5/g,"j").replace(/6/g,"k").replace(/7/g,"l").replace(/8/g,"m").replace(/9/g,"n"));
+  prompt("Here is your save:",(points+"|"+metapoints+"|"+metametapoints+"|"+infinitypoints+"|"+u1+"|"+u2+"|"+u3+"|"+u4+"|"+u5+"|"+u6+"|"+u7+"|"+breakinf+"|"+ach1+"|"+ach2+"|"+ach3+"|"+ach4+"|"+ach5+"|"+ach6+"|"+eternitypoints+"|"+luckypoints+"|"+mc1+"|"+mc2+"|"+mc3+"|"+mc4+"|"+mc5+"|"+mc6+"|"+mc7+"|"+mc8+"|"+mc9+"|"+mc10+"|"+mc11+"|"+mc12+"|"+mc13+"|"+mc14+"|"+mc15+"|"+mc16+"|"+mc17+"|"+mc18+"|"+mc19+"|"+mc20+"|"+px1+"|"+px2+"|"+px3+"|"+px4+"|"+px5+"|"+px6+"|"+px7+"|"+px8+"|"+px9+"|"+px10+"|"+px11+"|"+px12+"|"+crafts+"|"+goldenapple+"|"+mines+"|"+ach7+"|"+ach8+"|"+ach9+"|"+ach10+"|"+ach11+"|"+metamultiplier+"|"+gdlvl1+"|"+gdlvl2+"|"+gdlvl3+"|"+gdlvl4+"|"+gdlvl5+"|"+gdlvl6+"|"+gdlvl7+"|"+gdlvl8+"|"+gdlvl9+"|"+gdlvl10+"|"+gdlvl11+"|"+gdlvl12+"|"+gdlvl13+"|"+gdlvl14+"|"+gdlvl15+"|"+gdlvl16+"|"+gdlvl17+"|"+gdlvl18+"|"+gdlvl19+"|"+gdlvl20+"|"+gdlvl21+"|"+gdsk1+"|"+gdsk2+"|"+gdsk3+"|"+gdsk4+"|"+gdsk5+"|"+gdsk6+"|"+gdsk7+"|"+energy).replace(/Infinity/g,"a").replace(/\./g,"b").replace(/e/g,"c").replace(/\|/g,"d").replace(/0/g,"e").replace(/1/g,"f").replace(/2/g,"g").replace(/3/g,"h").replace(/4/g,"i").replace(/5/g,"j").replace(/6/g,"k").replace(/7/g,"l").replace(/8/g,"m").replace(/9/g,"n"));
 }
 function keydown(event){
   keypressed=event.key;
@@ -1147,6 +1393,9 @@ function keydown(event){
     if (keypressed=="n" && mc20>=1){
       metaminecraftify();
     }
+    if (keypressed=="g" && eternitypoints==Infinity){
+      geometrydashify();
+    }
     if (keypressed=="1"){
       screennum=0;
     }
@@ -1164,6 +1413,9 @@ function keydown(event){
     }
     if (keypressed=="6"){
       screennum=5;
+    }
+    if (keypressed=="0"){
+      screennum=6;
     }
     if (keypressed=="ArrowRight"){
       exportt()
@@ -1221,7 +1473,7 @@ function keydown(event){
       }
     }
     if (keypressed=="R"){
-      resetcolour()
+      reset()
     }
   }
   if (screennum==4 || screennum==5){

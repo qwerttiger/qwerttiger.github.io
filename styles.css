@@ -15,7 +15,7 @@ button:hover {
   cursor: pointer;
 }
 .top-bar{
-  width: 16.66%;
+  width: 14.28%;
   font-size: 20px;
 }
 #getpoint button, #getmeta button, #getmetameta button, #infinity button, #upgrades button {
@@ -75,9 +75,13 @@ table {
 a {
   text-decoration: none;
 }
-#minecraft td{
+#minecraft td {
   vertical-align: text-top;
 }
 #pick {
   font-size: 20px;
+}
+#levels {
+  text-align: left;
+  margin-left: 0px;
 }

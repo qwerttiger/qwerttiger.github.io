@@ -7,7 +7,7 @@
   </head>
   <body onkeydown="keydown(event)">
     <span id="tickercontainer"><button id="ticker"></button></span><br><br>
-    <button class="top-bar" onclick="screennum=0">Points</button><button class="top-bar" id="screen2" onclick="screennum=1">Upgrades</button><button class="top-bar" onclick="screennum=2">Options</button><button class="top-bar" onclick="screennum=3">Achievements</button><button class="top-bar" onclick="screennum=4">Autoclickers</button><button class="top-bar" onclick="screennum=5">Minecraftify</button><br><br>
+    <button class="top-bar" onclick="screennum=0">Points</button><button class="top-bar" id="screen2" onclick="screennum=1">Upgrades</button><button class="top-bar" onclick="screennum=2">Options</button><button class="top-bar" onclick="screennum=3">Achievements</button><button class="top-bar" onclick="screennum=4">Autoclickers</button><button class="top-bar" onclick="screennum=5">Minecraftify</button><button class="top-bar" onclick="screennum=6">Geometrydashify</button><br><br>
     <span id="points"></span>
     <span id="metapoints"></span>
     <span id="metametapoints"></span>
@@ -16,20 +16,23 @@
     <span id="getmetameta"><button onclick="getmetameta()">Get 1 metapoint to get metametapoints</button><br></span>
     <span id="infinity"></span>
 
-    <span id="IP"></span>
-    <span id="EP"></span>
-    <span id="LP"></span>
-    <span id="upgrades">
-      <span id="u1"></span>
-      <span id="u2"></span>
-      <span id="u3"></span>
-      <span id="u4"></span>
-      <span id="u6"></span>
-      <span id="u7"></span>
-      <span id="u5"></span>
-      <span id="breakinf"></span>
-      <span id="eternity"></span>
-      <span id="minecraftify"><button>Get Infinity Eternity points to Minecraftify</button></span>
+    <span id="infinityup">
+      <span id="IP"></span>
+      <span id="EP"></span>
+      <span id="LP"></span>
+      <span id="upgrades">
+        <span id="u1"></span>
+        <span id="u2"></span>
+        <span id="u3"></span>
+        <span id="u4"></span>
+        <span id="u6"></span>
+        <span id="u7"></span>
+        <span id="u5"></span>
+        <span id="breakinf"></span>
+        <span id="eternity"></span>
+        <button id="minecraftify">Get Infinity Eternity points to Minecraftify</button><br>
+        <button id="geometrydashify">Get Infinity Eternity points to Geometrydashify</button>
+      </span>
     </span>
     
     <span id="options">
@@ -44,9 +47,9 @@
       Ticker border colour: <input type="color" id="tbcolor" value="#000000"><br>
       <button onclick='importt()'>Import</button><br>
       <button onclick='exportt()'>Export</button><br>
-      <button onclick='reset()'>Reset</button><br>
-      <button onclick='resetcolour()'>Reset colour</button><br><br><br><br>
-      1,2,3,4,5,6 for change screen, 7,8,9 for points, metapoints, metametapoints, i and e for Infinity and Eternity, shift 1-8 for upgrades, left for import, right for export, c for clicking clover, shift r to reset all colours, m and n for Minecraftify and Metaminecraftify. On Autoclicker and Minecraftify tab, you need to hold down Control and Alt for it to work.
+      <button onclick='reset()'>Reset (may take multiple to work)</button><br>
+      <button onclick='resetcolour()'>Reset colour (may take multiple to work)</button><br><br><br><br>
+      1,2,3,4,5,6,0 for change screen, 7,8,9 for points, metapoints, metametapoints, i and e for Infinity and Eternity, shift 1-8 for upgrades, left for import, right for export, c for clicking clover, shift r to reset all progress, m and n and g for Minecraftify and Metaminecraftify and Geometrydashify. On Autoclicker and Minecraftify tab, you need to hold down Control and Alt for it to work.
     </span>
 
     <span id="achievements">
@@ -201,6 +204,168 @@
           <td><button onclick="pmake(12)">Make</button></td>
         </tr>
       </table>
+    </span>
+    
+    <span id="geometrydash">
+      <table id="levels">
+        <tr>
+          <td>Level</td>
+          <td>Difficulty</td>
+          <td>Completed?</td>
+          <td>Play</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>cube</td>
+          <td>ship</td>
+          <td>ball</td>
+          <td>ufo</td>
+          <td>wave</td>
+          <td>robot</td>
+          <td>spider</td>
+        </tr>
+        <tr>
+          <td>Stereo Madness</td>
+          <td>2⭐</td>
+          <td id="gdcomp1">❌</td>
+          <td><button onclick="play(1)">play</button></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td><button onclick="train(1)">train</button></td>
+          <td><button onclick="train(2)">train</button></td>
+          <td><button onclick="train(3)">train</button></td>
+          <td><button onclick="train(4)">train</button></td>
+          <td><button onclick="train(5)">train</button></td>
+          <td><button onclick="train(6)">train</button></td>
+          <td><button onclick="train(7)">train</button></td>
+        </tr>
+        <tr>
+          <td>Back on Track</td>
+          <td>2⭐</td>
+          <td id="gdcomp2">❌</td>
+          <td><button onclick="play(2)">play</button></td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td><span id="gdskl1">1</span>/10</td>
+          <td><span id="gdskl2">1</span>/10</td>
+          <td><span id="gdskl3">1</span>/10</td>
+          <td><span id="gdskl4">1</span>/10</td>
+          <td><span id="gdskl5">1</span>/10</td>
+          <td><span id="gdskl6">1</span>/10</td>
+          <td><span id="gdskl7">1</span>/10</td>
+        </tr>
+        <tr>
+          <td>Polargeist</td>
+          <td>4⭐</td>
+          <td id="gdcomp3">❌</td>
+          <td><button onclick="play(3)">play</button></td>
+        </tr>
+        <tr>
+          <td>Dry Out</td>
+          <td>5⭐</td>
+          <td id="gdcomp4">❌</td>
+          <td><button onclick="play(4)">play</button></td>
+        </tr>
+        <tr>
+          <td>Base After Base</td>
+          <td>4⭐</td>
+          <td id="gdcomp5">❌</td>
+          <td><button onclick="play(5)">play</button></td>
+        </tr>
+        <tr>
+          <td>Can't Let Go</td>
+          <td>8⭐</td>
+          <td id="gdcomp6">❌</td>
+          <td><button onclick="play(6)">play</button></td>
+        </tr>
+        <tr>
+          <td>Jumper</td>
+          <td>6⭐</td>
+          <td id="gdcomp7">❌</td>
+          <td><button onclick="play(7)">play</button></td>
+        </tr>
+        <tr>
+          <td>Time Machine</td>
+          <td>12⭐</td>
+          <td id="gdcomp8">❌</td>
+          <td><button onclick="play(8)">play</button></td>
+        </tr>
+        <tr>
+          <td>Cycles</td>
+          <td>9⭐</td>
+          <td id="gdcomp9">❌</td>
+          <td><button onclick="play(9)">play</button></td>
+        </tr>
+        <tr>
+          <td>xStep</td>
+          <td>9⭐</td>
+          <td id="gdcomp10">❌</td>
+          <td><button onclick="play(10)">play</button></td>
+        </tr>
+        <tr>
+          <td>Clutterfunk</td>
+          <td>15⭐</td>
+          <td id="gdcomp11">❌</td>
+          <td><button onclick="play(11)">play</button></td>
+        </tr>
+        <tr>
+          <td>Theory of Everything</td>
+          <td>12⭐</td>
+          <td id="gdcomp12">❌</td>
+          <td><button onclick="play(12)">play</button></td>
+        </tr>
+        <tr>
+          <td>Electroman Adventures</td>
+          <td>13⭐</td>
+          <td id="gdcomp13">❌</td>
+          <td><button onclick="play(13)">play</button></td>
+        </tr>
+        <tr>
+          <td>Clubstep</td>
+          <td>20⭐</td>
+          <td id="gdcomp14">❌</td>
+          <td><button onclick="play(14)">play</button></td>
+        </tr>
+        <tr>
+          <td>Electrodynamix</td>
+          <td>18⭐</td>
+          <td id="gdcomp15">❌</td>
+          <td><button onclick="play(15)">play</button></td>
+        </tr>
+        <tr>
+          <td>Hexagon Force</td>
+          <td>16⭐</td>
+          <td id="gdcomp16">❌</td>
+          <td><button onclick="play(16)">play</button></td>
+        </tr>
+        <tr>
+          <td>Blast Processing</td>
+          <td>10⭐</td>
+          <td id="gdcomp17">❌</td>
+          <td><button onclick="play(17)">play</button></td>
+        </tr>
+        <tr>
+          <td>Theory of Everything 2</td>
+          <td>21⭐</td>
+          <td id="gdcomp18">❌</td>
+          <td><button onclick="play(18)">play</button></td>
+        </tr>
+        <tr>
+          <td>Geometrical Dominator</td>
+          <td>14⭐</td>
+          <td id="gdcomp19">❌</td>
+          <td><button onclick="play(19)">play</button></td>
+        </tr>
+        <tr>
+          <td>Deadlocked</td>
+          <td>25⭐</td>
+          <td id="gdcomp20">❌</td>
+          <td><button onclick="play(20)">play</button></td>
+        </tr>
+        <tr>
+          <td>Fingerdash</td>
+          <td>11⭐</td>
+          <td id="gdcomp21">❌</td>
+          <td><button onclick="play(21)">play</button></td>
+        </tr>
+      </table>
+      <div style="position:absolute; right:10px; height: 200px; top: 150px; width: 70px; border: 1px solid black"><div style="position:absolute; height: 0px; width: 70px; bottom: 0px; background: green" id="energyspace"></div><br><br><br><br><br><br><span id="energynum">0</span>%</div>
     </span>
     <img src="../clover.png" width="100" height="100" id="lucky" onclick="document.getElementById('lucky').style.display='none'; getlucky()">
     <!--no footer-->
