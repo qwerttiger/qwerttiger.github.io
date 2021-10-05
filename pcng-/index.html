@@ -213,6 +213,7 @@
           <td>Difficulty</td>
           <td>Completed?</td>
           <td>Play</td>
+          <td>Chance</td>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <td>cube</td>
           <td>ship</td>
@@ -226,6 +227,7 @@
           <td>Stereo Madness</td>
           <td>2⭐</td>
           <td id="gdcomp1">❌</td>
+          <td id="gdchance1"></td>
           <td><button onclick="play(1)">play</button></td>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <td><button onclick="train(1)">train</button></td>
@@ -240,6 +242,7 @@
           <td>Back on Track</td>
           <td>2⭐</td>
           <td id="gdcomp2">❌</td>
+          <td id="gdchance2"></td>
           <td><button onclick="play(2)">play</button></td>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <td><span id="gdskl1">1</span>/10</td>
@@ -254,119 +257,136 @@
           <td>Polargeist</td>
           <td>4⭐</td>
           <td id="gdcomp3">❌</td>
+          <td id="gdchance3"></td>
           <td><button onclick="play(3)">play</button></td>
         </tr>
         <tr>
           <td>Dry Out</td>
           <td>5⭐</td>
           <td id="gdcomp4">❌</td>
+          <td id="gdchance4"></td>
           <td><button onclick="play(4)">play</button></td>
         </tr>
         <tr>
           <td>Base After Base</td>
           <td>4⭐</td>
           <td id="gdcomp5">❌</td>
+          <td id="gdchance5"></td>
           <td><button onclick="play(5)">play</button></td>
         </tr>
         <tr>
           <td>Can't Let Go</td>
           <td>8⭐</td>
           <td id="gdcomp6">❌</td>
+          <td id="gdchance6"></td>
           <td><button onclick="play(6)">play</button></td>
         </tr>
         <tr>
           <td>Jumper</td>
           <td>6⭐</td>
           <td id="gdcomp7">❌</td>
+          <td id="gdchance7"></td>
           <td><button onclick="play(7)">play</button></td>
         </tr>
         <tr>
           <td>Time Machine</td>
           <td>12⭐</td>
           <td id="gdcomp8">❌</td>
+          <td id="gdchance8"></td>
           <td><button onclick="play(8)">play</button></td>
         </tr>
         <tr>
           <td>Cycles</td>
           <td>9⭐</td>
           <td id="gdcomp9">❌</td>
+          <td id="gdchance9"></td>
           <td><button onclick="play(9)">play</button></td>
         </tr>
         <tr>
           <td>xStep</td>
           <td>9⭐</td>
           <td id="gdcomp10">❌</td>
+          <td id="gdchance10"></td>
           <td><button onclick="play(10)">play</button></td>
         </tr>
         <tr>
           <td>Clutterfunk</td>
           <td>15⭐</td>
           <td id="gdcomp11">❌</td>
+          <td id="gdchance11"></td>
           <td><button onclick="play(11)">play</button></td>
         </tr>
         <tr>
           <td>Theory of Everything</td>
           <td>12⭐</td>
           <td id="gdcomp12">❌</td>
+          <td id="gdchance12"></td>
           <td><button onclick="play(12)">play</button></td>
         </tr>
         <tr>
           <td>Electroman Adventures</td>
           <td>13⭐</td>
           <td id="gdcomp13">❌</td>
+          <td id="gdchance13"></td>
           <td><button onclick="play(13)">play</button></td>
         </tr>
         <tr>
           <td>Clubstep</td>
           <td>20⭐</td>
           <td id="gdcomp14">❌</td>
+          <td id="gdchance14"></td>
           <td><button onclick="play(14)">play</button></td>
         </tr>
         <tr>
           <td>Electrodynamix</td>
           <td>18⭐</td>
           <td id="gdcomp15">❌</td>
+          <td id="gdchance15"></td>
           <td><button onclick="play(15)">play</button></td>
         </tr>
         <tr>
           <td>Hexagon Force</td>
           <td>16⭐</td>
           <td id="gdcomp16">❌</td>
+          <td id="gdchance16"></td>
           <td><button onclick="play(16)">play</button></td>
         </tr>
         <tr>
           <td>Blast Processing</td>
           <td>10⭐</td>
           <td id="gdcomp17">❌</td>
+          <td id="gdchance17"></td>
           <td><button onclick="play(17)">play</button></td>
         </tr>
         <tr>
           <td>Theory of Everything 2</td>
           <td>21⭐</td>
           <td id="gdcomp18">❌</td>
+          <td id="gdchance18"></td>
           <td><button onclick="play(18)">play</button></td>
         </tr>
         <tr>
           <td>Geometrical Dominator</td>
           <td>14⭐</td>
           <td id="gdcomp19">❌</td>
+          <td id="gdchance19"></td>
           <td><button onclick="play(19)">play</button></td>
         </tr>
         <tr>
           <td>Deadlocked</td>
           <td>25⭐</td>
           <td id="gdcomp20">❌</td>
+          <td id="gdchance20"></td>
           <td><button onclick="play(20)">play</button></td>
         </tr>
         <tr>
           <td>Fingerdash</td>
           <td>11⭐</td>
           <td id="gdcomp21">❌</td>
+          <td id="gdchance21"></td>
           <td><button onclick="play(21)">play</button></td>
         </tr>
       </table>
-      <div style="position:absolute; right:10px; height: 200px; top: 150px; width: 70px; border: 1px solid black"><div style="position:absolute; height: 0px; width: 70px; bottom: 0px; background: green" id="energyspace"></div><br><br><br><br><br><br><span id="energynum">0</span>%</div>
-    </span>
     <img src="../clover.png" width="100" height="100" id="lucky" onclick="document.getElementById('lucky').style.display='none'; getlucky()">
     <!--no footer-->
     <script src="../breakinf.js"></script>

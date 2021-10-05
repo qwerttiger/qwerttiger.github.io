@@ -219,10 +219,10 @@ if (localStorage.getItem("tbcolor")){
   document.getElementById("tbcolor").value=localStorage.getItem("tbcolor");
 }
 for (i=1; i<=7; i++){
-  eval("if (localStorage.getItem('gdsk"+i+"')){gdsk"+i+"=Number(localStorage.getItem('gdsk"+i+"'))}")
+  eval("if (localStorage.getItem('gdsk"+i+"')){gdsk"+i+"=Number(localStorage.getItem('gdsk"+i+"'))}");
 }
 for (i=1; i<=21; i++){
-  eval("if (localStorage.getItem('gdlvl"+i+"')){gdlvl"+i+"=Number(localStorage.getItem('gdlvl"+i+"'))}")
+  eval("if (localStorage.getItem('gdlvl"+i+"')){gdlvl"+i+"=Number(localStorage.getItem('gdlvl"+i+"'))}");
 }
 if (localStorage.getItem("energy")){
   energy=Number(localStorage.getItem("energy"));
@@ -634,8 +634,15 @@ function check(){
   document.getElementById("gdskl5").innerHTML=gdsk5;
   document.getElementById("gdskl6").innerHTML=gdsk6;
   document.getElementById("gdskl7").innerHTML=gdsk7;
-  document.getElementById("energyspace").style="position:absolute; height:"+2*energy+"px; width: 70px; bottom: 0px; background: green"
+  document.getElementById("energyspace").style="position:absolute; height:"+2*energy+"px; width: 70px; bottom: 0px; background: green";
   document.getElementById("energynum").innerHTML=energy;
+  for (num=1; num<=21; num++){
+    eval("document.getElementById('gdchance"+num+"').innerHTML=1");
+    for (i=1; i<=7; i++){
+      eval("document.getElementById('gdchance"+num+"').innerHTML*=(gdsk"+i+"/(5*gdlvldata[num-1][i-1]+1)>1)?1:gdsk"+i+"/(5*gdlvldata[num-1][i-1]+1)");
+    }
+    eval("document.getElementById('gdchance"+num+"').innerHTML=Math.round(document.getElementById('gdchance"+num+"').innerHTML*10000)/100+'%'");
+  }
   lastpoints=points;
   lastmetapoints=metapoints;
   lastmetametapoints=metametapoints;
@@ -1088,7 +1095,7 @@ function pmakenomult(num){
 }
 function train(num){
   level=eval("gdsk"+num);
-  if (energy>=10 && level<=9){
+  if (energy>=10 && level<=9.5){
     energy-=10;
     if (Math.random()<=level/15){
       eval("gdsk"+num+"+=0.5");
