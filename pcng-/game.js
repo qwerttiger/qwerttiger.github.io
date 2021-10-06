@@ -1234,6 +1234,11 @@ if (u3){
 if (u4){
   u4l=setInterval(autoIP,100);
 }
+check();
+for (x of document.querySelectorAll(":not(#loading")){
+  x.style.visibility="visible";
+}
+document.getElementById("loading").style.display="none";
 function importt(){
   var savestr=prompt("Input your save:");
   if (savestr!=null){
