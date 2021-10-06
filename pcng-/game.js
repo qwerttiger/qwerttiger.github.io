@@ -530,7 +530,7 @@ function check(){
     clearInterval(checkloop);
     checkloop=setInterval(check,document.getElementById("mspf").value)
   }
-  document.getElementById("mspfvalue").innerHTML=document.getElementById("mspf").value;
+  document.getElementById("mspfvalue").innerHTML=document.getElementById("mspf").value+" milliseconds per frame, "+Math.round(1000/document.getElementById("mspf").value)+" fps";
   if ((!u1 && infinitypoints>=10) || (!u2 && infinitypoints>=50) || (!u3 && infinitypoints>=100) || (!u4 && infinitypoints>=250) || (infinitypoints>=3**u5 && u5<647) || (!u6 && infinitypoints>=150) || (!u7 && infinitypoints>=1e10) || (!breakinf && infinitypoints>=10000)){
     document.getElementById("screen2").style.background="black";
     document.getElementById("screen2").style.color="white";
