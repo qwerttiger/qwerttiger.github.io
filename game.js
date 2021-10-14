@@ -48,6 +48,9 @@ var ach8=0;
 var ach9=0;
 var ach10=0;
 var ach11=0;
+var ach12=0;
+var ach13=0;
+var ach14=0;
 var mc1=0;
 var mc2=0;
 var mc3=0;
@@ -174,6 +177,30 @@ if (localStorage.getItem("ach5")){
 }
 if (localStorage.getItem("ach6")){
   ach6=Number(localStorage.getItem("ach6"));
+}
+if (localStorage.getItem("ach7")){
+  ach6=Number(localStorage.getItem("ach7"));
+}
+if (localStorage.getItem("ach8")){
+  ach6=Number(localStorage.getItem("ach8"));
+}
+if (localStorage.getItem("ach9")){
+  ach6=Number(localStorage.getItem("ach9"));
+}
+if (localStorage.getItem("ach10")){
+  ach6=Number(localStorage.getItem("ach10"));
+}
+if (localStorage.getItem("ach11")){
+  ach6=Number(localStorage.getItem("ach11"));
+}
+if (localStorage.getItem("ach12")){
+  ach6=Number(localStorage.getItem("ach12"));
+}
+if (localStorage.getItem("ach13")){
+  ach6=Number(localStorage.getItem("ach13"));
+}
+if (localStorage.getItem("ach14")){
+  ach6=Number(localStorage.getItem("ach14"));
 }
 if (localStorage.getItem("eternitypoints")){
   eternitypoints=Number(localStorage.getItem("eternitypoints"));
@@ -432,6 +459,18 @@ function check(){
   if (mc20>=1 || ach11){
     ach11=1;
     document.getElementById("ach11").classList.add("gottenach");
+  }
+  if (gdlvl1==1 || ach12){
+    ach11=1;
+    document.getElementById("ach12").classList.add("gottenach");
+  }
+  if (gdlvl1==1 && gdlvl2==1 && gdlvl3==1 && gdlvl4==1 && gdlvl5==1 && gdlvl6==1 && gdlvl7==1 && gdlvl8==1 && gdlvl9==1 && gdlvl10==1 && gdlvl11==1 && gdlvl12==1 && gdlvl13==1 && gdlvl14==1 && gdlvl15==1 && gdlvl16==1 && gdlvl17==1 && gdlvl18==1 && gdlvl19==1 && gdlvl20==1 && gdlvl21==1 || ach13){
+    ach11=1;
+    document.getElementById("ach13").classList.add("gottenach");
+  }
+  if (gdsk1==10 && gdsk2==10 && gdsk3==10 && gdsk4==10 && gdsk5==10 && gdsk6==10 && gdsk7==10 || ach14){
+    ach11=1;
+    document.getElementById("ach14").classList.add("gottenach");
   }
   if (!u2){
     for (element of document.getElementsByClassName("ac1")){
@@ -756,6 +795,9 @@ function save(){
   localStorage.setItem("ach9",ach9.toString());
   localStorage.setItem("ach10",ach10.toString());
   localStorage.setItem("ach11",ach11.toString());
+  localStorage.setItem("ach12",ach12.toString());
+  localStorage.setItem("ach13",ach13.toString());
+  localStorage.setItem("ach14",ach14.toString());
   localStorage.setItem("eternitypoints",eternitypoints.toString());
   localStorage.setItem("luckypoints",luckypoints.toString());
   localStorage.setItem("crafts",crafts.toString());
@@ -835,7 +877,7 @@ function ticker(){
   if (luckypoints>=10){
     tickerlist.push("how u get "+luckypoints+" lucky points?")
   }
-  if (mc20>=1){
+  if (mc20>=1 && gdlvl1==1 && gdlvl2==1 && gdlvl3==1 && gdlvl4==1 && gdlvl5==1 && gdlvl6==1 && gdlvl7==1 && gdlvl8==1 && gdlvl9==1 && gdlvl10==1 && gdlvl11==1 && gdlvl12==1 && gdlvl13==1 && gdlvl14==1 && gdlvl15==1 && gdlvl16==1 && gdlvl17==1 && gdlvl18==1 && gdlvl19==1 && gdlvl20==1 && gdlvl21==1){
     tickerlist=["ok gg u beat the game now beat <a href='pcng-'>NG-</a>"]
   }
   return tickerlist[Math.floor(Math.random()*tickerlist.length)]
@@ -1120,10 +1162,11 @@ function pmakenomult(num){
 }
 function train(num){
   level=eval("gdsk"+num);
-  if (energy>=10 && level<=9.5){
+  if (energy>=10 && level<10){
     energy-=10;
     if (Math.random()<=level/15){
       eval("gdsk"+num+"+=0.5");
+      eval("if(gdsk"+num+">10){gdsk"+num+"=10}");
     }
   }
 }
@@ -1265,7 +1308,7 @@ function importt(){
   var savestr=prompt("Input your save:");
   if (savestr!=null){
     savestr=savestr.replace(/b/g,"\.").replace(/d/g,"\|").replace(/e/g,"0").replace(/f/g,"1").replace(/g/g,"2").replace(/h/g,"3").replace(/i/g,"4").replace(/j/g,"5").replace(/k/g,"6").replace(/l/g,"7").replace(/m/g,"8").replace(/n/g,"9").replace(/c/g,"e").replace(/a/g,"Infinity");
-    if (savestr.split("|").length==90){
+    if (savestr.split("|").length==93){
       reset();
       var savelist=savestr.split("|");
       points=parse(savelist[0]);
@@ -1358,6 +1401,9 @@ function importt(){
       gdsk6=Number(savelist[87]);
       gdsk7=Number(savelist[88]);
       energy=Number(savelist[89]);
+      ach12=Number(savelist[90]);
+      ach13=Number(savelist[91]);
+      ach14=Number(savelist[92]);
       if (u1){
         u1l=setInterval(addpoint,100);
       }
