@@ -1162,7 +1162,7 @@ function pmakenomult(num){
 }
 function train(num){
   level=eval("gdsk"+num);
-  if (energy>=1 && level==0){
+  if (energy>=1 && level==1){
     energy-=1;
     eval("gdsk"+num+"=10");
     //nerfed
@@ -1304,6 +1304,13 @@ if (u4){
 }
 check();
 document.getElementById("loading").style.display="none";
+for (num=1; num<=21; num++){
+  eval("document.getElementById('gdchance"+num+"').innerHTML=1");
+  for (i=1; i<=7; i++){
+    eval("document.getElementById('gdchance"+num+"').innerHTML*=(gdsk"+i+"/(5*gdlvldata[num-1][i-1]+1)>1)?1:gdsk"+i+"/(5*gdlvldata[num-1][i-1]+1)");
+  }
+  eval("document.getElementById('gdchance"+num+"').innerHTML=Math.round(document.getElementById('gdchance"+num+"').innerHTML*10000)/100+'%'");
+}
 function importt(){
   var savestr=prompt("Input your save:");
   if (savestr!=null){
