@@ -356,12 +356,12 @@ function check(){
       document.getElementById("eternity").innerHTML="<button>Get Infinity IP to Eternity</button><br>";
     }
   }
-  if (eternitypoints==Infinity && (document.getElementById("minecraftify").innerHTML=="Get Infinity Eternity points to Minecraftify<br>" || lastscreennum!=1)){
+  if (eternitypoints==Infinity && (document.getElementById("minecraftify").innerHTML=="Get Infinity Eternity points to Minecraftify" || lastscreennum!=1)){
     document.getElementById("minecraftify").innerHTML="Minecraftify for 1 fist and 5 craft";
     document.getElementById("minecraftify").setAttribute("onclick","minecraftify()")
     document.getElementById("geometrydashify").innerHTML="Geometrydashify for 100% energy";
     document.getElementById("geometrydashify").setAttribute("onclick","geometrydashify()")
-  } else if (eternitypoints!=Infinity && (document.getElementById("minecraftify").innerHTML=="Minecraftify for 1 fist and 5 craft<br>" || lastscreennum!=1)){
+  } else if (eternitypoints!=Infinity && (document.getElementById("minecraftify").innerHTML=="Minecraftify for 1 fist and 5 craft" || lastscreennum!=1)){
     document.getElementById("minecraftify").innerHTML="Get Infinity Eternity points to Minecraftify";
     document.getElementById("minecraftify").removeAttribute("onclick");
     document.getElementById("geometrydashify").innerHTML="Get Infinity Eternity points to Geometrydashify";
